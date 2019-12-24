@@ -1,0 +1,42 @@
+{
+  "name": "testcafe-cucumber-steps",
+  "version": "0.0.0",
+  "description": "Cucumber steps (step definitions) written with TestCafe for e2e tests",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.x.x"
+  },
+  "scripts": {
+    "patch": "npm version patch -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
+    "minor": "npm version minor -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
+    "major": "npm version major -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Marketionist/testcafe-cucumber-steps"
+  },
+  "keywords": [
+    "testcafe cucumber steps",
+    "testcafe-cucumber-steps",
+    "cucumber steps",
+    "cucumber step definitions",
+    "testcafe plugin",
+    "automated tests",
+    "e2e tests",
+    "end-to-end testing",
+    "acceptance testing",
+    "browser testing",
+    "testcafe",
+    "cucumber",
+    "cucumberjs",
+    "cucumber-js",
+    "gherkin",
+    "bdd"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "dependencies": {
+    "cucumber": "^6.0.5",
+    "gherkin-testcafe": "^2.4.2"
+  }
+}
