@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "node_modules/.bin/eslint *.js tests/**/*.feature",
-    "test": "node_modules/.bin/gherkin-testcafe chrome *.js tests/**/*.feature --tags @Fast,@Long",
+    "test": "node_modules/.bin/gherkin-testcafe 'chrome:headless' *.js tests/**/*.feature --tags @Fast,@Long",
     "patch": "npm version patch -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
     "minor": "npm version minor -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
     "major": "npm version major -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish"
