@@ -1,12 +1,14 @@
 {
   "name": "testcafe-cucumber-steps",
   "version": "0.0.1",
-  "description": "Cucumber steps (step definitions) written with TestCafe for e2e tests",
+  "description": "Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e) tests",
   "main": "index.js",
   "engines": {
     "node": ">=8.x.x"
   },
   "scripts": {
+    "lint": "node_modules/.bin/eslint *.js tests/**/*.feature",
+    "test": "node_modules/.bin/gherkin-testcafe chrome *.js tests/**/*.feature --tags @Fast,@Long",
     "patch": "npm version patch -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
     "minor": "npm version minor -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
     "major": "npm version major -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish"
@@ -16,6 +18,8 @@
     "url": "https://github.com/Marketionist/testcafe-cucumber-steps"
   },
   "keywords": [
+    "testcafe cucumber",
+    "testcafe-cucumber",
     "testcafe cucumber steps",
     "testcafe-cucumber-steps",
     "cucumber steps",
@@ -37,6 +41,12 @@
   "license": "MIT",
   "dependencies": {
     "cucumber": "^6.0.5",
-    "gherkin-testcafe": "^2.4.2"
+    "gherkin-testcafe": "^2.4.2",
+    "testcafe": "^1.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-cucumber": "^1.4.0",
+    "eslint-plugin-testcafe": "^0.2.1"
   }
 }
