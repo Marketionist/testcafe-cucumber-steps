@@ -6,17 +6,22 @@
 const { Given, When, Then } = require('cucumber');
 const { ClientFunction } = require('testcafe');
 
-// #### When steps #########################################################
+// #### When steps #############################################################
 
 When(/^I go to URL "([^"]*)"$/, async function (t, [url]) {
     await t.navigateTo(url);
 });
 
-// #### Then steps #########################################################
+// #### Then steps #############################################################
+
 const getTitle = ClientFunction(() => {
     return document.title;
 });
 
 Then(/the title should be "([^"]*)"$/, async function (t, [text]) {
     await t.expect(getTitle()).eql(text);
+});
+
+Then(/the title should contain "([^"]*)"$/, async function (t, [text]) {
+    await t.expect(getTitle()).contains(text);
 });
