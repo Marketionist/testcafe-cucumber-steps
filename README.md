@@ -21,15 +21,17 @@ Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e) tes
 - 6.x
 
 ## Installation
-To install this package and add it to your `package.json` just run:
-```
-npm install testcafe-cucumber-steps --save-dev
-```
-
-> This package is lightweight and has only 3 dependencies - it internally uses:
+> This package is lightweight and has only 3 peerDependencies - it uses:
 > - [cucumber](https://github.com/cucumber/cucumber-js) to parse step definitions
 > - [testcafe](https://github.com/DevExpress/testcafe) to execute steps
 > - [gherkin-testcafe](https://github.com/kiwigrid/gherkin-testcafe) to connect TestCafe with Cucumber
+
+To run tests and add more custom step definitions you will also need to install
+this dependencies, so to install the package + its peerDependencies and add it
+to your `package.json` just run:
+```
+npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
+```
 
 ## Importing and running in CLI
 It is quite simple to use - to get access to all Cucumber steps defined in this
@@ -99,7 +101,7 @@ to all step definitions and tests should be specified inside the array in `src`)
 }
 ```
 
-All options that are specified in CLI command will override settings from `.testcaferc.json`
+All options that are specified in CLI command will override settings from `.testcaferc.json`.
 
 > For all possible settings see
 > [TestCafe Configuration File description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html) and
