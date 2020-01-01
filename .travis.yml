@@ -21,7 +21,7 @@ before_install:
  - google-chrome --version
 
 install:
-  - npm install
+  - npm run install-all
 
 before_script:
   - npm run lint
