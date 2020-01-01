@@ -222,7 +222,7 @@
 
         // Cucumber
         "cucumber/async-then": 2,
-        "cucumber/expression-type": 0,
+        "cucumber/expression-type": 2,
         "cucumber/no-restricted-tags": [2, "wip", "broken", "foo"],
         // In step definitions they break the concept of "world" being stored in "this"
         "cucumber/no-arrow-functions": 2
