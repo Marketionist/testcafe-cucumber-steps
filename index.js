@@ -9,7 +9,9 @@ const pageObjectsFolderPath = process.env.PO_FOLDER_PATH || 'tests/page-model';
 const path = require('path');
 const fs = require('fs');
 
-const fullPageObjectsFolderPath = __dirname.includes('node_modules') ?
+const isCalledExternally = __dirname.includes('node_modules');
+
+const fullPageObjectsFolderPath = isCalledExternally ?
     path.join(__dirname, '../..', pageObjectsFolderPath) :
     path.join(__dirname, pageObjectsFolderPath);
 
@@ -24,7 +26,9 @@ fs.readdirSync(fullPageObjectsFolderPath).filter(
     pageObjects[fileName] = require(path.join(fullPageObjectsFolderPath, file));
 });
 
-console.log('Page Objects found:', pageObjects);
+// if (!isCalledExternally) {
+//     console.log('Page Objects found:', pageObjects);
+// }
 
 // #### When steps #############################################################
 
