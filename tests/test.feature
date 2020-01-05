@@ -17,3 +17,13 @@ Feature: Running Cucumber with TestCafe
   Scenario: 'I go to page' should open corresponding page (text style step)
     When I go to pageTest1 from test.page page
     Then the title should be "Test1 Page"
+
+  Scenario: 'I reload the page' should refresh the page, 'should be present' should verify the element
+    When I go to "test.page"."pageTest1"
+    And I reload the page
+    Then "test.page"."linkTest2Page" should be present
+
+  Scenario: 'I reload the page' should refresh the page, 'should be present' should verify the element (text style step)
+    When I go to "test.page"."pageTest1"
+    And I reload the page
+    Then linkTest2Page from test.page page should be present
