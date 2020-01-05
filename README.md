@@ -125,11 +125,14 @@ You can see the example of how to use predefined steps in [`test.feature`](https
 - `I go to "..."."..."` - open a site (by its URL provided in **"page"."object"**) in the current browser window/tab.
 - `I go to ... from ... page` - open a site (by its URL provided in **object** from **page**) in the current browser window/tab.
 - `I reload the page` - reload current page.
+- `I click "..."."..."` - click on any element (provided in **"page"."object"** as CSS selector).
+- `I click ... from ... page` - click on any element (provided in **object** from **page** as CSS selector).
+- `I wait for {int} ms` - wait for provided amount of time (in milliseconds).
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser window/tab equals to the text (provided in "" as a string).
 - `"..."."..." should be present` - verify that element (provided in **"page"."object"** as CSS selector) is present on the page.
-- `... from ... page should be present` - Verify that element (provided in **object** from **page** as CSS selector) is present on the page.
+- `... from ... page should be present` - verify that element (provided in **object** from **page** as CSS selector) is present on the page.
 
 ## Thanks
 If this package was helpful for you, please give it a **★ Star** on
