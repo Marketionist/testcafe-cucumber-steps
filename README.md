@@ -35,15 +35,17 @@ npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-de
 
 ## Importing and running in CLI
 It is quite simple to use - to get access to all Cucumber steps defined in this
-package just specify the path to this package when launching tests (also use `gherkin-testcafe` just like you use TestCafe's CLI - replace `testcafe` by `gherkin-testcafe` and load all .js files (for step definitions) and .feature
+package just specify the path to this package when launching tests (also use `gherkin-testcafe` just like you use TestCafe's CLI - replace `testcafe` with `gherkin-testcafe` and load all .js files (for step definitions) and .feature
 files (for steps to execute):
 ```
-gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
+PO_FOLDER_PATH='tests/page-model' gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
+Note the `PO_FOLDER_PATH` environment variable - it has to be specified to show the path to your Page Objects folder
+(if you do not specify it - it gets set to `'tests/page-model'` by default).
 
 Also you can just add `test-e2e` command to `scripts` in `package.json`:
 ```
-"test-e2e": "node_modules/.bin/gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
+"test-e2e": "PO_FOLDER_PATH='tests/page-model' gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
 ```
 and then launch tests with `npm run test-e2e`.
 
@@ -101,11 +103,14 @@ to all step definitions and tests should be specified inside the array in `src`)
 }
 ```
 
+Then to run tests just launch `PO_FOLDER_PATH='tests/page-model' gherkin-testcafe` in terminal (CLI).
+
 All options that are specified in CLI command will override settings from `.testcaferc.json`.
 
-> For all possible settings see
-> [TestCafe Configuration File description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html) and
-> [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json).
+> For all possible settings see:
+> - [TestCafe Configuration File description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html),
+> - [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json) and
+> - [all TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 
 ## Thanks
 If this package was helpful for you, please give it a **★ Star** on
