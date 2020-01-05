@@ -48,6 +48,18 @@ When('I reload the page', async function (t) {
     await t.eval(() => location.reload(true));
 });
 
+When('I click {string}.{string}', async function (t, [page, element]) {
+    await t.click(pageObjects[page][element]);
+});
+
+When('I click {word} from {word} page', async function (t, [element, page]) {
+    await t.click(pageObjects[page][element]);
+});
+
+When('I wait for {int} ms', async function (t, [timeToWait]) {
+    await t.wait(timeToWait);
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {

@@ -27,3 +27,15 @@ Feature: Running Cucumber with TestCafe
     When I go to "test.page"."pageTest1"
     And I reload the page
     Then linkTest2Page from test.page page should be present
+
+  Scenario: 'I click' Page1 test page link should lead to Page2 test page, 'I wait for' should wait for 200 ms
+    When I go to URL "http://localhost:8001/test1.html"
+    And I wait for 200 ms
+    And I click "test.page"."linkTest2Page"
+    Then the title should be "Test2 Page"
+
+  Scenario: 'I click' Page1 test page link should lead to Page2 test page, 'I wait for' should wait for 200 ms (text style step)
+    When I go to URL "http://localhost:8001/test1.html"
+    And I wait for 200 ms
+    And I click linkTest2Page from test.page page
+    Then the title should be "Test2 Page"
