@@ -47,7 +47,10 @@ Also you can just add `test-e2e` command to `scripts` in `package.json`:
 ```
 "test-e2e": "PO_FOLDER_PATH='tests/page-model' gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
 ```
-and then launch tests with `npm run test-e2e`.
+and then launch tests with:
+```
+npm run test-e2e
+```
 
 > Use `gherkin-testcafe --help` command to see all options (all
 > [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
@@ -102,15 +105,31 @@ to all step definitions and tests should be specified inside the array in `src`)
     "disablePageCaching": true
 }
 ```
-
-Then to run tests just launch `PO_FOLDER_PATH='tests/page-model' gherkin-testcafe` in terminal (CLI).
+and then launch tests with:
+```
+PO_FOLDER_PATH='tests/page-model' gherkin-testcafe
+```
 
 All options that are specified in CLI command will override settings from `.testcaferc.json`.
 
 > For all possible settings see:
-> - [TestCafe Configuration File description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html),
-> - [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json) and
+> - [TestCafe Configuration File description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html)
+> - [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json)
 > - [all TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
+
+## List of predefined steps
+You can see the example of how to use predefined steps in [`test.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test.feature).
+
+### When steps
+- `I go to URL "..."` - open a site (by its URL provided in "" as a string) in the current browser window/tab.
+- `I go to "..."."..."` - open a site (by its URL provided in **"page"."object"**) in the current browser window/tab.
+- `I go to ... from ... page` - open a site (by its URL provided in **object** from **page**) in the current browser window/tab.
+- `I reload the page` - reload current page.
+
+### Then steps
+- `the title should be "..."` - verify that title of the current browser window/tab equals to the text (provided in "" as a string).
+- `"..."."..." should be present` - verify that element (provided in **"page"."object"** as CSS selector) is present on the page.
+- `... from ... page should be present` - Verify that element (provided in **object** from **page** as CSS selector) is present on the page.
 
 ## Thanks
 If this package was helpful for you, please give it a **★ Star** on

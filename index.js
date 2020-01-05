@@ -4,7 +4,7 @@
 // #############################################################################
 
 const { Given, When, Then } = require('cucumber');
-const { ClientFunction } = require('testcafe');
+const { ClientFunction, Selector } = require('testcafe');
 const pageObjectsFolderPath = process.env.PO_FOLDER_PATH || 'tests/page-model';
 const path = require('path');
 const fs = require('fs');
@@ -16,7 +16,7 @@ const fullPageObjectsFolderPath = isCalledExternally ?
     path.join(__dirname, pageObjectsFolderPath);
 
 // Require all Page Object files in directory
-const pageObjects = {};
+let pageObjects = {};
 
 fs.readdirSync(fullPageObjectsFolderPath).filter(
     (value) => value.includes('.js')
@@ -44,6 +44,10 @@ When('I go to {word} from {word} page', async function (t, [element, page]) {
     await t.navigateTo(pageObjects[page][element]);
 });
 
+When('I reload the page', async function (t) {
+    await t.eval(() => location.reload(true));
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
@@ -56,4 +60,16 @@ Then('the title should be {string}', async function (t, [text]) {
 
 Then('the title should contain {string}', async function (t, [text]) {
     await t.expect(getTitle()).contains(text);
+});
+
+Then('{string}.{string} should be present', async function (
+    t, [page, element]
+) {
+    await t.expect(Selector(pageObjects[page][element]).exists).ok();
+});
+
+Then('{word} from {word} page should be present', async function (
+    t, [element, page]
+) {
+    await t.expect(Selector(pageObjects[page][element]).exists).ok();
 });
