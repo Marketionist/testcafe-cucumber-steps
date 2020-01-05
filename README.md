@@ -38,12 +38,14 @@ It is quite simple to use - to get access to all Cucumber steps defined in this
 package just specify the path to this package when launching tests (also use `gherkin-testcafe` just like you use TestCafe's CLI - replace `testcafe` by `gherkin-testcafe` and load all .js files (for step definitions) and .feature
 files (for steps to execute):
 ```
-gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
+PO_FOLDER_PATH='tests/page-model' gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
+Note the `PO_FOLDER_PATH` environment variable - it has to be specified to show the path to your Page Objects folder
+(if you do not specify it - it is set to `'tests/page-model'` by default).
 
 Also you can just add `test-e2e` command to `scripts` in `package.json`:
 ```
-"test-e2e": "node_modules/.bin/gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
+"test-e2e": "PO_FOLDER_PATH='tests/page-model' gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
 ```
 and then launch tests with `npm run test-e2e`.
 
