@@ -78,6 +78,28 @@ When('I wait and click {word} from {word} page', async function (
     await t.wait(timeToWait).click(pageObjects[page][element]);
 });
 
+When('I click {string}.{string} if present', async function (
+    t, [page, element]
+) {
+    const isPresent = await Selector(pageObjects[page][element]).exists;
+
+    if (isPresent) {
+        // Click only if element is present
+        await t.click(pageObjects[page][element]);
+    }
+});
+
+When('I click {word} from {word} page if present', async function (
+    t, [element, page]
+) {
+    const isPresent = await Selector(pageObjects[page][element]).exists;
+
+    if (isPresent) {
+        // Click only if element is present
+        await t.click(pageObjects[page][element]);
+    }
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
