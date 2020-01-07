@@ -49,3 +49,31 @@ Feature: Running Cucumber with TestCafe
     When I go to "test.page"."pageTest1"
     And I wait and click linkTest2Page from test.page page
     Then the title should be "Test2 Page"
+
+  Scenario: 'I click if present': link on Page1 test page should be clicked if it is visible and lead to Page2 test page
+    When I go to "test.page"."pageTest1"
+    And I wait for 200 ms
+    And I click "test.page"."linkTest2Page" if present
+    And I wait for 200 ms
+    Then the title should be "Test2 Page"
+
+  Scenario: 'I click if present': link on Page1 test page should not be clicked if it is not present
+    When I go to "test.page"."pageTest1"
+    And I wait for 200 ms
+    And I click "test.page"."linkInvisibleTest2Page" if present
+    And I wait for 200 ms
+    Then the title should be "Test1 Page"
+
+  Scenario: 'I click if present': link on Page1 test page should be clicked if it is visible and lead to Page2 test page (text style step)
+    When I go to pageTest1 from test.page page
+    And I wait for 200 ms
+    And I click linkTest2Page from test.page page if present
+    And I wait for 200 ms
+    Then the title should be "Test2 Page"
+
+  Scenario: 'I click if present': link on Page1 test page should not be clicked if it is not present (text style step)
+    When I go to pageTest1 from test.page page
+    And I wait for 200 ms
+    And I click linkInvisibleTest2Page from test.page page if present
+    And I wait for 200 ms
+    Then the title should be "Test1 Page"
