@@ -30,19 +30,21 @@ fs.readdirSync(fullPageObjectsFolderPath).filter(
 //     console.log('Page Objects found:', pageObjects);
 // }
 
-// #### When steps #############################################################
+// #### Given steps ############################################################
 
-When('I go to URL {string}', async function (t, [url]) {
+Given('I go to URL {string}', async function (t, [url]) {
     await t.navigateTo(url);
 });
 
-When('I go to {string}.{string}', async function (t, [page, element]) {
+Given('I go to {string}.{string}', async function (t, [page, element]) {
     await t.navigateTo(pageObjects[page][element]);
 });
 
-When('I go to {word} from {word} page', async function (t, [element, page]) {
+Given('I go to {word} from {word} page', async function (t, [element, page]) {
     await t.navigateTo(pageObjects[page][element]);
 });
+
+// #### When steps #############################################################
 
 When('I reload the page', async function (t) {
     await t.eval(() => location.reload(true));
@@ -58,6 +60,22 @@ When('I click {word} from {word} page', async function (t, [element, page]) {
 
 When('I wait for {int} ms', async function (t, [timeToWait]) {
     await t.wait(timeToWait);
+});
+
+When('I wait and click {string}.{string}', async function (
+    t, [page, element]
+) {
+    const timeToWait = 300;
+
+    await t.wait(timeToWait).click(pageObjects[page][element]);
+});
+
+When('I wait and click {word} from {word} page', async function (
+    t, [element, page]
+) {
+    const timeToWait = 300;
+
+    await t.wait(timeToWait).click(pageObjects[page][element]);
 });
 
 // #### Then steps #############################################################
