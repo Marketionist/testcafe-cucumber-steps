@@ -35,13 +35,15 @@ npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-de
 
 ## Importing and running in CLI
 It is quite simple to use - to get access to all Cucumber steps defined in this
-package just specify the path to this package when launching tests (also use `gherkin-testcafe` just like you use TestCafe's CLI - replace `testcafe` with `gherkin-testcafe` and load all .js files (for step definitions) and .feature
+package just specify the path to this package when launching tests (also use
+`gherkin-testcafe` just like you use TestCafe's CLI - replace `testcafe` with
+`gherkin-testcafe` and load all .js files (for step definitions) and .feature
 files (for steps to execute):
 ```
 PO_FOLDER_PATH='tests/page-model' gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
-Note the `PO_FOLDER_PATH` environment variable - it has to be specified to show the path to your Page Objects folder
-(if you do not specify it - it gets set to `'tests/page-model'` by default).
+Note the `PO_FOLDER_PATH` environment variable - it has to be specified to show
+the path to your Page Objects folder (if not set - it defaults to `'tests/page-model'`).
 
 Also you can just add `test-e2e` command to `scripts` in `package.json`:
 ```
@@ -68,7 +70,8 @@ Additionally, you can specify:
     gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @Fast,@Long
     ```
 
-    Negation of a tag (via `~`) is also possible (to run all scenarios that have tag `Fast`, but not `Long`):
+    Negation of a tag (via `~`) is also possible (to run all scenarios that have
+    tag `Fast`, but not `Long`):
     ```
     gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @Fast,~@Long
     ```
@@ -118,21 +121,34 @@ All options that are specified in CLI command will override settings from `.test
 > - [all TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 
 ## List of predefined steps
-You can see the example of how to use predefined steps in [`test.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test.feature).
+You can see the example of how to use predefined steps in
+[`test.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test.feature).
+
+### Given steps
+- `I go to URL "..."` - open a site (by its URL provided in "" as a string) in
+the current browser window/tab.
+- `I go to "..."."..."` - open a site (by its URL provided in
+**"page"."object"**) in the current browser window/tab.
+- `I go to ... from ... page` - open a site (by its URL provided in **object**
+from **page**) in the current browser window/tab.
 
 ### When steps
-- `I go to URL "..."` - open a site (by its URL provided in "" as a string) in the current browser window/tab.
-- `I go to "..."."..."` - open a site (by its URL provided in **"page"."object"**) in the current browser window/tab.
-- `I go to ... from ... page` - open a site (by its URL provided in **object** from **page**) in the current browser window/tab.
 - `I reload the page` - reload current page.
-- `I click "..."."..."` - click on any element (provided in **"page"."object"** as CSS selector).
-- `I click ... from ... page` - click on any element (provided in **object** from **page** as CSS selector).
+- `I click "..."."..."` - click on any element (provided in **"page"."object"**
+as CSS selector).
+- `I click ... from ... page` - click on any element (provided in **object**
+from **page** as CSS selector).
 - `I wait for {int} ms` - wait for provided amount of time (in milliseconds).
+- `I wait and click "..."."..."` - wait for 300 ms and then click on any element (provided in **"page"."object"** as CSS selector).
+- `I wait and click ... from ... page` - wait for 300 ms and then click on any element (provided in **object** from **page** as CSS selector).
 
 ### Then steps
-- `the title should be "..."` - verify that title of the current browser window/tab equals to the text (provided in "" as a string).
-- `"..."."..." should be present` - verify that element (provided in **"page"."object"** as CSS selector) is present on the page.
-- `... from ... page should be present` - verify that element (provided in **object** from **page** as CSS selector) is present on the page.
+- `the title should be "..."` - verify that title of the current browser
+window/tab equals to the text (provided in "" as a string).
+- `"..."."..." should be present` - verify that element (provided in
+**"page"."object"** as CSS selector) is present on the page.
+- `... from ... page should be present` - verify that element (provided in
+**object** from **page** as CSS selector) is present on the page.
 
 ## Thanks
 If this package was helpful for you, please give it a **★ Star** on
