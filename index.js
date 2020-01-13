@@ -100,6 +100,18 @@ When('I click {word} from {word} page if present', async function (
     }
 });
 
+When('I double click {string}.{string}', async function (
+    t, [page, element]
+) {
+    await t.doubleClick(pageObjects[page][element]);
+});
+
+When('I double click {word} from {word} page', async function (
+    t, [element, page]
+) {
+    await t.doubleClick(pageObjects[page][element]);
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
