@@ -143,6 +143,8 @@ from **page** as CSS selector).
 - `I wait and click ... from ... page` - wait for 300 ms and then click on any element (provided in **object** from **page** as CSS selector).
 - `I click "..."."..." if present` - click on any element (provided in **"page"."object"** as CSS selector) only if it is present on the page.
 - `I click ... from page ... if present` - click on any element (provided in **object** from **page** as CSS selector) only if it is present on the page.
+- `I double click "..."."..."` - double click on any element (provided in **"page"."object"** as CSS selector).
+- `I double click ... from ... page` - double click on any element (provided in **object** from **page** as CSS selector).
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser
