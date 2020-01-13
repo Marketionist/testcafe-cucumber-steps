@@ -145,6 +145,10 @@ from **page** as CSS selector).
 - `I click ... from page ... if present` - click on any element (provided in **object** from **page** as CSS selector) only if it is present on the page.
 - `I double click "..."."..."` - double click on any element (provided in **"page"."object"** as CSS selector).
 - `I double click ... from ... page` - double click on any element (provided in **object** from **page** as CSS selector).
+- `I type "..." in "..."."..."` - type any text (provided in "" as a string) in the input field (provided in **"page"."object"** as CSS selector).
+- `I type "..." in ... from ... page` - type any text (provided in "" as a string) in the input field (provided in **object** from **page** as CSS selector).
+- `I type "..."."..." in "..."."..."` - type any text (provided in **"page1"."object1"**) in the input field (provided in **"page2"."object2"** as CSS selector).
+- `I type ... from ... page in ... from ... page` - type any text (provided in **object1** from **page1**) in the input field (provided in **object2** from **page2** as CSS selector).
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser
