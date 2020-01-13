@@ -112,6 +112,30 @@ When('I double click {word} from {word} page', async function (
     await t.doubleClick(pageObjects[page][element]);
 });
 
+When('I type {string} in {string}.{string}', async function (
+    t, [text, page, element]
+) {
+    await t.typeText(pageObjects[page][element], text);
+});
+
+When('I type {string} in {word} from {word} page', async function (
+    t, [text, element, page]
+) {
+    await t.typeText(pageObjects[page][element], text);
+});
+
+When('I type {string}.{string} in {string}.{string}', async function (
+    t, [page1, element1, page2, element2]
+) {
+    await t.typeText(pageObjects[page2][element2], pageObjects[page1][element1]);
+});
+
+When('I type {word} from {word} page in {word} from {word} page', async function (
+    t, [element1, page1, element2, page2]
+) {
+    await t.typeText(pageObjects[page2][element2], pageObjects[page1][element1]);
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
