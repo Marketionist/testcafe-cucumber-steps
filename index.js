@@ -161,3 +161,29 @@ Then('{word} from {word} page should be present', async function (
 ) {
     await t.expect(Selector(pageObjects[page][element]).exists).ok();
 });
+
+Then('{string}.{string} text should be {string}', async function (
+    t, [page, element, text]
+) {
+    await t.expect(Selector(pageObjects[page][element]).innerText).eql(text);
+});
+
+Then('{word} text from {word} page should be {string}', async function (
+    t, [element, page, text]
+) {
+    await t.expect(Selector(pageObjects[page][element]).innerText).eql(text);
+});
+
+Then('{string}.{string} text should be {string}.{string}', async function (
+    t, [page1, element1, page2, element2]
+) {
+    await t.expect(Selector(pageObjects[page1][element1]).innerText)
+        .eql(pageObjects[page2][element2]);
+});
+
+Then('{word} text from {word} page should be {word} from {word} page', async function (
+    t, [element1, page1, element2, page2]
+) {
+    await t.expect(Selector(pageObjects[page1][element1]).innerText)
+        .eql(pageObjects[page2][element2]);
+});
