@@ -7,7 +7,9 @@ module.exports = (function () {
         pageTest2: 'http://localhost:8001/test2.html',
         textGold: 'Gold',
         dropdownColors: '#dropdown-colors',
-        blockSelectedColor: '#block-selected-color'
+        blockDropdownColor: '#block-dropdown-color',
+        inputColors: '#input-colors',
+        blockInputColor: '#block-input-color'
 
     };
 

@@ -27,13 +27,17 @@ nodeTestingServer.config = {
             <script>
                 window.onload = function() {
                     document.getElementById("dropdown-colors").addEventListener("change", function() {
-                        document.getElementById("block-selected-color").innerHTML = document
+                        document.getElementById("block-dropdown-color").innerHTML = document
                             .getElementById("dropdown-colors").value;
+                    });
+                    document.getElementById("input-colors").addEventListener("input", function() {
+                        document.getElementById("block-input-color").innerHTML = document
+                            .getElementById("input-colors").value;
                     });
                 }
             </script>
             <h1>Test2 page</h1>
-            <p>Selected color is: <span id="block-selected-color"></span></p>
+            <p>Selected dropdown color is: <span id="block-dropdown-color"></span></p>
             <select id="dropdown-colors" name="colors">
                 <option value="default color">Default color</option>
                 <option value="black">Black</option>
@@ -50,7 +54,13 @@ nodeTestingServer.config = {
                 <option value="yellow">Yellow</option>
                 <option value="Gold">Gold</option>
                 <option value="orange">Orange</option>
-            </select>`,
+            </select>
+            <p>Typed in input color is: <span id="block-input-color"></span></p>
+            <form>
+            Colors:<br>
+            <input id="input-colors" type="text" name="firstname" value=""><br>
+            <input type="submit" value="Submit">
+            </form>`,
         '/test-iframe.html': `<title>Test Page with iframe</title>
             <h1>Test page with iframe</h1>
             <iframe src="test1.html" id="iframe-test1" name="test iframe" width="400" height="300" align="left">

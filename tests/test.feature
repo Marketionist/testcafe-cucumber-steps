@@ -89,3 +89,27 @@ Feature: Running Cucumber with TestCafe
     And I wait for 200 ms
     And I double click linkTest2Page from test-page page
     Then the title should be "Test2 Page"
+
+  Scenario: 'I type': typing "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+    When I go to "test2-page"."pageTest2"
+    And I type "Green" in "test2-page"."inputColors"
+    And I wait and click "test2-page"."inputColors"
+    Then "test2-page"."blockInputColor" text should be "Green"
+
+  Scenario: 'I type': typing "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+    When I go to "test2-page"."pageTest2"
+    And I type "Green" in inputColors from test2-page page
+    And I wait and click "test2-page"."inputColors"
+    Then blockInputColor text from test2-page page should be "Green"
+
+  Scenario: 'I type': typing "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+    When I go to "test2-page"."pageTest2"
+    And I type "test2-page"."textGold" in "test2-page"."inputColors"
+    And I wait and click "test2-page"."inputColors"
+    Then "test2-page"."blockInputColor" text should be "test2-page"."textGold"
+
+  Scenario: 'I type': typing "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+    When I go to "test2-page"."pageTest2"
+    And I type textGold from test2-page page in inputColors from test2-page page
+    And I wait and click "test2-page"."inputColors"
+    Then blockInputColor text from test2-page page should be textGold from test2-page page
