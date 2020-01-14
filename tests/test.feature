@@ -28,6 +28,16 @@ Feature: Running Cucumber with TestCafe
     And I reload the page
     Then linkTest2Page from test-page page should be present
 
+  Scenario: 'should not be present': link on Page1 test page should not be present
+    When I go to "test-page"."pageTest1"
+    And I wait for 200 ms
+    Then "test-page"."linkInvisibleTest2Page" should not be present
+
+  Scenario: 'should not be present': link on Page1 test page should not be present (text style step)
+    When I go to "test-page"."pageTest1"
+    And I wait for 200 ms
+    Then linkInvisibleTest2Page from test-page page should not be present
+
   Scenario: 'I click' Page1 test page link should lead to Page2 test page, 'I wait for' should wait for 200 ms
     Given I go to URL "http://localhost:8001/test1.html"
     And I wait for 200 ms

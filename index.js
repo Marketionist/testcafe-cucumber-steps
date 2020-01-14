@@ -162,6 +162,18 @@ Then('{word} from {word} page should be present', async function (
     await t.expect(Selector(pageObjects[page][element]).exists).ok();
 });
 
+Then('{string}.{string} should not be present', async function (
+    t, [page, element]
+) {
+    await t.expect(Selector(pageObjects[page][element]).exists).notOk();
+});
+
+Then('{word} from {word} page should not be present', async function (
+    t, [element, page]
+) {
+    await t.expect(Selector(pageObjects[page][element]).exists).notOk();
+});
+
 Then('{string}.{string} text should be {string}', async function (
     t, [page, element, text]
 ) {

@@ -157,6 +157,8 @@ window/tab equals to the text (provided in "" as a string).
 **"page"."object"** as CSS selector) is present on the page.
 - `... from ... page should be present` - verify that element (provided in
 **object** from **page** as CSS selector) is present on the page.
+- `"..."."..." should not be present` - verify that element (provided in **"page"."object"** as CSS selector) is not present on the page.
+- `... from ... page should not be present` - verify that element (provided in **object** from **page** as CSS selector) is not present on the page.
 - `"..."."..." text should be "..."` - verify that text of the element (provided in **"page"."object"** as CSS selector) equals to the text (provided in "" as a string).
 - `... text from ... page should be "..."` - verify that text of the element (provided in **object** from **page** as CSS selector) equals to the text (provided in "" as a string).
 - `"..."."..." text should be "..."."..."` - verify that text of the element (provided in **"page1"."object1"** as CSS selector) equals to the text (provided in **"page2"."object2"**).
