@@ -136,6 +136,14 @@ When('I type {word} from {word} page in {word} from {word} page', async function
     await t.typeText(pageObjects[page2][element2], pageObjects[page1][element1]);
 });
 
+When('I move to {string}.{string}', async function (t, [page, element]) {
+    await t.hover(pageObjects[page][element]);
+});
+
+When('I move to {word} from {word} page', async function (t, [element, page]) {
+    await t.hover(pageObjects[page][element]);
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
