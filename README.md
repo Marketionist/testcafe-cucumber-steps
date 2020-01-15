@@ -149,6 +149,8 @@ from **page** as CSS selector).
 - `I type "..." in ... from ... page` - type any text (provided in "" as a string) in the input field (provided in **object** from **page** as CSS selector).
 - `I type "..."."..." in "..."."..."` - type any text (provided in **"page1"."object1"**) in the input field (provided in **"page2"."object2"** as CSS selector).
 - `I type ... from ... page in ... from ... page` - type any text (provided in **object1** from **page1**) in the input field (provided in **object2** from **page2** as CSS selector).
+- `I move to "..."."..."` - move the mouse pointer over any element (hover with cursor an element provided in **"page"."object"** as CSS selector).
+- `I move to ... from ... page` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector).
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser
