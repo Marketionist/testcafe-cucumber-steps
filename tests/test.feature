@@ -1,6 +1,6 @@
 @Fast
 
-Feature: Running Cucumber with TestCafe
+Feature: Running Cucumber with TestCafe - feature 1
   As a user of TestCafe
   I should be able to use Cucumber
   to run my e2e tests
