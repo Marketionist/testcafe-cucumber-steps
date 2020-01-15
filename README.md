@@ -165,6 +165,10 @@ window/tab equals to the text (provided in "" as a string).
 - `... text from ... page should be "..."` - verify that text of the element (provided in **object** from **page** as CSS selector) equals to the text (provided in "" as a string).
 - `"..."."..." text should be "..."."..."` - verify that text of the element (provided in **"page1"."object1"** as CSS selector) equals to the text (provided in **"page2"."object2"**).
 - `... text from ... page should be ... from ... page` - verify that text of the element (provided in **object1** from **page1** as CSS selector) equals to the text (provided in **object2** from **page2**).
+- `"..."."..." text should contain "..."` - verify that text of the element (provided in **"page"."object"** as CSS selector) contains the text (provided in "" as a string).
+- `... text from ... page should contain "..."` - verify that text of the element (provided in **object** from **page** as CSS selector) contains the text (provided in "" as a string).
+- `"..."."..." text should contain "..."."..."` - verify that text of the element (provided in "page1"."object1" as CSS selector) contains the text (provided in "page2"."object2").
+- `... text from ... page should contain ... from ... page` - verify that text of the element (provided in **object1** from **page1** as CSS selector) contains the text (provided in **object2** from **page2**).
 
 ## Thanks
 If this package was helpful for you, please give it a **★ Star** on
