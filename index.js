@@ -201,9 +201,39 @@ Then('{string}.{string} text should be {string}.{string}', async function (
         .eql(pageObjects[page2][element2]);
 });
 
-Then('{word} text from {word} page should be {word} from {word} page', async function (
-    t, [element1, page1, element2, page2]
+Then(
+    '{word} text from {word} page should be {word} from {word} page',
+    async function (t, [element1, page1, element2, page2]) {
+        await t.expect(Selector(pageObjects[page1][element1]).innerText)
+            .eql(pageObjects[page2][element2]);
+    }
+);
+
+Then('{string}.{string} text should contain {string}', async function (
+    t, [page, element, text]
+) {
+    await t.expect(Selector(pageObjects[page][element]).innerText)
+        .contains(text);
+});
+
+Then('{word} text from {word} page should contain {string}', async function (
+    t, [element, page, text]
+) {
+    await t.expect(Selector(pageObjects[page][element]).innerText)
+        .contains(text);
+});
+
+Then('{string}.{string} text should contain {string}.{string}', async function (
+    t, [page1, element1, page2, element2]
 ) {
     await t.expect(Selector(pageObjects[page1][element1]).innerText)
-        .eql(pageObjects[page2][element2]);
+        .contains(pageObjects[page2][element2]);
 });
+
+Then(
+    '{word} text from {word} page should contain {word} from {word} page',
+    async function (t, [element1, page1, element2, page2]) {
+        await t.expect(Selector(pageObjects[page1][element1]).innerText)
+            .contains(pageObjects[page2][element2]);
+    }
+);
