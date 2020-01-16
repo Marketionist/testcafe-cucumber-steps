@@ -136,6 +136,44 @@ When('I type {word} from {word} page in {word} from {word} page', async function
     await t.typeText(pageObjects[page2][element2], pageObjects[page1][element1]);
 });
 
+When('I select {string} in {string}.{string}', async function (
+    t, [text, page, element]
+) {
+    const dropdown = Selector(pageObjects[page][element]);
+    const option = dropdown.find('option');
+
+    await t.click(dropdown).click(option.withText(text));
+});
+
+When('I select {string} in {word} from {word} page', async function (
+    t, [text, element, page]
+) {
+    const dropdown = Selector(pageObjects[page][element]);
+    const option = dropdown.find('option');
+
+    await t.click(dropdown).click(option.withText(text));
+});
+
+When('I select {string}.{string} in {string}.{string}', async function (
+    t, [page1, element1, page2, element2]
+) {
+    const dropdown = Selector(pageObjects[page2][element2]);
+    const option = dropdown.find('option');
+
+    await t.click(dropdown)
+        .click(option.withText(pageObjects[page1][element1]));
+});
+
+When('I select {word} from {word} page in {word} from {word} page', async function (
+    t, [element1, page1, element2, page2]
+) {
+    const dropdown = Selector(pageObjects[page2][element2]);
+    const option = dropdown.find('option');
+
+    await t.click(dropdown)
+        .click(option.withText(pageObjects[page1][element1]));
+});
+
 When('I move to {string}.{string}', async function (t, [page, element]) {
     await t.hover(pageObjects[page][element]);
 });
