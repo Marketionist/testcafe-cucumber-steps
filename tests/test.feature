@@ -100,26 +100,50 @@ Feature: Running Cucumber with TestCafe - feature 1
     And I double click linkTest2Page from test-page page
     Then the title should be "Test2 Page"
 
-  Scenario: 'I type': typing "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+  Scenario: 'I type' "Green" (string) option text inside input should get this text typed in, 'text should be' should verify the text
     When I go to "test2-page"."pageTest2"
     And I type "Green" in "test2-page"."inputColors"
     And I wait and click "test2-page"."inputColors"
     Then "test2-page"."blockInputColor" text should be "Green"
 
-  Scenario: 'I type': typing "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+  Scenario: 'I type' "Green" (string) option text inside input should get this text typed in, 'text should be' should verify the text (text style step)
     When I go to "test2-page"."pageTest2"
     And I type "Green" in inputColors from test2-page page
     And I wait and click "test2-page"."inputColors"
     Then blockInputColor text from test2-page page should be "Green"
 
-  Scenario: 'I type': typing "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+  Scenario: 'I type' "Gold" (page object) option text inside input should get this text typed in, 'text should be' should verify the text
     When I go to "test2-page"."pageTest2"
     And I type "test2-page"."textGold" in "test2-page"."inputColors"
     And I wait and click "test2-page"."inputColors"
     Then "test2-page"."blockInputColor" text should be "test2-page"."textGold"
 
-  Scenario: 'I type': typing "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+  Scenario: 'I type' "Gold" (page object) option text inside input should get this text typed in, 'text should be' should verify the text (text style step)
     When I go to "test2-page"."pageTest2"
     And I type textGold from test2-page page in inputColors from test2-page page
     And I wait and click "test2-page"."inputColors"
     Then blockInputColor text from test2-page page should be textGold from test2-page page
+
+  Scenario: 'I select' "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+    When I go to "test2-page"."pageTest2"
+    And I select "Green" in "test2-page"."dropdownColors"
+    And I wait and click "test2-page"."dropdownColors"
+    Then "test2-page"."blockDropdownColor" text should be "green"
+
+  Scenario: 'I select' "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+    When I go to "test2-page"."pageTest2"
+    And I select "Green" in dropdownColors from test2-page page
+    And I wait and click "test2-page"."dropdownColors"
+    Then blockDropdownColor text from test2-page page should be "green"
+
+  Scenario: 'I select' "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text
+    When I go to "test2-page"."pageTest2"
+    And I select "test2-page"."textGold" in "test2-page"."dropdownColors"
+    And I wait and click "test2-page"."dropdownColors"
+    Then "test2-page"."blockDropdownColor" text should be "test2-page"."textGold"
+
+  Scenario: 'I select' "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
+    When I go to "test2-page"."pageTest2"
+    And I select textGold from test2-page page in dropdownColors from test2-page page
+    And I wait and click "test2-page"."dropdownColors"
+    Then blockDropdownColor text from test2-page page should be textGold from test2-page page
