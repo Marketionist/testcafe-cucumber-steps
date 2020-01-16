@@ -32,7 +32,7 @@ module.exports = (function () {
     return testPage;
 
 })();`;
-const pathToConfigExample = path.join(pathToTestsDir, '.testcaferc.json');
+const pathToConfigExample = path.join(pathToTestsDir, '../', '.testcaferc.json');
 const configExampleContent = `{
     "browsers": "chrome",
     "src": ["node_modules/testcafe-cucumber-steps/index.js", "tests/**/*.js", "tests/**/*.feature"],
