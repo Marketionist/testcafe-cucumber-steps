@@ -109,6 +109,7 @@ to all step definitions and tests should be specified inside the array in `src`)
     "stopOnFirstFail": true,
     "skipJsErrors": true,
     "skipUncaughtErrors": true,
+    "concurrency": 2,
     "selectorTimeout": 3000,
     "assertionTimeout": 1000,
     "pageLoadTimeout": 1000,
