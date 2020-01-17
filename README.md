@@ -33,6 +33,13 @@ to your `package.json` just run:
 npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
 ```
 
+If you also want to have pre-created config (`./.testcaferc.json`) and example
+test files (`./tests/test-example.feature, ./tests/page-model/test-page-example.js`
+) - just run:
+```
+node node_modules/testcafe-cucumber-steps/utils/prepare.js
+```
+
 ## Importing and running in CLI
 It is quite simple to use - to get access to all Cucumber steps defined in this
 package just specify the path to this package when launching tests (also use
