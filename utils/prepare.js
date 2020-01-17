@@ -10,12 +10,13 @@ const testExampleContent = `@Fast
 
 Feature: Running Cucumber with TestCafe - test feature example
   As a user of Google
-  I should be able to see the About page
+  I should be able to see the Products page
   to learn more about Google
 
-  Scenario: Google's About page title should contain "Google"
+  Scenario: Google's Products page title should contain "Google"
     Given I go to URL "https://www.google.com/"
     When I click linkAbout from test-page-example page
+    And I click linkOurProducts from test-page-example page
     Then the title should contain "Google"`;
 const pathToPageObjectsExample = path.join(pathToPageObjectsDir,
     'test-page-example.js');
@@ -25,9 +26,12 @@ module.exports = (function () {
 
     let testPage = {
 
-        linkAbout: 'a[href*="about.google"]'
+        linkAbout: 'a[href*="about.google"]',
+        header: '.header'
 
     };
+
+    testPage.linkOurProducts = \`\${testPage.header} a[title="Our products"]\`;
 
     return testPage;
 
@@ -45,6 +49,7 @@ const configExampleContent = `{
     "stopOnFirstFail": true,
     "skipJsErrors": true,
     "skipUncaughtErrors": true,
+    "concurrency": 2,
     "selectorTimeout": 3000,
     "assertionTimeout": 1000,
     "pageLoadTimeout": 1000,
