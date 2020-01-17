@@ -57,6 +57,7 @@ const createFile = (filePath, fileContent) => {
             console.log(`Error creating a file ${filePath}:`, error);
         }
     });
+    console.log(`Created file: ${filePath}`);
 };
 
 const testsDirExists = fs.existsSync(pathToTestsDir);
@@ -67,8 +68,6 @@ if (!testsDirExists) {
     fs.mkdirSync(pathToPageObjectsDir);
 } else if (testsDirExists && !pageObjectsDirExists) {
     fs.mkdirSync(pathToPageObjectsDir);
-} else {
-    console.log('"tests" and "page-model" folders are already in place');
 }
 
 createFile(pathToTestExample, testExampleContent);
