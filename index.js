@@ -26,10 +26,6 @@ fs.readdirSync(fullPageObjectsFolderPath).filter(
     pageObjects[fileName] = require(path.join(fullPageObjectsFolderPath, file));
 });
 
-// if (!isCalledExternally) {
-//     console.log('Page Objects found:', pageObjects);
-// }
-
 // #### Given steps ############################################################
 
 Given('I go to URL {string}', async function (t, [url]) {
@@ -181,6 +177,26 @@ When('I move to {string}.{string}', async function (t, [page, element]) {
 When('I move to {word} from {word} page', async function (t, [element, page]) {
     await t.hover(pageObjects[page][element]);
 });
+
+When(
+    'I move to {string}.{string} with an offset of x: {int}px, y: {int}px',
+    async function (t, [page, element, offsetX, offsetY]) {
+        await t.hover(pageObjects[page][element], {
+            offsetX: offsetX,
+            offsetY: offsetY
+        });
+    }
+);
+
+When(
+    'I move to {word} from {word} page with an offset of x: {int}px, y: {int}px',
+    async function (t, [element, page, offsetX, offsetY]) {
+        await t.hover(pageObjects[page][element], {
+            offsetX: offsetX,
+            offsetY: offsetY
+        });
+    }
+);
 
 // #### Then steps #############################################################
 

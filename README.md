@@ -163,6 +163,8 @@ from **page** as CSS selector).
 - `I select ... from ... page in ... from ... page` - select any option (provided in **object1** from **page1**) in the dropdown (provided in **object2** from **page2** as CSS selector).
 - `I move to "..."."..."` - move the mouse pointer over any element (hover with cursor an element provided in **"page"."object"** as CSS selector).
 - `I move to ... from ... page` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector).
+- `I move to "..."."..." with an offset of x: (\d+)px, y: (\d+)px` - move the mouse pointer over any element (hover with cursor an element provided in **"page"."object"** as CSS selector) with an offset of x: ...px, y: ...px.
+- `I move to ... from ... page with an offset of x: (\d+)px, y: (\d+)px` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector) with an offset of x: ...px, y: ...px.
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser
@@ -183,5 +185,5 @@ window/tab equals to the text (provided in "" as a string).
 - `... text from ... page should contain ... from ... page` - verify that text of the element (provided in **object1** from **page1** as CSS selector) contains the text (provided in **object2** from **page2**).
 
 ## Thanks
-If this package was helpful for you, please give it a **★ Star** on
+If this package was helpful to you, please give it a **★ Star** on
 [Github](https://github.com/Marketionist/testcafe-cucumber-steps).
