@@ -2,6 +2,8 @@
 
 const path = require('path');
 const fs = require('fs');
+const util = require('util');
+const writeFile = util.promisify(fs.writeFile);
 
 const pathToTestsDir = path.join(__dirname, '../../../tests');
 const pathToPageObjectsDir = path.join(pathToTestsDir, '/page-model');
@@ -16,7 +18,7 @@ Feature: Running Cucumber with TestCafe - test feature example
   Scenario: Google's Products page title should contain "Google"
     Given I go to URL "https://www.google.com/"
     When I click linkAbout from test-page-example page
-    And I click linkOurProducts from test-page-example page
+    And I click "test-page-example"."linkOurProducts"
     Then the title should contain "Google"`;
 const pathToPageObjectsExample = path.join(pathToPageObjectsDir,
     'test-page-example.js');
@@ -56,26 +58,48 @@ const configExampleContent = `{
     "disablePageCaching": true
 }`;
 
-const createFile = (filePath, fileContent) => {
-    fs.writeFileSync(filePath, fileContent, (error) => {
-        if (error) {
-            console.log(`Error creating a file ${filePath}:`, error);
-        }
-    });
+const exampleFiles = [{
+    path: pathToTestExample,
+    content: testExampleContent
+},
+{
+    path: pathToPageObjectsExample,
+    content: pageObjectsExampleContent
+},
+{
+    path: pathToConfigExample,
+    content: configExampleContent
+}];
+
+const createFile = async (filePath, fileContent) => {
+    try {
+        await writeFile(filePath, fileContent);
+    } catch (error) {
+        console.log(`Error creating a file ${filePath}:`, error);
+    }
     console.log(`Created file: ${filePath}`);
 };
 
-const testsDirExists = fs.existsSync(pathToTestsDir);
-const pageObjectsDirExists = fs.existsSync(pathToPageObjectsDir);
+const createFiles = async (filesArray) => {
+    try {
+        const testsDirExists = fs.existsSync(pathToTestsDir);
+        const pageObjectsDirExists = fs.existsSync(pathToPageObjectsDir);
 
-if (!testsDirExists) {
-    fs.mkdirSync(pathToTestsDir);
-    fs.mkdirSync(pathToPageObjectsDir);
-} else if (testsDirExists && !pageObjectsDirExists) {
-    fs.mkdirSync(pathToPageObjectsDir);
-}
+        if (!testsDirExists) {
+            fs.mkdirSync(pathToTestsDir);
+            fs.mkdirSync(pathToPageObjectsDir);
+        } else if (testsDirExists && !pageObjectsDirExists) {
+            fs.mkdirSync(pathToPageObjectsDir);
+        }
 
-createFile(pathToTestExample, testExampleContent);
-createFile(pathToPageObjectsExample, pageObjectsExampleContent);
-createFile(pathToConfigExample, configExampleContent);
+        const writeFiles = filesArray.map(async (value) => {
+            return await createFile(value.path, value.content);
+        });
 
+        await Promise.all(writeFiles);
+    } catch (error) {
+        console.log('Error creating a files:', error);
+    }
+};
+
+createFiles(exampleFiles);
