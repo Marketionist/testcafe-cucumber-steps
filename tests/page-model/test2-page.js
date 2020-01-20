@@ -6,6 +6,7 @@ module.exports = (function () {
 
         pageTest2: 'http://localhost:8001/test2.html',
         textGold: 'Gold',
+        textIndigo: 'Indigo',
         dropdownColors: '#dropdown-colors',
         blockDropdownColor: '#block-dropdown-color',
         inputColors: '#input-colors',
