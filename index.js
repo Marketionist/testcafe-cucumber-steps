@@ -132,6 +132,38 @@ When('I type {word} from {word} page in {word} from {word} page', async function
     await t.typeText(pageObjects[page2][element2], pageObjects[page1][element1]);
 });
 
+When('I clear {string}.{string} and type {string}', async function (
+    t, [page, element, text]
+) {
+    await t.typeText(pageObjects[page][element], text, { replace: true });
+});
+
+When('I clear {word} from {word} page and type {string}', async function (
+    t, [element, page, text]
+) {
+    await t.typeText(pageObjects[page][element], text, { replace: true });
+});
+
+When('I clear {string}.{string} and type {string}.{string}', async function (
+    t, [page1, element1, page2, element2]
+) {
+    await t.typeText(
+        pageObjects[page1][element1],
+        pageObjects[page2][element2],
+        { replace: true }
+    );
+});
+
+When('I clear {word} from {word} page and type {word} from {word} page', async function (
+    t, [element1, page1, element2, page2]
+) {
+    await t.typeText(
+        pageObjects[page1][element1],
+        pageObjects[page2][element2],
+        { replace: true }
+    );
+});
+
 When('I select {string} in {string}.{string}', async function (
     t, [text, page, element]
 ) {
@@ -212,6 +244,26 @@ When('I switch to {word} frame from {word} page', async function (
 
 When('I switch to main frame', async function (t) {
     await t.switchToMainWindow();
+});
+
+When('I execute {string}.{string} function', async function (
+    t, [page, element]
+) {
+    const executeCustomFunction = ClientFunction((customFunction) => {
+        return customFunction();
+    });
+
+    await executeCustomFunction(pageObjects[page][element]);
+});
+
+When('I execute {word} function from {word} page', async function (
+    t, [element, page]
+) {
+    const executeCustomFunction = ClientFunction((customFunction) => {
+        return customFunction();
+    });
+
+    await executeCustomFunction(pageObjects[page][element]);
 });
 
 // #### Then steps #############################################################

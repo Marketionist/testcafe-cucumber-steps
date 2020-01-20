@@ -41,3 +41,13 @@ Feature: Running Cucumber with TestCafe - feature 2
     Then "test-page"."linkTest2Page" should be present
     And I switch to main frame
     And "test-page"."linkTest2Page" should not be present
+
+  Scenario: 'I execute function' should change the content on the page
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I execute "test2-page"."updateText" function
+    Then "test-page"."blockTextTest" text should contain "Text to test script execution"
+
+  Scenario: 'I execute function' should change the content on the page (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I execute updateText function from test2-page page
+    Then "test-page"."blockTextTest" text should contain "Text to test script execution"
