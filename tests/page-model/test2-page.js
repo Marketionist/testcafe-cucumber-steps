@@ -10,7 +10,11 @@ module.exports = (function () {
         dropdownColors: '#dropdown-colors',
         blockDropdownColor: '#block-dropdown-color',
         inputColors: '#input-colors',
-        blockInputColor: '#block-input-color'
+        blockInputColor: '#block-input-color',
+        updateText: function () {
+            document.getElementById('text-test').innerHTML = 'Text to test ' +
+                'script execution';
+        }
 
     };
 
