@@ -178,6 +178,8 @@ from **page** as CSS selector).
 - `I switch to "..."."..." frame` - switch the context to iframe (provided in **"page"."object"** as CSS selector).
 - `I switch to ... frame from ... page` - switch the context to iframe (provided in **object** from **page** as CSS selector).
 - `I switch to main frame` - switch the context back to default (initial) frame.
+- `I execute "..."."..." function` - execute script (JavaScript function) provided in **"page"."object"**.
+- `I execute ... function from ... page` - execute script (JavaScript function) provided in **object** from **page**.
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser
