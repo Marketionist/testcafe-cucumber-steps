@@ -24,3 +24,20 @@ Feature: Running Cucumber with TestCafe - feature 2
     When I go to URL "http://localhost:8001/test1.html"
     And I move to titleTest1 from test-page page with an offset of x: 10px, y: 5px
     Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
+
+  Scenario: 'I switch to' iframe should change the context to this iframe
+    When I go to URL "http://localhost:8001/test-iframe.html"
+    And I switch to "iframe-page"."iframeTest1Page" frame
+    Then "test-page"."linkTest2Page" should be present
+
+  Scenario: 'I switch to' iframe should change the context to this iframe (text style step)
+    When I go to URL "http://localhost:8001/test-iframe.html"
+    And I switch to iframeTest1Page frame from iframe-page page
+    Then "test-page"."linkTest2Page" should be present
+
+  Scenario: 'I switch to main frame' should change the context back to the main page
+    When I go to URL "http://localhost:8001/test-iframe.html"
+    And I switch to "iframe-page"."iframeTest1Page" frame
+    Then "test-page"."linkTest2Page" should be present
+    And I switch to main frame
+    And "test-page"."linkTest2Page" should not be present

@@ -198,6 +198,22 @@ When(
     }
 );
 
+When('I switch to {string}.{string} frame', async function (
+    t, [page, element]
+) {
+    await t.switchToIframe(pageObjects[page][element]);
+});
+
+When('I switch to {word} frame from {word} page', async function (
+    t, [element, page]
+) {
+    await t.switchToIframe(pageObjects[page][element]);
+});
+
+When('I switch to main frame', async function (t) {
+    await t.switchToMainWindow();
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {

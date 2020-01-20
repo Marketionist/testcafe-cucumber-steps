@@ -12,6 +12,7 @@ Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e) tes
 - 10.x
 - 11.x
 - 12.x
+- 13.x
 
 [TestCafe](https://github.com/DevExpress/testcafe):
 - 1.x
@@ -35,26 +36,27 @@ npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-de
 
 If you also want to have pre-created config (`./.testcaferc.json`) and example
 test files (`./tests/test-example.feature, ./tests/page-model/test-page-example.js`
-) - just run:
+) - run additionally:
 ```
 node node_modules/testcafe-cucumber-steps/utils/prepare.js
 ```
 
 ## Importing and running in CLI
 It is quite simple to use - to get access to all Cucumber steps defined in this
-package just specify the path to this package when launching tests (also use
-`gherkin-testcafe` just like you use TestCafe's CLI - replace `testcafe` with
-`gherkin-testcafe` and load all .js files (for step definitions) and .feature
-files (for steps to execute):
+package just specify the path to this package when launching tests (load all .js files (for step definitions) and .feature files (for steps to execute):
 ```
-PO_FOLDER_PATH='tests/page-model' gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
+node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
-Note the `PO_FOLDER_PATH` environment variable - it has to be specified to show
-the path to your Page Objects folder (if not set - it defaults to `'tests/page-model'`).
+
+If you store your Page Objects not in `tests/page-model` folder, then `PO_FOLDER_PATH` environment variable has to be specified to show
+the path to your Page Objects folder:
+```
+PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
+```
 
 Also you can just add `test-e2e` command to `scripts` in `package.json`:
 ```
-"test-e2e": "PO_FOLDER_PATH='tests/page-model' gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
+"test-e2e": "PO_FOLDER_PATH='tests/my-custom-page-objects' gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
 ```
 and then launch tests with:
 ```
@@ -118,13 +120,17 @@ to all step definitions and tests should be specified inside the array in `src`)
 ```
 and then launch tests with:
 ```
-PO_FOLDER_PATH='tests/page-model' gherkin-testcafe
+node_modules/.bin/gherkin-testcafe
+```
+or if you use custom Page Objects folder:
+```
+PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe
 ```
 
 All options that are specified in CLI command will override settings from `.testcaferc.json`.
 
 > For all possible settings see:
-> - [TestCafe Configuration File description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html)
+> - [TestCafe configuration file description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html)
 > - [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json)
 > - [all TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 
@@ -165,6 +171,9 @@ from **page** as CSS selector).
 - `I move to ... from ... page` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector).
 - `I move to "..."."..." with an offset of x: (\d+)px, y: (\d+)px` - move the mouse pointer over any element (hover with cursor an element provided in **"page"."object"** as CSS selector) with an offset of x: ...px, y: ...px.
 - `I move to ... from ... page with an offset of x: (\d+)px, y: (\d+)px` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector) with an offset of x: ...px, y: ...px.
+- `I switch to "..."."..." frame` - switch the context to iframe (provided in **"page"."object"** as CSS selector).
+- `I switch to ... frame from ... page` - switch the context to iframe (provided in **object** from **page** as CSS selector).
+- `I switch to main frame` - switch the context back to default (initial) frame.
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser
