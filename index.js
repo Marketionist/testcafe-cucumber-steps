@@ -246,6 +246,26 @@ When('I switch to main frame', async function (t) {
     await t.switchToMainWindow();
 });
 
+When('I execute {string}.{string} function', async function (
+    t, [page, element]
+) {
+    const executeCustomFunction = ClientFunction((customFunction) => {
+        return customFunction();
+    });
+
+    await executeCustomFunction(pageObjects[page][element]);
+});
+
+When('I execute {word} function from {word} page', async function (
+    t, [element, page]
+) {
+    const executeCustomFunction = ClientFunction((customFunction) => {
+        return customFunction();
+    });
+
+    await executeCustomFunction(pageObjects[page][element]);
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
