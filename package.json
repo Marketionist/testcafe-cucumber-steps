@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "cucumber": "^6.0.5",
-    "gherkin-testcafe": "^2.4.2",
-    "testcafe": "^1.7.1"
+    "gherkin-testcafe": "^2.5.0",
+    "testcafe": "^1.8.0"
   }
 }
