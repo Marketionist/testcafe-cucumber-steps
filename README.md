@@ -152,7 +152,7 @@ from **page**) in the current browser window/tab.
 as CSS selector).
 - `I click ... from ... page` - click on any element (provided in **object**
 from **page** as CSS selector).
-- `I wait for {int} ms` - wait for provided amount of time (in milliseconds).
+- `I wait for ... ms` - wait for provided amount of time (in milliseconds).
 - `I wait and click "..."."..."` - wait for 300 ms and then click on any element (provided in **"page"."object"** as CSS selector).
 - `I wait and click ... from ... page` - wait for 300 ms and then click on any element (provided in **object** from **page** as CSS selector).
 - `I click "..."."..." if present` - click on any element (provided in **"page"."object"** as CSS selector) only if it is present on the page.
@@ -163,14 +163,18 @@ from **page** as CSS selector).
 - `I type "..." in ... from ... page` - type any text (provided in "" as a string) in the input field (provided in **object** from **page** as CSS selector).
 - `I type "..."."..." in "..."."..."` - type any text (provided in **"page1"."object1"**) in the input field (provided in **"page2"."object2"** as CSS selector).
 - `I type ... from ... page in ... from ... page` - type any text (provided in **object1** from **page1**) in the input field (provided in **object2** from **page2** as CSS selector).
+- `I clear "..."."..." and type "..."` - overwrite any text (provided in "" as a string) in the input field (provided in **"page"."object"** as CSS selector).
+- `I clear ... from ... page and type "..."` - overwrite any text (provided in "" as a string) in the input field (provided in **object** from **page** as CSS selector).
+- `I clear "..."."..." and type "..."."..."` - overwrite any text (provided in **"page1"."object1"**) in the input field (provided in **"page2"."object2"** as CSS selector).
+- `I clear ... from ... page and type ... from ... page` - overwrite any text (provided in **object1** from **page1**) in the input field (provided in **object2** from **page2** as CSS selector).
 - `I select "..." in "..."."..."` - select any option (provided in "" as a string) in the dropdown (provided in **"page"."object"** as CSS selector).
 - `I select "..." in ... from ... page` - select any option (provided in "" as a string) in the dropdown (provided in **object** from **page** as CSS selector).
 - `I select "..."."..." in "..."."..."` - select any option (provided in **"page1"."object1"**) in the dropdown (provided in **"page2"."object2"** as CSS selector).
 - `I select ... from ... page in ... from ... page` - select any option (provided in **object1** from **page1**) in the dropdown (provided in **object2** from **page2** as CSS selector).
 - `I move to "..."."..."` - move the mouse pointer over any element (hover with cursor an element provided in **"page"."object"** as CSS selector).
 - `I move to ... from ... page` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector).
-- `I move to "..."."..." with an offset of x: (\d+)px, y: (\d+)px` - move the mouse pointer over any element (hover with cursor an element provided in **"page"."object"** as CSS selector) with an offset of x: ...px, y: ...px.
-- `I move to ... from ... page with an offset of x: (\d+)px, y: (\d+)px` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector) with an offset of x: ...px, y: ...px.
+- `I move to "..."."..." with an offset of x: ...px, y: ...px` - move the mouse pointer over any element (hover with cursor an element provided in **"page"."object"** as CSS selector) with an offset of x: ...px, y: ...px.
+- `I move to ... from ... page with an offset of x: ...px, y: ...px` - move the mouse pointer over any element (hover with cursor an element provided in **object** from **page** as CSS selector) with an offset of x: ...px, y: ...px.
 - `I switch to "..."."..." frame` - switch the context to iframe (provided in **"page"."object"** as CSS selector).
 - `I switch to ... frame from ... page` - switch the context to iframe (provided in **object** from **page** as CSS selector).
 - `I switch to main frame` - switch the context back to default (initial) frame.
