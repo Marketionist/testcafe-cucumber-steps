@@ -34,22 +34,21 @@ to your `package.json` just run:
 npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
 ```
 
-If you also want to have pre-created config (`./.testcaferc.json`) and example
-test files (`./tests/test-example.feature, ./tests/page-model/test-page-example.js`
-) - run additionally:
+If you also want to have pre-created config (`./.testcaferc.json`) and example test
+files (`./tests/test-example.feature, ./tests/page-model/test-page-example.js`) -
+run additionally:
 ```
 node node_modules/testcafe-cucumber-steps/utils/prepare.js
 ```
 
 ## Importing and running in CLI
-It is quite simple to use - to get access to all Cucumber steps defined in this
-package just specify the path to this package when launching tests (load all .js files (for step definitions) and .feature files (for steps to execute):
+To get access to all Cucumber steps defined in this package just specify the
+path to this package when launching tests:
 ```
 node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
 
-If you store your Page Objects not in `tests/page-model` folder, then `PO_FOLDER_PATH` environment variable has to be specified to show
-the path to your Page Objects folder:
+If you store your Page Objects not in `tests/page-model` folder, then `PO_FOLDER_PATH` environment variable has to be specified to show the path to your Page Objects folder:
 ```
 PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
@@ -95,9 +94,10 @@ Additionally, you can specify:
     > [cucumber.io](https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types).
 
 ## Importing and running with config file
-To make life easier and not to specify all options in CLI command, a `.testcaferc.json`
-configuration file can be created in root directory to store all settings (pathes
-to all step definitions and tests should be specified inside the array in `src`):
+To make life easier and not to specify all options in CLI command, a
+`.testcaferc.json` configuration file can be created in a root directory to
+store all settings (pathes to all step definitions and tests should be specified
+inside the array in `src`):
 ```
 {
     "browsers": "chrome",
