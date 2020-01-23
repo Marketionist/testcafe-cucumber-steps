@@ -21,7 +21,19 @@ Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e) tes
 - 5.x
 - 6.x
 
-## Installation
+## Installation - short path
+If you want to start writing tests as fast as possible, here are the commands
+you'll need to execute:
+```
+npm init --yes
+npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
+node node_modules/testcafe-cucumber-steps/utils/prepare.js
+```
+Then just see the [list of predefined steps](#list-of-predefined-steps) and
+start writing tests (in `./tests/*.feature`) and adding Page Objects
+(in `./tests/page-model/*.js`).
+
+## Installation - detailed path
 > This package is lightweight and has only 3 peerDependencies - it uses:
 > - [cucumber](https://github.com/cucumber/cucumber-js) to parse step definitions
 > - [testcafe](https://github.com/DevExpress/testcafe) to execute steps
