@@ -51,3 +51,15 @@ Feature: Running Cucumber with TestCafe - feature 2
     Given I go to URL "http://localhost:8001/test1.html"
     When I execute updateText function from test2-page page
     Then "test-page"."blockTextTest" text should contain "Text to test script execution"
+
+  Scenario: 'I accept further browser alerts' should get the alert accepted
+    When I go to URL "http://localhost:8001/test-alert.html"
+    And I accept further browser alerts
+    And I click "alert-page"."buttonLaunchAlert"
+    Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertAccepted"
+
+  Scenario: 'I dismiss further browser alerts' should get the alert canceled
+    When I go to URL "http://localhost:8001/test-alert.html"
+    And I dismiss further browser alerts
+    And I click "alert-page"."buttonLaunchAlert"
+    Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
