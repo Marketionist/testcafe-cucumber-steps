@@ -180,6 +180,8 @@ from **page** as CSS selector).
 - `I switch to main frame` - switch the context back to default (initial) frame.
 - `I execute "..."."..." function` - execute script (JavaScript function) provided in **"page"."object"**.
 - `I execute ... function from ... page` - execute script (JavaScript function) provided in **object** from **page**.
+- `I accept further browser alerts` - accept (OK) all further browser alerts (after this step).
+- `I dismiss further browser alerts` - dismiss (Cancel) all further browser alert (after this step).
 
 ### Then steps
 - `the title should be "..."` - verify that title of the current browser
