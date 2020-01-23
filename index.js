@@ -266,6 +266,14 @@ When('I execute {word} function from {word} page', async function (
     await executeCustomFunction(pageObjects[page][element]);
 });
 
+When('I accept further browser alerts', async function (t) {
+    await t.setNativeDialogHandler(() => true);
+});
+
+When('I dismiss further browser alerts', async function (t) {
+    await t.setNativeDialogHandler(() => false);
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
