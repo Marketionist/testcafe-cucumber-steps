@@ -280,6 +280,10 @@ const getTitle = ClientFunction(() => {
     return document.title;
 });
 
+const getLocation = ClientFunction(() => {
+    return document.location.href;
+});
+
 Then('the title should be {string}', async function (t, [text]) {
     await t.expect(getTitle()).eql(text);
 });
@@ -367,3 +371,11 @@ Then(
             .contains(pageObjects[page2][element2]);
     }
 );
+
+Then('URL should be {string}', async function (t, [url]) {
+    await t.expect(getLocation()).eql(url);
+});
+
+Then('URL should contain {string}', async function (t, [url]) {
+    await t.expect(getLocation()).contains(url);
+});
