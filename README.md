@@ -29,9 +29,15 @@ npm init --yes
 npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
 node node_modules/testcafe-cucumber-steps/utils/prepare.js
 ```
+
 Then just see the [list of predefined steps](#list-of-predefined-steps) and
 start writing tests (in `./tests/*.feature`) and adding Page Objects
 (in `./tests/page-model/*.js`).
+
+Run the tests with:
+```
+node_modules/.bin/gherkin-testcafe chrome,firefox
+```
 
 ## Installation - detailed path
 > This package is lightweight and has only 3 peerDependencies - it uses:
@@ -123,7 +129,7 @@ inside the array in `src`):
     "stopOnFirstFail": true,
     "skipJsErrors": true,
     "skipUncaughtErrors": true,
-    "concurrency": 2,
+    "concurrency": 1,
     "selectorTimeout": 3000,
     "assertionTimeout": 1000,
     "pageLoadTimeout": 1000,
@@ -212,6 +218,8 @@ window/tab equals to the text (provided in "" as a string).
 - `... text from ... page should contain "..."` - verify that text of the element (provided in **object** from **page** as CSS selector) contains the text (provided in "" as a string).
 - `"..."."..." text should contain "..."."..."` - verify that text of the element (provided in "page1"."object1" as CSS selector) contains the text (provided in "page2"."object2").
 - `... text from ... page should contain ... from ... page` - verify that text of the element (provided in **object1** from **page1** as CSS selector) contains the text (provided in **object2** from **page2**).
+- `URL should be "..."` - verify that URL of the current page equals to the text (provided in "" as a string).
+- `URL should contain "..."` - verify that URL of the current page contains the text (provided in "" as a string).
 
 ## Thanks
 If this package was helpful to you, please give it a **★ Star** on
