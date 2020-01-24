@@ -51,7 +51,7 @@ const configExampleContent = `{
     "stopOnFirstFail": true,
     "skipJsErrors": true,
     "skipUncaughtErrors": true,
-    "concurrency": 2,
+    "concurrency": 1,
     "selectorTimeout": 3000,
     "assertionTimeout": 1000,
     "pageLoadTimeout": 1000,
