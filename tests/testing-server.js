@@ -1,7 +1,7 @@
 'use strict';
 
 // Add testing server to provide pages for tests
-const { nodeTestingServer } = require('node-testing-server');
+let { nodeTestingServer } = require('node-testing-server');
 
 // Settings for node testing server
 nodeTestingServer.config = {
