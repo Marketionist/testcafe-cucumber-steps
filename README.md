@@ -206,7 +206,7 @@ CSS selector).
 **page2** as CSS selector).
 10. `I clear "..."."..." and type "..."` - overwrite any text (provided in "" as a
 string) in the input field (provided in **"page"."object"** as CSS selector).
-11. `I clear ... from ... page and type "..."` - overwrite any text (provided in
+- `I clear ... from ... page and type "..."` - overwrite any text (provided in
 "" as a string) in the input field (provided in **object** from **page** as CSS
 selector).
 - `I clear "..."."..." and type "..."."..."` - overwrite any text (provided in
@@ -215,7 +215,7 @@ CSS selector).
 - `I clear ... from ... page and type ... from ... page` - overwrite any text
 (provided in **object1** from **page1**) in the input field (provided in
 **object2** from **page2** as CSS selector).
-12. `I select "..." in "..."."..."` - select any option (provided in "" as a
+11. `I select "..." in "..."."..."` - select any option (provided in "" as a
 string) in the dropdown (provided in **"page"."object"** as CSS selector).
 - `I select "..." in ... from ... page` - select any option (provided in "" as a
 string) in the dropdown (provided in **object** from **page** as CSS selector).
@@ -225,42 +225,42 @@ selector).
 - `I select ... from ... page in ... from ... page` - select any option
 (provided in **object1** from **page1**) in the dropdown (provided in
 **object2** from **page2** as CSS selector).
-13. `I move to "..."."..."` - move the mouse pointer over any element (hover with
+12. `I move to "..."."..."` - move the mouse pointer over any element (hover with
 cursor an element provided in **"page"."object"** as CSS selector).
 - `I move to ... from ... page` - move the mouse pointer over any element (hover
 with cursor an element provided in **object** from **page** as CSS selector).
-14. `I move to "..."."..." with an offset of x: ...px, y: ...px` - move the mouse
+13. `I move to "..."."..." with an offset of x: ...px, y: ...px` - move the mouse
 pointer over any element (hover with cursor an element provided in
 **"page"."object"** as CSS selector) with an offset of x: ...px, y: ...px.
 - `I move to ... from ... page with an offset of x: ...px, y: ...px` - move the
 mouse pointer over any element (hover with cursor an element provided in
 **object** from **page** as CSS selector) with an offset of x: ...px, y: ...px.
-15. `I switch to "..."."..." frame` - switch the context to iframe (provided in
+14. `I switch to "..."."..." frame` - switch the context to iframe (provided in
 **"page"."object"** as CSS selector).
 - `I switch to ... frame from ... page` - switch the context to iframe (provided
 in **object** from **page** as CSS selector).
-16. `I switch to main frame` - switch the context back to default (initial) frame.
-17. `I execute "..."."..." function` - execute script (JavaScript function)
+15. `I switch to main frame` - switch the context back to default (initial) frame.
+16. `I execute "..."."..." function` - execute script (JavaScript function)
 provided in **"page"."object"**.
 - `I execute ... function from ... page` - execute script (JavaScript function)
 provided in **object** from **page**.
-18. `I accept further browser alerts` - accept (OK) all further browser alerts
+17. `I accept further browser alerts` - accept (OK) all further browser alerts
 (after this step).
-19. `I dismiss further browser alerts` - dismiss (Cancel) all further browser
+18. `I dismiss further browser alerts` - dismiss (Cancel) all further browser
 alert (after this step).
 
 ### Then steps
-20. `the title should be "..."` - verify that title of the current browser
+19. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-21. `"..."."..." should be present` - verify that element (provided in
+20. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is present on the page.
 - `... from ... page should be present` - verify that element (provided in
 **object** from **page** as CSS selector) is present on the page.
-22. `"..."."..." should not be present` - verify that element (provided in
+21. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is not present on the page.
 - `... from ... page should not be present` - verify that element (provided in
 **object** from **page** as CSS selector) is not present on the page.
-23. `"..."."..." text should be "..."` - verify that text of the element (provided
+22. `"..."."..." text should be "..."` - verify that text of the element (provided
 in **"page"."object"** as CSS selector) equals to the text (provided in "" as a
 string).
 - `... text from ... page should be "..."` - verify that text of the element
@@ -272,7 +272,7 @@ in **"page2"."object2"**).
 - `... text from ... page should be ... from ... page` - verify that text of the
 element (provided in **object1** from **page1** as CSS selector) equals to the
 text (provided in **object2** from **page2**).
-24. `"..."."..." text should contain "..."` - verify that text of the element
+23. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) contains the text (provided in
 "" as a string).
 - `... text from ... page should contain "..."` - verify that text of the
@@ -284,9 +284,9 @@ element (provided in "page1"."object1" as CSS selector) contains the text
 - `... text from ... page should contain ... from ... page` - verify that text
 of the element (provided in **object1** from **page1** as CSS selector) contains
 the text (provided in **object2** from **page2**).
-25. `URL should be "..."` - verify that URL of the current page equals to the text
+24. `URL should be "..."` - verify that URL of the current page equals to the text
 (provided in "" as a string).
-26. `URL should contain "..."` - verify that URL of the current page contains the
+25. `URL should contain "..."` - verify that URL of the current page contains the
 text (provided in "" as a string).
 
 ## Thanks
