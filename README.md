@@ -42,6 +42,8 @@ node_modules/.bin/gherkin-testcafe chrome,firefox
 > All [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 > are supported.
 
+![Install testcafe-cucumber-steps](https://raw.githubusercontent.com/Marketionist/testcafe-cucumber-steps/master/media/testcafe-cucumber-steps-installation.gif)
+
 ## Installation - detailed
 > This package is lightweight and has only 3 peerDependencies - it uses:
 > - [cucumber](https://github.com/cucumber/cucumber-js) to parse step definitions
