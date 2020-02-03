@@ -1,5 +1,7 @@
 # testcafe-cucumber-steps
-Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e) tests
+Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e)
+tests - see the presentation of why and how you can easily use
+[TestCafe with Cucumber in 5 steps](https://prezi.com/e1wfgwlfvnhr/testcafe-with-cucumber-in-5-steps/)
 
 [![Build Status](https://travis-ci.org/Marketionist/testcafe-cucumber-steps.svg?branch=master)](https://travis-ci.org/Marketionist/testcafe-cucumber-steps)
 [![npm version](https://img.shields.io/npm/v/testcafe-cucumber-steps.svg)](https://www.npmjs.com/package/testcafe-cucumber-steps)
