@@ -293,6 +293,12 @@ the text (provided in **object2** from **page2**).
 25. `URL should contain "..."` - verify that URL of the current page contains the
 text (provided in "" as a string).
 
+## Bonus feature - use XPath selectors in TestCafe
+As you know TestCafe does not support XPath selectors out of the box. But now
+you can use them in TestCafe Cucumber steps - just write XPath selector in
+a Page Object file the same way as you do with CSS selectors - see the example
+in [`test-page.js`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/page-model/test-page.js).
+
 ## Thanks
 If this package was helpful to you, please give it a **★ Star** on
 [Github](https://github.com/Marketionist/testcafe-cucumber-steps).

@@ -1,5 +1,5 @@
 'use strict';
-/* eslint new-cap: 0 */ // --> OFF for Given, When, Then
+/* eslint new-cap: 0 */ // --> OFF for Given, When, Then, Selector
 
 // #############################################################################
 
@@ -8,6 +8,7 @@ const { ClientFunction, Selector } = require('testcafe');
 const pageObjectsFolderPath = process.env.PO_FOLDER_PATH || 'tests/page-model';
 const path = require('path');
 const fs = require('fs');
+const SelectorXPath = require('./utils/selector-xpath.js');
 
 const isCalledExternally = __dirname.includes('node_modules');
 
@@ -25,6 +26,25 @@ fs.readdirSync(fullPageObjectsFolderPath).filter(
 
     pageObjects[fileName] = require(path.join(fullPageObjectsFolderPath, file));
 });
+
+/**
+ * Checks for XPath and gets proper element for further actions
+ * @param {string} page
+ * @param {string} elem
+ * @returns {Object} element
+ */
+function getElement (page, elem) {
+    const locator = pageObjects[page][elem];
+    let element;
+
+    if (locator[0] + locator[1] === '//') {
+        element = SelectorXPath(locator);
+    } else {
+        element = locator;
+    }
+
+    return element;
+}
 
 // #### Given steps ############################################################
 
@@ -47,11 +67,15 @@ When('I reload the page', async function (t) {
 });
 
 When('I click {string}.{string}', async function (t, [page, element]) {
-    await t.click(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.click(elem);
 });
 
 When('I click {word} from {word} page', async function (t, [element, page]) {
-    await t.click(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.click(elem);
 });
 
 When('I wait for {int} ms', async function (t, [timeToWait]) {
@@ -61,94 +85,116 @@ When('I wait for {int} ms', async function (t, [timeToWait]) {
 When('I wait and click {string}.{string}', async function (
     t, [page, element]
 ) {
+    const elem = getElement(page, element);
     const timeToWait = 300;
 
-    await t.wait(timeToWait).click(pageObjects[page][element]);
+    await t.wait(timeToWait).click(elem);
 });
 
 When('I wait and click {word} from {word} page', async function (
     t, [element, page]
 ) {
+    const elem = getElement(page, element);
     const timeToWait = 300;
 
-    await t.wait(timeToWait).click(pageObjects[page][element]);
+    await t.wait(timeToWait).click(elem);
 });
 
 When('I click {string}.{string} if present', async function (
     t, [page, element]
 ) {
-    const isPresent = await Selector(pageObjects[page][element]).exists;
+    const elem = getElement(page, element);
+    const isPresent = await Selector(elem).exists;
 
     if (isPresent) {
         // Click only if element is present
-        await t.click(pageObjects[page][element]);
+        await t.click(elem);
     }
 });
 
 When('I click {word} from {word} page if present', async function (
     t, [element, page]
 ) {
-    const isPresent = await Selector(pageObjects[page][element]).exists;
+    const elem = getElement(page, element);
+    const isPresent = await Selector(elem).exists;
 
     if (isPresent) {
         // Click only if element is present
-        await t.click(pageObjects[page][element]);
+        await t.click(elem);
     }
 });
 
 When('I double click {string}.{string}', async function (
     t, [page, element]
 ) {
-    await t.doubleClick(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.doubleClick(elem);
 });
 
 When('I double click {word} from {word} page', async function (
     t, [element, page]
 ) {
-    await t.doubleClick(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.doubleClick(elem);
 });
 
 When('I type {string} in {string}.{string}', async function (
     t, [text, page, element]
 ) {
-    await t.typeText(pageObjects[page][element], text);
+    const elem = getElement(page, element);
+
+    await t.typeText(elem, text);
 });
 
 When('I type {string} in {word} from {word} page', async function (
     t, [text, element, page]
 ) {
-    await t.typeText(pageObjects[page][element], text);
+    const elem = getElement(page, element);
+
+    await t.typeText(elem, text);
 });
 
 When('I type {string}.{string} in {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
-    await t.typeText(pageObjects[page2][element2], pageObjects[page1][element1]);
+    const elem = getElement(page2, element2);
+
+    await t.typeText(elem, pageObjects[page1][element1]);
 });
 
 When('I type {word} from {word} page in {word} from {word} page', async function (
     t, [element1, page1, element2, page2]
 ) {
-    await t.typeText(pageObjects[page2][element2], pageObjects[page1][element1]);
+    const elem = getElement(page2, element2);
+
+    await t.typeText(elem, pageObjects[page1][element1]);
 });
 
 When('I clear {string}.{string} and type {string}', async function (
     t, [page, element, text]
 ) {
-    await t.typeText(pageObjects[page][element], text, { replace: true });
+    const elem = getElement(page, element);
+
+    await t.typeText(elem, text, { replace: true });
 });
 
 When('I clear {word} from {word} page and type {string}', async function (
     t, [element, page, text]
 ) {
-    await t.typeText(pageObjects[page][element], text, { replace: true });
+    const elem = getElement(page, element);
+
+    await t.typeText(elem, text, { replace: true });
 });
 
 When('I clear {string}.{string} and type {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
+    const elem = getElement(page1, element1);
+
     await t.typeText(
-        pageObjects[page1][element1],
+        elem,
         pageObjects[page2][element2],
         { replace: true }
     );
@@ -157,8 +203,10 @@ When('I clear {string}.{string} and type {string}.{string}', async function (
 When('I clear {word} from {word} page and type {word} from {word} page', async function (
     t, [element1, page1, element2, page2]
 ) {
+    const elem = getElement(page1, element1);
+
     await t.typeText(
-        pageObjects[page1][element1],
+        elem,
         pageObjects[page2][element2],
         { replace: true }
     );
@@ -167,7 +215,8 @@ When('I clear {word} from {word} page and type {word} from {word} page', async f
 When('I select {string} in {string}.{string}', async function (
     t, [text, page, element]
 ) {
-    const dropdown = Selector(pageObjects[page][element]);
+    const elem = getElement(page, element);
+    const dropdown = Selector(elem);
     const option = dropdown.find('option');
 
     await t.click(dropdown).click(option.withText(text));
@@ -176,7 +225,8 @@ When('I select {string} in {string}.{string}', async function (
 When('I select {string} in {word} from {word} page', async function (
     t, [text, element, page]
 ) {
-    const dropdown = Selector(pageObjects[page][element]);
+    const elem = getElement(page, element);
+    const dropdown = Selector(elem);
     const option = dropdown.find('option');
 
     await t.click(dropdown).click(option.withText(text));
@@ -185,7 +235,8 @@ When('I select {string} in {word} from {word} page', async function (
 When('I select {string}.{string} in {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
-    const dropdown = Selector(pageObjects[page2][element2]);
+    const elem = getElement(page2, element2);
+    const dropdown = Selector(elem);
     const option = dropdown.find('option');
 
     await t.click(dropdown)
@@ -195,7 +246,8 @@ When('I select {string}.{string} in {string}.{string}', async function (
 When('I select {word} from {word} page in {word} from {word} page', async function (
     t, [element1, page1, element2, page2]
 ) {
-    const dropdown = Selector(pageObjects[page2][element2]);
+    const elem = getElement(page2, element2);
+    const dropdown = Selector(elem);
     const option = dropdown.find('option');
 
     await t.click(dropdown)
@@ -203,17 +255,23 @@ When('I select {word} from {word} page in {word} from {word} page', async functi
 });
 
 When('I move to {string}.{string}', async function (t, [page, element]) {
-    await t.hover(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.hover(elem);
 });
 
 When('I move to {word} from {word} page', async function (t, [element, page]) {
-    await t.hover(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.hover(elem);
 });
 
 When(
     'I move to {string}.{string} with an offset of x: {int}px, y: {int}px',
     async function (t, [page, element, offsetX, offsetY]) {
-        await t.hover(pageObjects[page][element], {
+        const elem = getElement(page, element);
+
+        await t.hover(elem, {
             offsetX: offsetX,
             offsetY: offsetY
         });
@@ -223,7 +281,9 @@ When(
 When(
     'I move to {word} from {word} page with an offset of x: {int}px, y: {int}px',
     async function (t, [element, page, offsetX, offsetY]) {
-        await t.hover(pageObjects[page][element], {
+        const elem = getElement(page, element);
+
+        await t.hover(elem, {
             offsetX: offsetX,
             offsetY: offsetY
         });
@@ -233,13 +293,17 @@ When(
 When('I switch to {string}.{string} frame', async function (
     t, [page, element]
 ) {
-    await t.switchToIframe(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.switchToIframe(elem);
 });
 
 When('I switch to {word} frame from {word} page', async function (
     t, [element, page]
 ) {
-    await t.switchToIframe(pageObjects[page][element]);
+    const elem = getElement(page, element);
+
+    await t.switchToIframe(elem);
 });
 
 When('I switch to main frame', async function (t) {
@@ -295,50 +359,66 @@ Then('the title should contain {string}', async function (t, [text]) {
 Then('{string}.{string} should be present', async function (
     t, [page, element]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).exists).ok();
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).exists).ok();
 });
 
 Then('{word} from {word} page should be present', async function (
     t, [element, page]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).exists).ok();
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).exists).ok();
 });
 
 Then('{string}.{string} should not be present', async function (
     t, [page, element]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).exists).notOk();
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).exists).notOk();
 });
 
 Then('{word} from {word} page should not be present', async function (
     t, [element, page]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).exists).notOk();
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).exists).notOk();
 });
 
 Then('{string}.{string} text should be {string}', async function (
     t, [page, element, text]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).innerText).eql(text);
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).innerText).eql(text);
 });
 
 Then('{word} text from {word} page should be {string}', async function (
     t, [element, page, text]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).innerText).eql(text);
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).innerText).eql(text);
 });
 
 Then('{string}.{string} text should be {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
-    await t.expect(Selector(pageObjects[page1][element1]).innerText)
+    const elem = getElement(page1, element1);
+
+    await t.expect(Selector(elem).innerText)
         .eql(pageObjects[page2][element2]);
 });
 
 Then(
     '{word} text from {word} page should be {word} from {word} page',
     async function (t, [element1, page1, element2, page2]) {
-        await t.expect(Selector(pageObjects[page1][element1]).innerText)
+        const elem = getElement(page1, element1);
+
+        await t.expect(Selector(elem).innerText)
             .eql(pageObjects[page2][element2]);
     }
 );
@@ -346,28 +426,34 @@ Then(
 Then('{string}.{string} text should contain {string}', async function (
     t, [page, element, text]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).innerText)
-        .contains(text);
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).innerText).contains(text);
 });
 
 Then('{word} text from {word} page should contain {string}', async function (
     t, [element, page, text]
 ) {
-    await t.expect(Selector(pageObjects[page][element]).innerText)
-        .contains(text);
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).innerText).contains(text);
 });
 
 Then('{string}.{string} text should contain {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
-    await t.expect(Selector(pageObjects[page1][element1]).innerText)
+    const elem = getElement(page1, element1);
+
+    await t.expect(Selector(elem).innerText)
         .contains(pageObjects[page2][element2]);
 });
 
 Then(
     '{word} text from {word} page should contain {word} from {word} page',
     async function (t, [element1, page1, element2, page2]) {
-        await t.expect(Selector(pageObjects[page1][element1]).innerText)
+        const elem = getElement(page1, element1);
+
+        await t.expect(Selector(elem).innerText)
             .contains(pageObjects[page2][element2]);
     }
 );
