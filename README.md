@@ -8,22 +8,52 @@ tests - see the presentation of why and how you can easily use
 [![NPM License](https://img.shields.io/npm/l/testcafe-cucumber-steps.svg)](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/LICENSE)
 
 ## Supported versions
-[Node.js](http://nodejs.org/):
-- 8.x
-- 9.x
-- 10.x
-- 11.x
-- 12.x
-- 13.x
+<table>
+    <thead>
+        <tr>
+            <th><a href="http://nodejs.org/" rel="nofollow" target="_blank">Node.js</a></th>
+            <th><a href="https://devexpress.github.io/testcafe" rel="nofollow" target="_blank">TestCafe</a></th>
+            <th><a href="https://github.com/cucumber/cucumber-js" rel="nofollow" target="_blank">Cucumber</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>8.x</td>
+            <td rowspan=6>1.x</td>
+            <td rowspan=6>5.x, 6.x</td>
+        </tr>
+        <tr>
+            <td>9.x</td>
+        </tr>
+        <tr>
+            <td>10.x</td>
+        </tr>
+        <tr>
+            <td>11.x</td>
+        </tr>
+        <tr>
+            <td>12.x</td>
+        </tr>
+        <tr>
+            <td>13.x</td>
+        </tr>
+    </tbody>
+</table>
 
-[TestCafe](https://github.com/DevExpress/testcafe):
-- 1.x
+## Table of contents
 
-[Cucumber](https://github.com/cucumber/cucumber-js):
-- 5.x
-- 6.x
+* [Installation fast](#installation-fast)
+* [Installation detailed](#installation-detailed)
+  * [Importing and running in CLI](#importing-and-running-in-cli)
+  * [Importing and running with config file](#importing-and-running-with-config-file)
+* [List of predefined steps](#list-of-predefined-steps)
+  * [Given steps](#given-steps)
+  * [When steps](#when-steps)
+  * [Then steps](#then-steps)
+* [Bonus feature: use XPath selectors in TestCafe](#bonus-feature-use-xpath-selectors-in-testcafe)
+* [Thanks](#thanks)
 
-## Installation - fast
+## Installation fast
 If you want to start writing tests as fast as possible, here are the commands
 you'll need to execute:
 ```
@@ -46,7 +76,7 @@ node_modules/.bin/gherkin-testcafe chrome,firefox
 
 ![Install testcafe-cucumber-steps](https://raw.githubusercontent.com/Marketionist/testcafe-cucumber-steps/master/media/testcafe-cucumber-steps-installation.gif)
 
-## Installation - detailed
+## Installation detailed
 > This package is lightweight and has only 3 peerDependencies - it uses:
 > - [cucumber](https://github.com/cucumber/cucumber-js) to parse step definitions
 > - [testcafe](https://github.com/DevExpress/testcafe) to execute steps
@@ -293,7 +323,7 @@ the text (provided in **object2** from **page2**).
 25. `URL should contain "..."` - verify that URL of the current page contains the
 text (provided in "" as a string).
 
-## Bonus feature - use XPath selectors in TestCafe
+## Bonus feature: use XPath selectors in TestCafe
 As you know TestCafe does not support XPath selectors out of the box. But now
 you can use them in TestCafe Cucumber steps - just write XPath selector in
 a Page Object file the same way as you do with CSS selectors - see the example
