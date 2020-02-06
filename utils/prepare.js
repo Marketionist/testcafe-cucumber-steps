@@ -1,5 +1,7 @@
 'use strict';
 
+// #############################################################################
+
 const path = require('path');
 const fs = require('fs');
 const util = require('util');
@@ -24,20 +26,16 @@ const pathToPageObjectsExample = path.join(pathToPageObjectsDir,
     'test-page-example.js');
 const pageObjectsExampleContent = `'use strict';
 
-module.exports = (function () {
+let testPage = {
 
-    let testPage = {
+    linkAbout: 'a[href*="about.google"]',
+    header: '.header'
 
-        linkAbout: 'a[href*="about.google"]',
-        header: '.header'
+};
 
-    };
+testPage.linkOurProducts = \`\${testPage.header} a[title="Our products"]\`;
 
-    testPage.linkOurProducts = \`\${testPage.header} a[title="Our products"]\`;
-
-    return testPage;
-
-})();`;
+module.exports = testPage;`;
 const pathToConfigExample = path.join(pathToTestsDir, '../', '.testcaferc.json');
 const configExampleContent = `{
     "browsers": "chrome",
