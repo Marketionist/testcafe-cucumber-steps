@@ -48,41 +48,41 @@ function getElement (page, elem) {
 
 // #### Given steps ############################################################
 
-Given('I go to URL {string}', async function (t, [url]) {
+Given('I/user go(es) to URL {string}', async function (t, [url]) {
     await t.navigateTo(url);
 });
 
-Given('I go to {string}.{string}', async function (t, [page, element]) {
+Given('I/user go(es) to {string}.{string}', async function (t, [page, element]) {
     await t.navigateTo(pageObjects[page][element]);
 });
 
-Given('I go to {word} from {word} page', async function (t, [element, page]) {
+Given('I/user go(es) to {word} from {word} page', async function (t, [element, page]) {
     await t.navigateTo(pageObjects[page][element]);
 });
 
 // #### When steps #############################################################
 
-When('I reload the page', async function (t) {
+When('I/user reload(s) the page', async function (t) {
     await t.eval(() => location.reload(true));
 });
 
-When('I click {string}.{string}', async function (t, [page, element]) {
+When('I/user click(s) {string}.{string}', async function (t, [page, element]) {
     const elem = getElement(page, element);
 
     await t.click(elem);
 });
 
-When('I click {word} from {word} page', async function (t, [element, page]) {
+When('I/user click(s) {word} from {word} page', async function (t, [element, page]) {
     const elem = getElement(page, element);
 
     await t.click(elem);
 });
 
-When('I wait for {int} ms', async function (t, [timeToWait]) {
+When('I/user wait(s) for {int} ms', async function (t, [timeToWait]) {
     await t.wait(timeToWait);
 });
 
-When('I wait and click {string}.{string}', async function (
+When('I/user wait(s) and click(s) {string}.{string}', async function (
     t, [page, element]
 ) {
     const elem = getElement(page, element);
@@ -91,7 +91,7 @@ When('I wait and click {string}.{string}', async function (
     await t.wait(timeToWait).click(elem);
 });
 
-When('I wait and click {word} from {word} page', async function (
+When('I/user wait(s) and click(s) {word} from {word} page', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -100,7 +100,7 @@ When('I wait and click {word} from {word} page', async function (
     await t.wait(timeToWait).click(elem);
 });
 
-When('I click {string}.{string} if present', async function (
+When('I/user click(s) {string}.{string} if present', async function (
     t, [page, element]
 ) {
     const elem = getElement(page, element);
@@ -112,7 +112,7 @@ When('I click {string}.{string} if present', async function (
     }
 });
 
-When('I click {word} from {word} page if present', async function (
+When('I/user click(s) {word} from {word} page if present', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -124,7 +124,7 @@ When('I click {word} from {word} page if present', async function (
     }
 });
 
-When('I double click {string}.{string}', async function (
+When('I/user double click(s) {string}.{string}', async function (
     t, [page, element]
 ) {
     const elem = getElement(page, element);
@@ -132,7 +132,7 @@ When('I double click {string}.{string}', async function (
     await t.doubleClick(elem);
 });
 
-When('I double click {word} from {word} page', async function (
+When('I/user double click(s) {word} from {word} page', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -140,7 +140,7 @@ When('I double click {word} from {word} page', async function (
     await t.doubleClick(elem);
 });
 
-When('I type {string} in {string}.{string}', async function (
+When('I/user type(s) {string} in {string}.{string}', async function (
     t, [text, page, element]
 ) {
     const elem = getElement(page, element);
@@ -148,7 +148,7 @@ When('I type {string} in {string}.{string}', async function (
     await t.typeText(elem, text);
 });
 
-When('I type {string} in {word} from {word} page', async function (
+When('I/user type(s) {string} in {word} from {word} page', async function (
     t, [text, element, page]
 ) {
     const elem = getElement(page, element);
@@ -156,7 +156,7 @@ When('I type {string} in {word} from {word} page', async function (
     await t.typeText(elem, text);
 });
 
-When('I type {string}.{string} in {string}.{string}', async function (
+When('I/user type(s) {string}.{string} in {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
     const elem = getElement(page2, element2);
@@ -164,7 +164,7 @@ When('I type {string}.{string} in {string}.{string}', async function (
     await t.typeText(elem, pageObjects[page1][element1]);
 });
 
-When('I type {word} from {word} page in {word} from {word} page', async function (
+When('I/user type(s) {word} from {word} page in {word} from {word} page', async function (
     t, [element1, page1, element2, page2]
 ) {
     const elem = getElement(page2, element2);
@@ -172,7 +172,7 @@ When('I type {word} from {word} page in {word} from {word} page', async function
     await t.typeText(elem, pageObjects[page1][element1]);
 });
 
-When('I clear {string}.{string} and type {string}', async function (
+When('I/user clear(s) {string}.{string} and type(s) {string}', async function (
     t, [page, element, text]
 ) {
     const elem = getElement(page, element);
@@ -180,7 +180,7 @@ When('I clear {string}.{string} and type {string}', async function (
     await t.typeText(elem, text, { replace: true });
 });
 
-When('I clear {word} from {word} page and type {string}', async function (
+When('I/user clear(s) {word} from {word} page and type(s) {string}', async function (
     t, [element, page, text]
 ) {
     const elem = getElement(page, element);
@@ -188,7 +188,7 @@ When('I clear {word} from {word} page and type {string}', async function (
     await t.typeText(elem, text, { replace: true });
 });
 
-When('I clear {string}.{string} and type {string}.{string}', async function (
+When('I/user clear(s) {string}.{string} and type(s) {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
     const elem = getElement(page1, element1);
@@ -200,7 +200,7 @@ When('I clear {string}.{string} and type {string}.{string}', async function (
     );
 });
 
-When('I clear {word} from {word} page and type {word} from {word} page', async function (
+When('I/user clear(s) {word} from {word} page and type(s) {word} from {word} page', async function (
     t, [element1, page1, element2, page2]
 ) {
     const elem = getElement(page1, element1);
@@ -212,7 +212,7 @@ When('I clear {word} from {word} page and type {word} from {word} page', async f
     );
 });
 
-When('I select {string} in {string}.{string}', async function (
+When('I/user select(s) {string} in {string}.{string}', async function (
     t, [text, page, element]
 ) {
     const elem = getElement(page, element);
@@ -222,7 +222,7 @@ When('I select {string} in {string}.{string}', async function (
     await t.click(dropdown).click(option.withText(text));
 });
 
-When('I select {string} in {word} from {word} page', async function (
+When('I/user select(s) {string} in {word} from {word} page', async function (
     t, [text, element, page]
 ) {
     const elem = getElement(page, element);
@@ -232,7 +232,7 @@ When('I select {string} in {word} from {word} page', async function (
     await t.click(dropdown).click(option.withText(text));
 });
 
-When('I select {string}.{string} in {string}.{string}', async function (
+When('I/user select(s) {string}.{string} in {string}.{string}', async function (
     t, [page1, element1, page2, element2]
 ) {
     const elem = getElement(page2, element2);
@@ -243,7 +243,7 @@ When('I select {string}.{string} in {string}.{string}', async function (
         .click(option.withText(pageObjects[page1][element1]));
 });
 
-When('I select {word} from {word} page in {word} from {word} page', async function (
+When('I/user select(s) {word} from {word} page in {word} from {word} page', async function (
     t, [element1, page1, element2, page2]
 ) {
     const elem = getElement(page2, element2);
@@ -254,20 +254,20 @@ When('I select {word} from {word} page in {word} from {word} page', async functi
         .click(option.withText(pageObjects[page1][element1]));
 });
 
-When('I move to {string}.{string}', async function (t, [page, element]) {
+When('I/user move(s) to {string}.{string}', async function (t, [page, element]) {
     const elem = getElement(page, element);
 
     await t.hover(elem);
 });
 
-When('I move to {word} from {word} page', async function (t, [element, page]) {
+When('I/user move(s) to {word} from {word} page', async function (t, [element, page]) {
     const elem = getElement(page, element);
 
     await t.hover(elem);
 });
 
 When(
-    'I move to {string}.{string} with an offset of x: {int}px, y: {int}px',
+    'I/user move(s) to {string}.{string} with an offset of x: {int}px, y: {int}px',
     async function (t, [page, element, offsetX, offsetY]) {
         const elem = getElement(page, element);
 
@@ -279,7 +279,7 @@ When(
 );
 
 When(
-    'I move to {word} from {word} page with an offset of x: {int}px, y: {int}px',
+    'I/user move(s) to {word} from {word} page with an offset of x: {int}px, y: {int}px',
     async function (t, [element, page, offsetX, offsetY]) {
         const elem = getElement(page, element);
 
@@ -290,7 +290,7 @@ When(
     }
 );
 
-When('I switch to {string}.{string} frame', async function (
+When('I/user switch(es) to {string}.{string} frame', async function (
     t, [page, element]
 ) {
     const elem = getElement(page, element);
@@ -298,7 +298,7 @@ When('I switch to {string}.{string} frame', async function (
     await t.switchToIframe(elem);
 });
 
-When('I switch to {word} frame from {word} page', async function (
+When('I/user switch(es) to {word} frame from {word} page', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -306,11 +306,11 @@ When('I switch to {word} frame from {word} page', async function (
     await t.switchToIframe(elem);
 });
 
-When('I switch to main frame', async function (t) {
+When('I/user switch(es) to main frame', async function (t) {
     await t.switchToMainWindow();
 });
 
-When('I execute {string}.{string} function', async function (
+When('I/user execute(s) {string}.{string} function', async function (
     t, [page, element]
 ) {
     const executeCustomFunction = ClientFunction((customFunction) => {
@@ -320,7 +320,7 @@ When('I execute {string}.{string} function', async function (
     await executeCustomFunction(pageObjects[page][element]);
 });
 
-When('I execute {word} function from {word} page', async function (
+When('I/user execute(s) {word} function from {word} page', async function (
     t, [element, page]
 ) {
     const executeCustomFunction = ClientFunction((customFunction) => {
@@ -330,11 +330,11 @@ When('I execute {word} function from {word} page', async function (
     await executeCustomFunction(pageObjects[page][element]);
 });
 
-When('I accept further browser alerts', async function (t) {
+When('I/user accept(s) further browser alerts', async function (t) {
     await t.setNativeDialogHandler(() => true);
 });
 
-When('I dismiss further browser alerts', async function (t) {
+When('I/user dismiss(es) further browser alerts', async function (t) {
     await t.setNativeDialogHandler(() => false);
 });
 
