@@ -205,78 +205,78 @@ You can see the example of how to use predefined steps in
 the current browser window/tab.
 2. `I go to "..."."..."` - open a site (by its URL provided in
 **"page"."object"**) in the current browser window/tab.
-- `I go to ... from ... page` - open a site (by its URL provided in **object**
+- `I go to ... from ...` - open a site (by its URL provided in **object**
 from **page**) in the current browser window/tab.
 
 ### When steps
 3. `I reload the page` - reload current page.
 4. `I click "..."."..."` - click on any element (provided in **"page"."object"**
 as CSS selector).
-- `I click ... from ... page` - click on any element (provided in **object**
+- `I click ... from ...` - click on any element (provided in **object**
 from **page** as CSS selector).
 5. `I wait for ... ms` wait for provided amount of time (in milliseconds).
 6. `I wait and click "..."."..."` - wait for 300 ms and then click on any element
 (provided in **"page"."object"** as CSS selector).
-- `I wait and click ... from ... page` - wait for 300 ms and then click on any
+- `I wait and click ... from ...` - wait for 300 ms and then click on any
 element (provided in **object** from **page** as CSS selector).
 7. `I click "..."."..." if present` - click on any element (provided in
 **"page"."object"** as CSS selector) only if it is present on the page.
-- `I click ... from page ... if present` - click on any element (provided in
+- `I click ... from ... if present` - click on any element (provided in
 **object** from **page** as CSS selector) only if it is present on the page.
 8. `I double click "..."."..."` - double click on any element (provided in
 **"page"."object"** as CSS selector).
-- `I double click ... from ... page` - double click on any element (provided in
+- `I double click ... from ...` - double click on any element (provided in
 **object** from **page** as CSS selector).
 9. `I type "..." in "..."."..."` - type any text (provided in "" as a string) in
 the input field (provided in **"page"."object"** as CSS selector).
-- `I type "..." in ... from ... page` - type any text (provided in "" as a
+- `I type "..." in ... from ...` - type any text (provided in "" as a
 string) in the input field (provided in **object** from **page** as CSS
 selector).
 - `I type "..."."..." in "..."."..."` - type any text (provided in
 **"page1"."object1"**) in the input field (provided in **"page2"."object2"** as
 CSS selector).
-- `I type ... from ... page in ... from ... page` - type any text (provided in
+- `I type ... from ... in ... from ...` - type any text (provided in
 **object1** from **page1**) in the input field (provided in **object2** from
 **page2** as CSS selector).
 10. `I clear "..."."..." and type "..."` - overwrite any text (provided in "" as a
 string) in the input field (provided in **"page"."object"** as CSS selector).
-- `I clear ... from ... page and type "..."` - overwrite any text (provided in
+- `I clear ... from ... and type "..."` - overwrite any text (provided in
 "" as a string) in the input field (provided in **object** from **page** as CSS
 selector).
 - `I clear "..."."..." and type "..."."..."` - overwrite any text (provided in
 **"page1"."object1"**) in the input field (provided in **"page2"."object2"** as
 CSS selector).
-- `I clear ... from ... page and type ... from ... page` - overwrite any text
+- `I clear ... from ... and type ... from ...` - overwrite any text
 (provided in **object1** from **page1**) in the input field (provided in
 **object2** from **page2** as CSS selector).
 11. `I select "..." in "..."."..."` - select any option (provided in "" as a
 string) in the dropdown (provided in **"page"."object"** as CSS selector).
-- `I select "..." in ... from ... page` - select any option (provided in "" as a
+- `I select "..." in ... from ...` - select any option (provided in "" as a
 string) in the dropdown (provided in **object** from **page** as CSS selector).
 - `I select "..."."..." in "..."."..."` - select any option (provided in
 **"page1"."object1"**) in the dropdown (provided in **"page2"."object2"** as CSS
 selector).
-- `I select ... from ... page in ... from ... page` - select any option
+- `I select ... from ... in ... from ...` - select any option
 (provided in **object1** from **page1**) in the dropdown (provided in
 **object2** from **page2** as CSS selector).
 12. `I move to "..."."..."` - move the mouse pointer over any element (hover with
 cursor an element provided in **"page"."object"** as CSS selector).
-- `I move to ... from ... page` - move the mouse pointer over any element (hover
+- `I move to ... from ...` - move the mouse pointer over any element (hover
 with cursor an element provided in **object** from **page** as CSS selector).
 13. `I move to "..."."..." with an offset of x: ...px, y: ...px` - move the mouse
 pointer over any element (hover with cursor an element provided in
 **"page"."object"** as CSS selector) with an offset of x: ...px, y: ...px.
-- `I move to ... from ... page with an offset of x: ...px, y: ...px` - move the
+- `I move to ... from ... with an offset of x: ...px, y: ...px` - move the
 mouse pointer over any element (hover with cursor an element provided in
 **object** from **page** as CSS selector) with an offset of x: ...px, y: ...px.
 14. `I switch to "..."."..." frame` - switch the context to iframe (provided in
 **"page"."object"** as CSS selector).
-- `I switch to ... frame from ... page` - switch the context to iframe (provided
+- `I switch to ... frame from ...` - switch the context to iframe (provided
 in **object** from **page** as CSS selector).
 15. `I switch to main frame` - switch the context back to default (initial) frame.
 16. `I execute "..."."..." function` - execute script (JavaScript function)
 provided in **"page"."object"**.
-- `I execute ... function from ... page` - execute script (JavaScript function)
+- `I execute ... function from ...` - execute script (JavaScript function)
 provided in **object** from **page**.
 17. `I accept further browser alerts` - accept (OK) all further browser alerts
 (after this step).
@@ -288,34 +288,34 @@ alert (after this step).
 window/tab equals to the text (provided in "" as a string).
 20. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is present on the page.
-- `... from ... page should be present` - verify that element (provided in
+- `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS selector) is present on the page.
 21. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is not present on the page.
-- `... from ... page should not be present` - verify that element (provided in
+- `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS selector) is not present on the page.
 22. `"..."."..." text should be "..."` - verify that text of the element (provided
 in **"page"."object"** as CSS selector) equals to the text (provided in "" as a
 string).
-- `... text from ... page should be "..."` - verify that text of the element
+- `... text from ... should be "..."` - verify that text of the element
 (provided in **object** from **page** as CSS selector) equals to the text
 (provided in "" as a string).
 - `"..."."..." text should be "..."."..."` - verify that text of the element
 (provided in **"page1"."object1"** as CSS selector) equals to the text (provided
 in **"page2"."object2"**).
-- `... text from ... page should be ... from ... page` - verify that text of the
+- `... text from ... should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS selector) equals to the
 text (provided in **object2** from **page2**).
 23. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) contains the text (provided in
 "" as a string).
-- `... text from ... page should contain "..."` - verify that text of the
+- `... text from ... should contain "..."` - verify that text of the
 element (provided in **object** from **page** as CSS selector) contains the text
 (provided in "" as a string).
 - `"..."."..." text should contain "..."."..."` - verify that text of the
 element (provided in "page1"."object1" as CSS selector) contains the text
 (provided in "page2"."object2").
-- `... text from ... page should contain ... from ... page` - verify that text
+- `... text from ... should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS selector) contains
 the text (provided in **object2** from **page2**).
 24. `URL should be "..."` - verify that URL of the current page equals to the text
