@@ -12,8 +12,8 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
 
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text (text style step)
     When user goes to URL "http://localhost:8001/test1.html"
-    And user moves to titleTest1 from test-page page
-    Then blockTextTest text from test-page page should contain txtTest1 from test-page page
+    And user moves to titleTest1 from test-page
+    Then blockTextTest text from test-page should contain txtTest1 from test-page
 
   Scenario: 'user moves to with an offset' should trigger element's hovered state
     When user goes to URL "http://localhost:8001/test1.html"
@@ -22,7 +22,7 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
 
   Scenario: 'user moves to with an offset' should trigger element's hovered state (text style step)
     When user goes to URL "http://localhost:8001/test1.html"
-    And user moves to titleTest1 from test-page page with an offset of x: 10px, y: 5px
+    And user moves to titleTest1 from test-page with an offset of x: 10px, y: 5px
     Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
 
   Scenario: 'user switches to' iframe should change the context to this iframe
@@ -32,7 +32,7 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
 
   Scenario: 'user switches to' iframe should change the context to this iframe (text style step)
     When user goes to URL "http://localhost:8001/test-iframe.html"
-    And user switches to iframeTest1Page frame from iframe-page page
+    And user switches to iframeTest1Page frame from iframe-page
     Then "test-page"."linkTest2Page" should be present
 
   Scenario: 'user switches to main frame' should change the context back to the main page
@@ -49,7 +49,7 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
 
   Scenario: 'user executes function' should change the content on the page (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user executes updateText function from test2-page page
+    When user executes updateText function from test2-page
     Then "test-page"."blockTextTest" text should contain "Text to test script execution"
 
   Scenario: 'user accepts further browser alerts' should get the alert accepted
