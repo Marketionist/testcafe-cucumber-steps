@@ -56,7 +56,7 @@ Given('I/user go(es) to {string}.{string}', async function (t, [page, element]) 
     await t.navigateTo(pageObjects[page][element]);
 });
 
-Given('I/user go(es) to {word} from {word} page', async function (t, [element, page]) {
+Given('I/user go(es) to {word} from {word}( page)', async function (t, [element, page]) {
     await t.navigateTo(pageObjects[page][element]);
 });
 
@@ -72,7 +72,7 @@ When('I/user click(s) {string}.{string}', async function (t, [page, element]) {
     await t.click(elem);
 });
 
-When('I/user click(s) {word} from {word} page', async function (t, [element, page]) {
+When('I/user click(s) {word} from {word}( page)', async function (t, [element, page]) {
     const elem = getElement(page, element);
 
     await t.click(elem);
@@ -91,7 +91,7 @@ When('I/user wait(s) and click(s) {string}.{string}', async function (
     await t.wait(timeToWait).click(elem);
 });
 
-When('I/user wait(s) and click(s) {word} from {word} page', async function (
+When('I/user wait(s) and click(s) {word} from {word}( page)', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -112,7 +112,7 @@ When('I/user click(s) {string}.{string} if present', async function (
     }
 });
 
-When('I/user click(s) {word} from {word} page if present', async function (
+When('I/user click(s) {word} from {word}( page) if present', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -132,7 +132,7 @@ When('I/user double click(s) {string}.{string}', async function (
     await t.doubleClick(elem);
 });
 
-When('I/user double click(s) {word} from {word} page', async function (
+When('I/user double click(s) {word} from {word}( page)', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -148,7 +148,7 @@ When('I/user type(s) {string} in {string}.{string}', async function (
     await t.typeText(elem, text);
 });
 
-When('I/user type(s) {string} in {word} from {word} page', async function (
+When('I/user type(s) {string} in {word} from {word}( page)', async function (
     t, [text, element, page]
 ) {
     const elem = getElement(page, element);
@@ -164,7 +164,7 @@ When('I/user type(s) {string}.{string} in {string}.{string}', async function (
     await t.typeText(elem, pageObjects[page1][element1]);
 });
 
-When('I/user type(s) {word} from {word} page in {word} from {word} page', async function (
+When('I/user type(s) {word} from {word}( page) in {word} from {word}( page)', async function (
     t, [element1, page1, element2, page2]
 ) {
     const elem = getElement(page2, element2);
@@ -180,7 +180,7 @@ When('I/user clear(s) {string}.{string} and type(s) {string}', async function (
     await t.typeText(elem, text, { replace: true });
 });
 
-When('I/user clear(s) {word} from {word} page and type(s) {string}', async function (
+When('I/user clear(s) {word} from {word}( page) and type(s) {string}', async function (
     t, [element, page, text]
 ) {
     const elem = getElement(page, element);
@@ -200,7 +200,7 @@ When('I/user clear(s) {string}.{string} and type(s) {string}.{string}', async fu
     );
 });
 
-When('I/user clear(s) {word} from {word} page and type(s) {word} from {word} page', async function (
+When('I/user clear(s) {word} from {word}( page) and type(s) {word} from {word}( page)', async function (
     t, [element1, page1, element2, page2]
 ) {
     const elem = getElement(page1, element1);
@@ -222,7 +222,7 @@ When('I/user select(s) {string} in {string}.{string}', async function (
     await t.click(dropdown).click(option.withText(text));
 });
 
-When('I/user select(s) {string} in {word} from {word} page', async function (
+When('I/user select(s) {string} in {word} from {word}( page)', async function (
     t, [text, element, page]
 ) {
     const elem = getElement(page, element);
@@ -243,7 +243,7 @@ When('I/user select(s) {string}.{string} in {string}.{string}', async function (
         .click(option.withText(pageObjects[page1][element1]));
 });
 
-When('I/user select(s) {word} from {word} page in {word} from {word} page', async function (
+When('I/user select(s) {word} from {word}( page) in {word} from {word}( page)', async function (
     t, [element1, page1, element2, page2]
 ) {
     const elem = getElement(page2, element2);
@@ -260,7 +260,7 @@ When('I/user move(s) to {string}.{string}', async function (t, [page, element]) 
     await t.hover(elem);
 });
 
-When('I/user move(s) to {word} from {word} page', async function (t, [element, page]) {
+When('I/user move(s) to {word} from {word}( page)', async function (t, [element, page]) {
     const elem = getElement(page, element);
 
     await t.hover(elem);
@@ -279,7 +279,7 @@ When(
 );
 
 When(
-    'I/user move(s) to {word} from {word} page with an offset of x: {int}px, y: {int}px',
+    'I/user move(s) to {word} from {word}( page) with an offset of x: {int}px, y: {int}px',
     async function (t, [element, page, offsetX, offsetY]) {
         const elem = getElement(page, element);
 
@@ -298,7 +298,7 @@ When('I/user switch(es) to {string}.{string} frame', async function (
     await t.switchToIframe(elem);
 });
 
-When('I/user switch(es) to {word} frame from {word} page', async function (
+When('I/user switch(es) to {word} frame from {word}( page)', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -320,7 +320,7 @@ When('I/user execute(s) {string}.{string} function', async function (
     await executeCustomFunction(pageObjects[page][element]);
 });
 
-When('I/user execute(s) {word} function from {word} page', async function (
+When('I/user execute(s) {word} function from {word}( page)', async function (
     t, [element, page]
 ) {
     const executeCustomFunction = ClientFunction((customFunction) => {
@@ -364,7 +364,7 @@ Then('{string}.{string} should be present', async function (
     await t.expect(Selector(elem).exists).ok();
 });
 
-Then('{word} from {word} page should be present', async function (
+Then('{word} from {word}( page) should be present', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -380,7 +380,7 @@ Then('{string}.{string} should not be present', async function (
     await t.expect(Selector(elem).exists).notOk();
 });
 
-Then('{word} from {word} page should not be present', async function (
+Then('{word} from {word}( page) should not be present', async function (
     t, [element, page]
 ) {
     const elem = getElement(page, element);
@@ -396,7 +396,7 @@ Then('{string}.{string} text should be {string}', async function (
     await t.expect(Selector(elem).innerText).eql(text);
 });
 
-Then('{word} text from {word} page should be {string}', async function (
+Then('{word} text from {word}( page) should be {string}', async function (
     t, [element, page, text]
 ) {
     const elem = getElement(page, element);
@@ -414,7 +414,7 @@ Then('{string}.{string} text should be {string}.{string}', async function (
 });
 
 Then(
-    '{word} text from {word} page should be {word} from {word} page',
+    '{word} text from {word}( page) should be {word} from {word}( page)',
     async function (t, [element1, page1, element2, page2]) {
         const elem = getElement(page1, element1);
 
@@ -431,7 +431,7 @@ Then('{string}.{string} text should contain {string}', async function (
     await t.expect(Selector(elem).innerText).contains(text);
 });
 
-Then('{word} text from {word} page should contain {string}', async function (
+Then('{word} text from {word}( page) should contain {string}', async function (
     t, [element, page, text]
 ) {
     const elem = getElement(page, element);
@@ -449,7 +449,7 @@ Then('{string}.{string} text should contain {string}.{string}', async function (
 });
 
 Then(
-    '{word} text from {word} page should contain {word} from {word} page',
+    '{word} text from {word}( page) should contain {word} from {word}( page)',
     async function (t, [element1, page1, element2, page2]) {
         const elem = getElement(page1, element1);
 
