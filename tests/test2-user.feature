@@ -68,6 +68,22 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     Given user goes to URL "http://localhost:8001/test1.html"
     Then URL should be "http://localhost:8001/test1.html"
 
+  Scenario: 'URL should be' should verify that current URL equals provided string (Page Object style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    Then URL should be "test2-page"."test1URL"
+
+  Scenario: 'URL should be' should verify that current URL equals provided string (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    Then URL should be test1URL from test2-page
+
   Scenario: 'URL should contain' should verify that current URL contains provided string
     Given user goes to URL "http://localhost:8001/test1.html"
     Then URL should contain "/test1.html"
+
+  Scenario: 'URL should contain' should verify that current URL contains provided string (Page Object style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    Then URL should contain "test2-page"."test1Path"
+
+  Scenario: 'URL should contain' should verify that current URL contains provided string (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    Then URL should contain test1Path from test2-page
