@@ -462,6 +462,36 @@ Then('URL should be {string}', async function (t, [url]) {
     await t.expect(getLocation()).eql(url);
 });
 
+Then('URL should be {string}.{string}', async function (t, [page, element]) {
+    const url = getElement(page, element);
+
+    await t.expect(getLocation()).eql(url);
+});
+
+Then('URL should be {word} from {word}( page)', async function (
+    t, [element, page]
+) {
+    const url = getElement(page, element);
+
+    await t.expect(getLocation()).eql(url);
+});
+
 Then('URL should contain {string}', async function (t, [url]) {
+    await t.expect(getLocation()).contains(url);
+});
+
+Then('URL should contain {string}.{string}', async function (
+    t, [page, element]
+) {
+    const url = getElement(page, element);
+
+    await t.expect(getLocation()).contains(url);
+});
+
+Then('URL should contain {word} from {word}( page)', async function (
+    t, [element, page]
+) {
+    const url = getElement(page, element);
+
     await t.expect(getLocation()).contains(url);
 });
