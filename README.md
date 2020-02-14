@@ -313,15 +313,23 @@ text (provided in **object2** from **page2**).
 element (provided in **object** from **page** as CSS selector) contains the text
 (provided in "" as a string).
 - `"..."."..." text should contain "..."."..."` - verify that text of the
-element (provided in "page1"."object1" as CSS selector) contains the text
-(provided in "page2"."object2").
+element (provided in **"page1"."object1"** as CSS selector) contains the text
+(provided in **"page2"."object2"**).
 - `... text from ... should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS selector) contains
 the text (provided in **object2** from **page2**).
 24. `URL should be "..."` - verify that URL of the current page equals to the text
 (provided in "" as a string).
+- `URL should be "..."."..."` - verify that URL of the current page equals to the text
+(provided in **"page"."object"**).
+- `URL should be ... from ...` - verify that URL of the current page equals to the text
+(provided in **object** from **page**).
 25. `URL should contain "..."` - verify that URL of the current page contains the
 text (provided in "" as a string).
+- `URL should contain "..."."..."` - verify that URL of the current page contains the
+text (provided in **"page"."object"**).
+- `URL should contain ... from ...` - verify that URL of the current page contains the
+text (provided in **object** from **page**).
 
 ## Bonus feature: use XPath selectors in TestCafe
 As you know TestCafe does not support XPath selectors out of the box. But now
