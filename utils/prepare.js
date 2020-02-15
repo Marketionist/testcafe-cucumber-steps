@@ -17,10 +17,11 @@ Feature: Running Cucumber with TestCafe - test feature example
   I should be able to see the Products page
   to learn more about Google
 
+
   Scenario: Google's Products page title should contain "Google"
-    Given I go to URL "https://www.google.com/"
-    When I click linkAbout from test-page-example page
-    And I click "test-page-example"."linkOurProducts"
+    Given user goes to URL "https://www.google.com/"
+    When user clicks linkAbout from test-page-example
+    And user clicks "test-page-example"."linkOurProducts"
     Then the title should contain "Google"`;
 const pathToPageObjectsExample = path.join(pathToPageObjectsDir,
     'test-page-example.js');
