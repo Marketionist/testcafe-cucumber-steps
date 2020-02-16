@@ -5,6 +5,16 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 2
   I should be able to use Cucumber
   to run my e2e tests
 
+  Scenario: 'I log in with login and password and click' should show credentials that were submitted for logging in
+    Given I go to "test2-page"."pageTest2"
+    When I log in with login "testUser" in "test2-page"."inputUsername" and password "1111" in "test2-page"."inputPassword" and click "test2-page"."buttonLogin"
+    Then blockCredentials text from test2-page should be "testUser1111"
+
+  Scenario: 'I log in with login and password and click' should show credentials that were submitted for logging in (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I log in with login "testUser" in inputUsername from test2-page and password "1111" in inputPassword from test2-page and click buttonLogin from test2-page
+    Then blockCredentials text from test2-page should be "testUser1111"
+
   Scenario: 'I move to' element should trigger its hovered state, 'text should contain' should verify the text
     When I go to URL "http://localhost:8001/test1.html"
     And I move to "test-page"."titleTest1"
