@@ -26,6 +26,11 @@ nodeTestingServer.config = {
         '/test2.html': `<title>Test2 Page</title>
             <script>
                 window.onload = function() {
+                    document.getElementById("login").addEventListener("click", function() {
+                        document.getElementById("block-credentials").innerHTML = document
+                            .getElementById("input-username").value + document
+                            .getElementById("input-password").value;
+                    });
                     document.getElementById("input-colors").addEventListener("input", function() {
                         document.getElementById("block-input-color").innerHTML = document
                             .getElementById("input-colors").value;
@@ -37,10 +42,17 @@ nodeTestingServer.config = {
                 }
             </script>
             <h1>Test2 page</h1>
+            <p>Credentials are: <span id="block-credentials"></span></p>
+            <form>
+                Sign in:<br>
+                <input id="input-username" type="text" name="input-username" placeholder="Username" value=""><br>
+                <input id="input-password" type="password" name="input-password" placeholder="Password" value=""><br>
+            </form>
+            <button id="login">Sign in</button>
             <p>Typed in input color is: <span id="block-input-color"></span></p>
             <form>
                 Colors:<br>
-                <input id="input-colors" type="text" name="firstname" value=""><br>
+                <input id="input-colors" type="text" value=""><br>
                 <input type="submit" value="Submit">
             </form>
             <p>Selected dropdown color is: <span id="block-dropdown-color"></span></p>
