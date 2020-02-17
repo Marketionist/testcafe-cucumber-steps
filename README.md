@@ -209,18 +209,32 @@ the current browser window/tab.
 from **page**) in the current browser window/tab.
 
 ### When steps
-3. `I/user log(s) in with login "..." in "..."."..." and password "..." in
+3. `I/user log(s) in with l: "..." in "..."."..." and p: "..." in
 "..."."..." and click(s) "..."."..."` - log in to any site with login (provided
 in "" as a string), login/username input (provided in **page1**.**object1** as
 CSS selector), password (provided in "" as a string), password input (provided
 in **page2**.**object2** as CSS selector), login button (provided in
 **page3**.**object3** as CSS selector).
-- `I/user log(s) in with login "..." in ... from ... and 'password "..." in ...
-from ... and click(s) ... from {word}` - log in to any site with login (provided
+- `I/user log(s) in with l: "..." in ... from ... and p: "..." in ...
+from ... and click(s) ... from ...` - log in to any site with login (provided
 in "" as a string), login/username input (provided in **object1** from **page1**
 as CSS selector), password (provided in "" as a string), password input
 (provided in **object2** from **page2** as CSS selector), login button (provided
 in **object3** from **page3** as CSS selector).
+- `I/user log(s) in with l: "..."."..." in "..."."..." and p: "..."."..." in
+"..."."..." and click(s) "..."."..."` - log in to any site with login (provided
+in **page1**.**object1** as CSS selector), login/username input (provided in
+**page2**.**object2** as CSS selector), password (provided in
+**page3**.**object3** as CSS selector), password input (provided in
+**page4**.**object4** as CSS selector), login button (provided in
+**page5**.**object5** as CSS selector).
+- `I/user log(s) in with l: ... from ... in ... from ... and p: ... from ... in
+... from ... and click(s) ... from ...` - log in to any site with login
+(provided in **object1** from **page1** as CSS selector), login/username
+input (provided in **object2** from **page2** as CSS selector), password
+(provided in **object3** from **page3** as CSS selector), password input
+(provided in **object4** from **page4** as CSS selector), login button
+(provided in **object5** from **page5** as CSS selector).
 4. `I reload the page` - reload current page.
 5. `I click "..."."..."` - click on any element (provided in **"page"."object"**
 as CSS selector).
