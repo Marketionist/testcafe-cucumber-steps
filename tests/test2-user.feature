@@ -5,14 +5,24 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   I should be able to use Cucumber
   to run my e2e tests
 
-  Scenario: 'user logs in with login and password and clicks' should show credentials that were submitted for logging in
+  Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in
     Given user goes to "test2-page"."pageTest2"
-    When user logs in with login "testUser" in "test2-page"."inputUsername" and password "1111" in "test2-page"."inputPassword" and clicks "test2-page"."buttonLogin"
+    When user logs in with l: "testUser" in "test2-page"."inputUsername" and p: "1111" in "test2-page"."inputPassword" and clicks "test2-page"."buttonLogin"
     Then blockCredentials text from test2-page should be "testUser1111"
 
-  Scenario: 'user logs in with login and password and clicks' should show credentials that were submitted for logging in (text style step)
+  Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in (text style step)
     Given user goes to "test2-page"."pageTest2"
-    When user logs in with login "testUser" in inputUsername from test2-page and password "1111" in inputPassword from test2-page and clicks buttonLogin from test2-page
+    When user logs in with l: "testUser" in inputUsername from test2-page and p: "1111" in inputPassword from test2-page and clicks buttonLogin from test2-page
+    Then blockCredentials text from test2-page should be "testUser1111"
+
+  Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in (Page Object style step)
+    Given user goes to "test2-page"."pageTest2"
+    When user logs in with l: "test2-page"."loginTest2" in "test2-page"."inputUsername" and p: "test2-page"."passwordTest2" in "test2-page"."inputPassword" and clicks "test2-page"."buttonLogin"
+    Then blockCredentials text from test2-page should be "testUser1111"
+
+  Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in (text style step)
+    Given user goes to "test2-page"."pageTest2"
+    When user logs in with l: loginTest2 from test2-page in inputUsername from test2-page and p: passwordTest2 from test2-page in inputPassword from test2-page and clicks buttonLogin from test2-page
     Then blockCredentials text from test2-page should be "testUser1111"
 
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text
