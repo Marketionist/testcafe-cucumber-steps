@@ -209,25 +209,51 @@ the current browser window/tab.
 from **page**) in the current browser window/tab.
 
 ### When steps
-3. `I reload the page` - reload current page.
-4. `I click "..."."..."` - click on any element (provided in **"page"."object"**
+3. `I/user log(s) in with l: "..." in "..."."..." and p: "..." in
+"..."."..." and click(s) "..."."..."` - log in to any site with login (provided
+in "" as a string), login/username input (provided in **page1**.**object1** as
+CSS selector), password (provided in "" as a string), password input (provided
+in **page2**.**object2** as CSS selector), login button (provided in
+**page3**.**object3** as CSS selector).
+- `I/user log(s) in with l: "..." in ... from ... and p: "..." in ...
+from ... and click(s) ... from ...` - log in to any site with login (provided
+in "" as a string), login/username input (provided in **object1** from **page1**
+as CSS selector), password (provided in "" as a string), password input
+(provided in **object2** from **page2** as CSS selector), login button (provided
+in **object3** from **page3** as CSS selector).
+- `I/user log(s) in with l: "..."."..." in "..."."..." and p: "..."."..." in
+"..."."..." and click(s) "..."."..."` - log in to any site with login (provided
+in **page1**.**object1** as CSS selector), login/username input (provided in
+**page2**.**object2** as CSS selector), password (provided in
+**page3**.**object3** as CSS selector), password input (provided in
+**page4**.**object4** as CSS selector), login button (provided in
+**page5**.**object5** as CSS selector).
+- `I/user log(s) in with l: ... from ... in ... from ... and p: ... from ... in
+... from ... and click(s) ... from ...` - log in to any site with login
+(provided in **object1** from **page1** as CSS selector), login/username
+input (provided in **object2** from **page2** as CSS selector), password
+(provided in **object3** from **page3** as CSS selector), password input
+(provided in **object4** from **page4** as CSS selector), login button
+(provided in **object5** from **page5** as CSS selector).
+4. `I reload the page` - reload current page.
+5. `I click "..."."..."` - click on any element (provided in **"page"."object"**
 as CSS selector).
 - `I click ... from ...` - click on any element (provided in **object**
 from **page** as CSS selector).
-5. `I wait for ... ms` wait for provided amount of time (in milliseconds).
-6. `I wait and click "..."."..."` - wait for 300 ms and then click on any element
+6. `I wait for ... ms` wait for provided amount of time (in milliseconds).
+7. `I wait and click "..."."..."` - wait for 300 ms and then click on any element
 (provided in **"page"."object"** as CSS selector).
 - `I wait and click ... from ...` - wait for 300 ms and then click on any
 element (provided in **object** from **page** as CSS selector).
-7. `I click "..."."..." if present` - click on any element (provided in
+8. `I click "..."."..." if present` - click on any element (provided in
 **"page"."object"** as CSS selector) only if it is present on the page.
 - `I click ... from ... if present` - click on any element (provided in
 **object** from **page** as CSS selector) only if it is present on the page.
-8. `I double click "..."."..."` - double click on any element (provided in
+9. `I double click "..."."..."` - double click on any element (provided in
 **"page"."object"** as CSS selector).
 - `I double click ... from ...` - double click on any element (provided in
 **object** from **page** as CSS selector).
-9. `I type "..." in "..."."..."` - type any text (provided in "" as a string) in
+10. `I type "..." in "..."."..."` - type any text (provided in "" as a string) in
 the input field (provided in **"page"."object"** as CSS selector).
 - `I type "..." in ... from ...` - type any text (provided in "" as a
 string) in the input field (provided in **object** from **page** as CSS
@@ -238,7 +264,7 @@ CSS selector).
 - `I type ... from ... in ... from ...` - type any text (provided in
 **object1** from **page1**) in the input field (provided in **object2** from
 **page2** as CSS selector).
-10. `I clear "..."."..." and type "..."` - overwrite any text (provided in "" as a
+11. `I clear "..."."..." and type "..."` - overwrite any text (provided in "" as a
 string) in the input field (provided in **"page"."object"** as CSS selector).
 - `I clear ... from ... and type "..."` - overwrite any text (provided in
 "" as a string) in the input field (provided in **object** from **page** as CSS
@@ -249,7 +275,7 @@ CSS selector).
 - `I clear ... from ... and type ... from ...` - overwrite any text
 (provided in **object1** from **page1**) in the input field (provided in
 **object2** from **page2** as CSS selector).
-11. `I select "..." in "..."."..."` - select any option (provided in "" as a
+12. `I select "..." in "..."."..."` - select any option (provided in "" as a
 string) in the dropdown (provided in **"page"."object"** as CSS selector).
 - `I select "..." in ... from ...` - select any option (provided in "" as a
 string) in the dropdown (provided in **object** from **page** as CSS selector).
@@ -259,42 +285,42 @@ selector).
 - `I select ... from ... in ... from ...` - select any option
 (provided in **object1** from **page1**) in the dropdown (provided in
 **object2** from **page2** as CSS selector).
-12. `I move to "..."."..."` - move the mouse pointer over any element (hover with
+13. `I move to "..."."..."` - move the mouse pointer over any element (hover with
 cursor an element provided in **"page"."object"** as CSS selector).
 - `I move to ... from ...` - move the mouse pointer over any element (hover
 with cursor an element provided in **object** from **page** as CSS selector).
-13. `I move to "..."."..." with an offset of x: ...px, y: ...px` - move the mouse
+14. `I move to "..."."..." with an offset of x: ...px, y: ...px` - move the mouse
 pointer over any element (hover with cursor an element provided in
 **"page"."object"** as CSS selector) with an offset of x: ...px, y: ...px.
 - `I move to ... from ... with an offset of x: ...px, y: ...px` - move the
 mouse pointer over any element (hover with cursor an element provided in
 **object** from **page** as CSS selector) with an offset of x: ...px, y: ...px.
-14. `I switch to "..."."..." frame` - switch the context to iframe (provided in
+15. `I switch to "..."."..." frame` - switch the context to iframe (provided in
 **"page"."object"** as CSS selector).
 - `I switch to ... frame from ...` - switch the context to iframe (provided
 in **object** from **page** as CSS selector).
-15. `I switch to main frame` - switch the context back to default (initial) frame.
-16. `I execute "..."."..." function` - execute script (JavaScript function)
+16. `I switch to main frame` - switch the context back to default (initial) frame.
+17. `I execute "..."."..." function` - execute script (JavaScript function)
 provided in **"page"."object"**.
 - `I execute ... function from ...` - execute script (JavaScript function)
 provided in **object** from **page**.
-17. `I accept further browser alerts` - accept (OK) all further browser alerts
+18. `I accept further browser alerts` - accept (OK) all further browser alerts
 (after this step).
-18. `I dismiss further browser alerts` - dismiss (Cancel) all further browser
+19. `I dismiss further browser alerts` - dismiss (Cancel) all further browser
 alert (after this step).
 
 ### Then steps
-19. `the title should be "..."` - verify that title of the current browser
+20. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-20. `"..."."..." should be present` - verify that element (provided in
+21. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS selector) is present on the page.
-21. `"..."."..." should not be present` - verify that element (provided in
+22. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS selector) is not present on the page.
-22. `"..."."..." text should be "..."` - verify that text of the element (provided
+23. `"..."."..." text should be "..."` - verify that text of the element (provided
 in **"page"."object"** as CSS selector) equals to the text (provided in "" as a
 string).
 - `... text from ... should be "..."` - verify that text of the element
@@ -306,7 +332,7 @@ in **"page2"."object2"**).
 - `... text from ... should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS selector) equals to the
 text (provided in **object2** from **page2**).
-23. `"..."."..." text should contain "..."` - verify that text of the element
+24. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) contains the text (provided in
 "" as a string).
 - `... text from ... should contain "..."` - verify that text of the
@@ -318,13 +344,13 @@ element (provided in **"page1"."object1"** as CSS selector) contains the text
 - `... text from ... should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS selector) contains
 the text (provided in **object2** from **page2**).
-24. `URL should be "..."` - verify that URL of the current page equals to the text
+25. `URL should be "..."` - verify that URL of the current page equals to the text
 (provided in "" as a string).
 - `URL should be "..."."..."` - verify that URL of the current page equals to the text
 (provided in **"page"."object"**).
 - `URL should be ... from ...` - verify that URL of the current page equals to the text
 (provided in **object** from **page**).
-25. `URL should contain "..."` - verify that URL of the current page contains the
+26. `URL should contain "..."` - verify that URL of the current page contains the
 text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page contains the
 text (provided in **"page"."object"**).

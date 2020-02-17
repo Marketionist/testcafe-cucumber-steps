@@ -5,6 +5,26 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 2
   I should be able to use Cucumber
   to run my e2e tests
 
+  Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: "testUser" in "test2-page"."inputUsername" and p: "1111" in "test2-page"."inputPassword" and click "test2-page"."buttonLogin"
+    Then blockCredentials text from test2-page should be "testUser1111"
+
+  Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: "testUser" in inputUsername from test2-page and p: "1111" in inputPassword from test2-page and click buttonLogin from test2-page
+    Then blockCredentials text from test2-page should be "testUser1111"
+
+  Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in (Page Object style step)
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: "test2-page"."loginTest2" in "test2-page"."inputUsername" and p: "test2-page"."passwordTest2" in "test2-page"."inputPassword" and click "test2-page"."buttonLogin"
+    Then blockCredentials text from test2-page should be "testUser1111"
+
+  Scenario: 'I log in with l: and p: and click' should show credentials that were submitted for logging in (text style step)
+    Given I go to "test2-page"."pageTest2"
+    When I log in with l: loginTest2 from test2-page in inputUsername from test2-page and p: passwordTest2 from test2-page in inputPassword from test2-page and click buttonLogin from test2-page
+    Then blockCredentials text from test2-page should be "testUser1111"
+
   Scenario: 'I move to' element should trigger its hovered state, 'text should contain' should verify the text
     When I go to URL "http://localhost:8001/test1.html"
     And I move to "test-page"."titleTest1"

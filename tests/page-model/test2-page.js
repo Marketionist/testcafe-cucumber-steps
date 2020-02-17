@@ -13,6 +13,12 @@ let test2Page = {
     blockInputColor: '#block-input-color',
     test1URL: 'http://localhost:8001/test1.html',
     test1Path: '/test1.html',
+    loginTest2: 'testUser',
+    passwordTest2: '1111',
+    inputUsername: '#input-username',
+    inputPassword: '#input-password',
+    buttonLogin: '#login',
+    blockCredentials: '#block-credentials',
     updateText: function () {
         document.getElementById('text-test').innerHTML = 'Text to test ' +
             'script execution';

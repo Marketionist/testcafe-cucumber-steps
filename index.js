@@ -62,6 +62,76 @@ Given('I/user go(es) to {word} from {word}( page)', async function (t, [element,
 
 // #### When steps #############################################################
 
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {string} in {string}.{string} and ' +
+    'p: {string} in {string}.{string} and click(s) {string}.{string}',
+    async function (
+        t, [login, page1, element1, password, page2, element2, page3, element3]
+    ) {
+        const inputLogin = getElement(page1, element1);
+        const inputPassword = getElement(page2, element2);
+        const buttonLogin = getElement(page3, element3);
+
+        await t.typeText(inputLogin, login)
+            .typeText(inputPassword, password).click(buttonLogin);
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {string} in {word} from {word}( page) and ' +
+    'p: {string} in {word} from {word}( page) and click(s) ' +
+    '{word} from {word}( page)',
+    async function (
+        t, [login, element1, page1, password, element2, page2, element3, page3]
+    ) {
+        const inputLogin = getElement(page1, element1);
+        const inputPassword = getElement(page2, element2);
+        const buttonLogin = getElement(page3, element3);
+
+        await t.typeText(inputLogin, login)
+            .typeText(inputPassword, password).click(buttonLogin);
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {string}.{string} in {string}.{string} and ' +
+    'p: {string}.{string} in {string}.{string} and click(s) {string}.{string}',
+    async function (
+        t, [page1, element1, page2, element2, page3, element3, page4, element4, page5, element5]
+    ) {
+        const login = getElement(page1, element1);
+        const inputLogin = getElement(page2, element2);
+        const password = getElement(page3, element3);
+        const inputPassword = getElement(page4, element4);
+        const buttonLogin = getElement(page5, element5);
+
+        await t.typeText(inputLogin, login)
+            .typeText(inputPassword, password).click(buttonLogin);
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {word} from {word}( page) in {word} from {word}( page) and ' +
+    'p: {word} from {word}( page) in {word} from {word}( page) and click(s) ' +
+    '{word} from {word}( page)',
+    async function (
+        t, [element1, page1, element2, page2, element3, page3, element4, page4, element5, page5]
+    ) {
+        const login = getElement(page1, element1);
+        const inputLogin = getElement(page2, element2);
+        const password = getElement(page3, element3);
+        const inputPassword = getElement(page4, element4);
+        const buttonLogin = getElement(page5, element5);
+
+        await t.typeText(inputLogin, login)
+            .typeText(inputPassword, password).click(buttonLogin);
+    }
+);
+
 When('I/user reload(s) the page', async function (t) {
     await t.eval(() => location.reload(true));
 });
@@ -72,11 +142,14 @@ When('I/user click(s) {string}.{string}', async function (t, [page, element]) {
     await t.click(elem);
 });
 
-When('I/user click(s) {word} from {word}( page)', async function (t, [element, page]) {
-    const elem = getElement(page, element);
+When(
+    'I/user click(s) {word} from {word}( page)',
+    async function (t, [element, page]) {
+        const elem = getElement(page, element);
 
-    await t.click(elem);
-});
+        await t.click(elem);
+    }
+);
 
 When('I/user wait(s) for {int} ms', async function (t, [timeToWait]) {
     await t.wait(timeToWait);
@@ -164,13 +237,14 @@ When('I/user type(s) {string}.{string} in {string}.{string}', async function (
     await t.typeText(elem, pageObjects[page1][element1]);
 });
 
-When('I/user type(s) {word} from {word}( page) in {word} from {word}( page)', async function (
-    t, [element1, page1, element2, page2]
-) {
-    const elem = getElement(page2, element2);
+When(
+    'I/user type(s) {word} from {word}( page) in {word} from {word}( page)',
+    async function (t, [element1, page1, element2, page2]) {
+        const elem = getElement(page2, element2);
 
-    await t.typeText(elem, pageObjects[page1][element1]);
-});
+        await t.typeText(elem, pageObjects[page1][element1]);
+    }
+);
 
 When('I/user clear(s) {string}.{string} and type(s) {string}', async function (
     t, [page, element, text]
@@ -180,37 +254,40 @@ When('I/user clear(s) {string}.{string} and type(s) {string}', async function (
     await t.typeText(elem, text, { replace: true });
 });
 
-When('I/user clear(s) {word} from {word}( page) and type(s) {string}', async function (
-    t, [element, page, text]
-) {
-    const elem = getElement(page, element);
+When(
+    'I/user clear(s) {word} from {word}( page) and type(s) {string}',
+    async function (t, [element, page, text]) {
+        const elem = getElement(page, element);
 
-    await t.typeText(elem, text, { replace: true });
-});
+        await t.typeText(elem, text, { replace: true });
+    }
+);
 
-When('I/user clear(s) {string}.{string} and type(s) {string}.{string}', async function (
-    t, [page1, element1, page2, element2]
-) {
-    const elem = getElement(page1, element1);
+When(
+    'I/user clear(s) {string}.{string} and type(s) {string}.{string}',
+    async function (t, [page1, element1, page2, element2]) {
+        const elem = getElement(page1, element1);
 
-    await t.typeText(
-        elem,
-        pageObjects[page2][element2],
-        { replace: true }
-    );
-});
+        await t.typeText(
+            elem,
+            pageObjects[page2][element2],
+            { replace: true }
+        );
+    }
+);
 
-When('I/user clear(s) {word} from {word}( page) and type(s) {word} from {word}( page)', async function (
-    t, [element1, page1, element2, page2]
-) {
-    const elem = getElement(page1, element1);
+When(
+    'I/user clear(s) {word} from {word}( page) and type(s) {word} from {word}( page)',
+    async function (t, [element1, page1, element2, page2]) {
+        const elem = getElement(page1, element1);
 
-    await t.typeText(
-        elem,
-        pageObjects[page2][element2],
-        { replace: true }
-    );
-});
+        await t.typeText(
+            elem,
+            pageObjects[page2][element2],
+            { replace: true }
+        );
+    }
+);
 
 When('I/user select(s) {string} in {string}.{string}', async function (
     t, [text, page, element]
@@ -243,28 +320,35 @@ When('I/user select(s) {string}.{string} in {string}.{string}', async function (
         .click(option.withText(pageObjects[page1][element1]));
 });
 
-When('I/user select(s) {word} from {word}( page) in {word} from {word}( page)', async function (
-    t, [element1, page1, element2, page2]
-) {
-    const elem = getElement(page2, element2);
-    const dropdown = Selector(elem);
-    const option = dropdown.find('option');
+When(
+    'I/user select(s) {word} from {word}( page) in {word} from {word}( page)',
+    async function (t, [element1, page1, element2, page2]) {
+        const elem = getElement(page2, element2);
+        const dropdown = Selector(elem);
+        const option = dropdown.find('option');
 
-    await t.click(dropdown)
-        .click(option.withText(pageObjects[page1][element1]));
-});
+        await t.click(dropdown)
+            .click(option.withText(pageObjects[page1][element1]));
+    }
+);
 
-When('I/user move(s) to {string}.{string}', async function (t, [page, element]) {
-    const elem = getElement(page, element);
+When(
+    'I/user move(s) to {string}.{string}',
+    async function (t, [page, element]) {
+        const elem = getElement(page, element);
 
-    await t.hover(elem);
-});
+        await t.hover(elem);
+    }
+);
 
-When('I/user move(s) to {word} from {word}( page)', async function (t, [element, page]) {
-    const elem = getElement(page, element);
+When(
+    'I/user move(s) to {word} from {word}( page)',
+    async function (t, [element, page]) {
+        const elem = getElement(page, element);
 
-    await t.hover(elem);
-});
+        await t.hover(elem);
+    }
+);
 
 When(
     'I/user move(s) to {string}.{string} with an offset of x: {int}px, y: {int}px',
