@@ -64,8 +64,8 @@ Given('I/user go(es) to {word} from {word}( page)', async function (t, [element,
 
 When(
     // eslint-disable-next-line cucumber/expression-type
-    'I/user log(s) in with login {string} in {string}.{string} and ' +
-    'password {string} in {string}.{string} and click(s) {string}.{string}',
+    'I/user log(s) in with l: {string} in {string}.{string} and ' +
+    'p: {string} in {string}.{string} and click(s) {string}.{string}',
     async function (
         t, [login, page1, element1, password, page2, element2, page3, element3]
     ) {
@@ -80,8 +80,8 @@ When(
 
 When(
     // eslint-disable-next-line cucumber/expression-type
-    'I/user log(s) in with login {string} in {word} from {word}( page) and ' +
-    'password {string} in {word} from {word}( page) and click(s) ' +
+    'I/user log(s) in with l: {string} in {word} from {word}( page) and ' +
+    'p: {string} in {word} from {word}( page) and click(s) ' +
     '{word} from {word}( page)',
     async function (
         t, [login, element1, page1, password, element2, page2, element3, page3]
@@ -89,6 +89,43 @@ When(
         const inputLogin = getElement(page1, element1);
         const inputPassword = getElement(page2, element2);
         const buttonLogin = getElement(page3, element3);
+
+        await t.typeText(inputLogin, login)
+            .typeText(inputPassword, password).click(buttonLogin);
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {string}.{string} in {string}.{string} and ' +
+    'p: {string}.{string} in {string}.{string} and click(s) {string}.{string}',
+    async function (
+        t, [page1, element1, page2, element2, page3, element3, page4, element4, page5, element5]
+    ) {
+        const login = getElement(page1, element1);
+        const inputLogin = getElement(page2, element2);
+        const password = getElement(page3, element3);
+        const inputPassword = getElement(page4, element4);
+        const buttonLogin = getElement(page5, element5);
+
+        await t.typeText(inputLogin, login)
+            .typeText(inputPassword, password).click(buttonLogin);
+    }
+);
+
+When(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user log(s) in with l: {word} from {word}( page) in {word} from {word}( page) and ' +
+    'p: {word} from {word}( page) in {word} from {word}( page) and click(s) ' +
+    '{word} from {word}( page)',
+    async function (
+        t, [element1, page1, element2, page2, element3, page3, element4, page4, element5, page5]
+    ) {
+        const login = getElement(page1, element1);
+        const inputLogin = getElement(page2, element2);
+        const password = getElement(page3, element3);
+        const inputPassword = getElement(page4, element4);
+        const buttonLogin = getElement(page5, element5);
 
         await t.typeText(inputLogin, login)
             .typeText(inputPassword, password).click(buttonLogin);
