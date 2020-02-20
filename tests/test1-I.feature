@@ -1,4 +1,4 @@
-@Fast
+@long @i-steps
 
 Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
   As a user of TestCafe

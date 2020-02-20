@@ -1,4 +1,4 @@
-@Fast
+@fast @user-steps
 
 Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   As a user of TestCafe
