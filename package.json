@@ -9,7 +9,7 @@
   "scripts": {
     "install-all": "npm install && npm install cucumber testcafe gherkin-testcafe --no-save",
     "lint": "node_modules/.bin/eslint *.js utils/*.js tests/**/*.feature",
-    "test": "PO_FOLDER_PATH='tests/page-model' node_modules/.bin/gherkin-testcafe --concurrency 4 'chrome:headless' *.js tests/**/*.feature --tags @Fast,@Long --app 'node tests/testing-server.js'",
+    "test": "PO_FOLDER_PATH='tests/page-model' node_modules/.bin/gherkin-testcafe --concurrency 4 'chrome:headless' *.js tests/**/*.feature --tags @fast,@long --app 'node tests/testing-server.js'",
     "patch": "npm version patch -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
     "minor": "npm version minor -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
     "major": "npm version major -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish"
