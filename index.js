@@ -422,6 +422,10 @@ When('I/user dismiss(es) further browser alerts', async function (t) {
     await t.setNativeDialogHandler(() => false);
 });
 
+When('I/user debug(s)', async function (t) {
+    await t.debug();
+});
+
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {

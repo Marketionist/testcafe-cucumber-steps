@@ -10,7 +10,7 @@ const writeFile = util.promisify(fs.writeFile);
 const pathToTestsDir = path.join(__dirname, '../../../tests');
 const pathToPageObjectsDir = path.join(pathToTestsDir, '/page-model');
 const pathToTestExample = path.join(pathToTestsDir, 'test-example.feature');
-const testExampleContent = `@Fast
+const testExampleContent = `@fast @example-tests
 
 Feature: Running Cucumber with TestCafe - test feature example
   As a user of Google

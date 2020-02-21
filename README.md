@@ -313,19 +313,21 @@ function) provided in **object** from **page**.
 alerts (after this step).
 19. `I/user dismiss(es) further browser alerts` - dismiss (Cancel) all further
 browser alert (after this step).
+20. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
+debugging
 
 ### Then steps
-20. `the title should be "..."` - verify that title of the current browser
+21. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-21. `"..."."..." should be present` - verify that element (provided in
+22. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS selector) is present on the page.
-22. `"..."."..." should not be present` - verify that element (provided in
+23. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS selector) is not present on the page.
-23. `"..."."..." text should be "..."` - verify that text of the element
+24. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) equals to the text (provided
 in "" as a string).
 - `... text from ... should be "..."` - verify that text of the element
@@ -337,7 +339,7 @@ in **"page2"."object2"**).
 - `... text from ... should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS selector) equals to the
 text (provided in **object2** from **page2**).
-24. `"..."."..." text should contain "..."` - verify that text of the element
+25. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) contains the text (provided in
 "" as a string).
 - `... text from ... should contain "..."` - verify that text of the
@@ -349,13 +351,13 @@ element (provided in **"page1"."object1"** as CSS selector) contains the text
 - `... text from ... should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS selector) contains
 the text (provided in **object2** from **page2**).
-25. `URL should be "..."` - verify that URL of the current page equals to the
+26. `URL should be "..."` - verify that URL of the current page equals to the
 text (provided in "" as a string).
 - `URL should be "..."."..."` - verify that URL of the current page equals to
 the text (provided in **"page"."object"**).
 - `URL should be ... from ...` - verify that URL of the current page equals to
 the text (provided in **object** from **page**).
-26. `URL should contain "..."` - verify that URL of the current page contains
+27. `URL should contain "..."` - verify that URL of the current page contains
 the text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page
 contains the text (provided in **"page"."object"**).
