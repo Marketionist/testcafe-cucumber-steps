@@ -107,3 +107,7 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   Scenario: 'URL should contain' should verify that current URL contains provided string (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
     Then URL should contain test1Path from test2-page
+
+  Scenario: 'attribute should contain' should verify that the attribute of the element contains provided string
+    Given user goes to "test2-page"."pageTest2"
+    Then "test2-page"."inputPassword" attribute "type" should contain "password"

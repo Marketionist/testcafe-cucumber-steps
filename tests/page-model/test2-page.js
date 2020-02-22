@@ -16,7 +16,7 @@ let test2Page = {
     loginTest2: 'testUser',
     passwordTest2: '1111',
     inputUsername: '#input-username',
-    inputPassword: '#input-password',
+    inputPassword: '//*[@id="input-password"]',
     buttonLogin: '#login',
     blockCredentials: '#block-credentials',
     updateText: function () {
