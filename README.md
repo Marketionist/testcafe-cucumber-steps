@@ -363,6 +363,12 @@ the text (provided in "" as a string).
 contains the text (provided in **"page"."object"**).
 - `URL should contain ... from ...` - verify that URL of the current page
 contains the text (provided in **object** from **page**).
+28. `"..."."..." attribute "..." should contain "..."` - verify that the
+attribute (provided in "" as a string) of the element (provided in
+**"page"."object"**) contains provided string (provided in "" as a string).
+- `... from ... attribute "..." should contain "..."` - verify that the
+attribute (provided in "" as a string) of the element (provided in
+**"page"."object"**) contains provided string (provided in "" as a string).
 
 ## Bonus feature: use XPath selectors in TestCafe
 As you know TestCafe does not support XPath selectors out of the box. But now
