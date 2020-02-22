@@ -583,3 +583,18 @@ Then('URL should contain {word} from {word}( page)', async function (
 
     await t.expect(getLocation()).contains(url);
 });
+
+Then('{string}.{string} attribute {string} should contain {string}',
+    async function (t, [page, element, attribute, attributeValue]) {
+        const locator = pageObjects[page][element];
+        let elem;
+
+        if (locator[0] + locator[1] === '//') {
+            elem = SelectorXPath(`${locator.slice(0, -1)} and contains(@${attribute}, "${attributeValue}")]`);
+        } else {
+            elem = `${locator}[${attribute}*="${attributeValue}"]`;
+        }
+
+        await t.expect(Selector(elem).exists).ok();
+    }
+);
