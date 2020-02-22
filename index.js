@@ -484,7 +484,7 @@ Then('{string}.{string} text should be {string}', async function (
     await t.expect(Selector(elem).innerText).eql(text);
 });
 
-Then('{word} text from {word}( page) should be {string}', async function (
+Then('{word} from {word}( page) text should be {string}', async function (
     t, [element, page, text]
 ) {
     const elem = getElement(page, element);
@@ -502,7 +502,7 @@ Then('{string}.{string} text should be {string}.{string}', async function (
 });
 
 Then(
-    '{word} text from {word}( page) should be {word} from {word}( page)',
+    '{word} from {word}( page) text should be {word} from {word}( page)',
     async function (t, [element1, page1, element2, page2]) {
         const elem = getElement(page1, element1);
 
@@ -519,7 +519,7 @@ Then('{string}.{string} text should contain {string}', async function (
     await t.expect(Selector(elem).innerText).contains(text);
 });
 
-Then('{word} text from {word}( page) should contain {string}', async function (
+Then('{word} from {word}( page) text should contain {string}', async function (
     t, [element, page, text]
 ) {
     const elem = getElement(page, element);
@@ -537,7 +537,7 @@ Then('{string}.{string} text should contain {string}.{string}', async function (
 });
 
 Then(
-    '{word} text from {word}( page) should contain {word} from {word}( page)',
+    '{word} from {word}( page) text should contain {word} from {word}( page)',
     async function (t, [element1, page1, element2, page2]) {
         const elem = getElement(page1, element1);
 
