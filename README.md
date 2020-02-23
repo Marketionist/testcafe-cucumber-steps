@@ -330,25 +330,25 @@ window/tab equals to the text (provided in "" as a string).
 24. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) equals to the text (provided
 in "" as a string).
-- `... text from ... should be "..."` - verify that text of the element
+- `... from ... text should be "..."` - verify that text of the element
 (provided in **object** from **page** as CSS selector) equals to the text
 (provided in "" as a string).
 - `"..."."..." text should be "..."."..."` - verify that text of the element
 (provided in **"page1"."object1"** as CSS selector) equals to the text (provided
 in **"page2"."object2"**).
-- `... text from ... should be ... from ...` - verify that text of the
+- `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS selector) equals to the
 text (provided in **object2** from **page2**).
 25. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) contains the text (provided in
 "" as a string).
-- `... text from ... should contain "..."` - verify that text of the
+- `... from ... text should contain "..."` - verify that text of the
 element (provided in **object** from **page** as CSS selector) contains the text
 (provided in "" as a string).
 - `"..."."..." text should contain "..."."..."` - verify that text of the
 element (provided in **"page1"."object1"** as CSS selector) contains the text
 (provided in **"page2"."object2"**).
-- `... text from ... should contain ... from ...` - verify that text
+- `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS selector) contains
 the text (provided in **object2** from **page2**).
 26. `URL should be "..."` - verify that URL of the current page equals to the
