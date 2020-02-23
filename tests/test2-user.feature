@@ -8,22 +8,22 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in
     Given user goes to "test2-page"."pageTest2"
     When user logs in with l: "testUser" in "test2-page"."inputUsername" and p: "1111" in "test2-page"."inputPassword" and clicks "test2-page"."buttonLogin"
-    Then blockCredentials text from test2-page should be "testUser1111"
+    Then blockCredentials from test2-page text should be "testUser1111"
 
   Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in (text style step)
     Given user goes to "test2-page"."pageTest2"
     When user logs in with l: "testUser" in inputUsername from test2-page and p: "1111" in inputPassword from test2-page and clicks buttonLogin from test2-page
-    Then blockCredentials text from test2-page should be "testUser1111"
+    Then blockCredentials from test2-page text should be "testUser1111"
 
   Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in (Page Object style step)
     Given user goes to "test2-page"."pageTest2"
     When user logs in with l: "test2-page"."loginTest2" in "test2-page"."inputUsername" and p: "test2-page"."passwordTest2" in "test2-page"."inputPassword" and clicks "test2-page"."buttonLogin"
-    Then blockCredentials text from test2-page should be "testUser1111"
+    Then blockCredentials from test2-page text should be "testUser1111"
 
   Scenario: 'user logs in with l: and p: and clicks' should show credentials that were submitted for logging in (text style step)
     Given user goes to "test2-page"."pageTest2"
     When user logs in with l: loginTest2 from test2-page in inputUsername from test2-page and p: passwordTest2 from test2-page in inputPassword from test2-page and clicks buttonLogin from test2-page
-    Then blockCredentials text from test2-page should be "testUser1111"
+    Then blockCredentials from test2-page text should be "testUser1111"
 
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text
     When user goes to URL "http://localhost:8001/test1.html"
@@ -33,7 +33,7 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text (text style step)
     When user goes to URL "http://localhost:8001/test1.html"
     And user moves to titleTest1 from test-page
-    Then blockTextTest text from test-page should contain txtTest1 from test-page
+    Then blockTextTest from test-page text should contain txtTest1 from test-page
 
   Scenario: 'user moves to with an offset' should trigger element's hovered state
     When user goes to URL "http://localhost:8001/test1.html"
