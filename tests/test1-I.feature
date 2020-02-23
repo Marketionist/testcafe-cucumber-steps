@@ -110,7 +110,7 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
     When I go to "test2-page"."pageTest2"
     And I type "Green" in inputColors from test2-page page
     And I wait and click "test2-page"."inputColors"
-    Then blockInputColor text from test2-page page should be "Green"
+    Then blockInputColor from test2-page page text should be "Green"
 
   Scenario: 'I type' "Gold" (page object) text inside input should get this text typed in, 'text should be' should verify the text
     When I go to "test2-page"."pageTest2"
@@ -122,7 +122,7 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
     When I go to "test2-page"."pageTest2"
     And I type textGold from test2-page page in inputColors from test2-page page
     And I wait and click "test2-page"."inputColors"
-    Then blockInputColor text from test2-page page should be textGold from test2-page page
+    Then blockInputColor from test2-page page text should be textGold from test2-page page
 
   Scenario: 'I clear and type' "Green" (string) text inside input should overwrite the text
     Given I go to "test2-page"."pageTest2"
@@ -134,7 +134,7 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
     Given I go to "test2-page"."pageTest2"
     And I type "Yellow" in inputColors from test2-page page
     When I clear inputColors from test2-page page and type "Green"
-    Then blockInputColor text from test2-page page should be "Green"
+    Then blockInputColor from test2-page page text should be "Green"
 
   Scenario: 'I clear and type' "Gold" (page object) text inside input should overwrite the text
     Given I go to "test2-page"."pageTest2"
@@ -146,7 +146,7 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
     Given I go to "test2-page"."pageTest2"
     And I type textIndigo from test2-page page in inputColors from test2-page page
     When I clear inputColors from test2-page page and type textGold from test2-page page
-    Then blockInputColor text from test2-page page should be textGold from test2-page page
+    Then blockInputColor from test2-page page text should be textGold from test2-page page
 
   Scenario: 'I select' "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text
     Given I go to "test2-page"."pageTest2"
@@ -156,7 +156,7 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
   Scenario: 'I select' "Green" (string) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
     Given I go to "test2-page"."pageTest2"
     When I select "Green" in dropdownColors from test2-page page
-    Then blockDropdownColor text from test2-page page should be "green"
+    Then blockDropdownColor from test2-page page text should be "green"
 
   Scenario: 'I select' "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text
     Given I go to "test2-page"."pageTest2"
@@ -166,4 +166,4 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
   Scenario: 'I select' "Gold" (page object) option text inside select dropdown should get this option selected, 'text should be' should verify the text (text style step)
     Given I go to "test2-page"."pageTest2"
     When I select textGold from test2-page page in dropdownColors from test2-page page
-    Then blockDropdownColor text from test2-page page should be textGold from test2-page page
+    Then blockDropdownColor from test2-page page text should be textGold from test2-page page
