@@ -1,4 +1,4 @@
-@fast @user-steps
+@fast @user-steps @test
 
 Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   As a user of TestCafe
@@ -83,6 +83,13 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     When user dismisses further browser alerts
     And user clicks "alert-page"."buttonLaunchAlert"
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
+
+  Scenario: 'user presses' should press the specified keyboard keys
+    Given user goes to URL "http://localhost:8001/test2.html"
+    And user types "Text is 12" in "test2-page"."inputColors"
+    And user clicks "test2-page"."inputColors"
+    When user presses "home right right right right delete delete delete"
+    Then "test2-page"."blockInputColor" text should be "Text 12"
 
   Scenario: 'URL should be' should verify that current URL equals provided string
     Given user goes to URL "http://localhost:8001/test1.html"

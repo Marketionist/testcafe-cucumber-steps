@@ -132,18 +132,18 @@ Additionally, you can specify:
 
 - tags to run:
     ```
-    node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @Fast
+    node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @fast
     ```
 
     When using more than one tag, the list needs to be comma separated:
     ```
-    node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @Fast,@Long
+    node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @fast,@long
     ```
 
     Negation of a tag (via `~`) is also possible (to run all scenarios that have
-    tag `Fast`, but not `Long`):
+    tag `fast`, but not `long`):
     ```
-    node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @Fast,~@Long
+    node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @fast,~@long
     ```
 
 - custom parameter types:
@@ -313,21 +313,23 @@ function) provided in **object** from **page**.
 alerts (after this step).
 19. `I/user dismiss(es) further browser alerts` - dismiss (Cancel) all further
 browser alert (after this step).
-20. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
-debugging
+20. `I/user press(es) "..."` - press the specified keyboard keys (provided in ""
+as a string - [list of supported keys and key combinations](https://devexpress.github.io/testcafe/documentation/test-api/actions/press-key.html#browser-processing-emulation)).
+21. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
+debugging.
 
 ### Then steps
-21. `the title should be "..."` - verify that title of the current browser
+22. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-22. `"..."."..." should be present` - verify that element (provided in
+23. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS selector) is present on the page.
-23. `"..."."..." should not be present` - verify that element (provided in
+24. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS selector) is not present on the page.
-24. `"..."."..." text should be "..."` - verify that text of the element
+25. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) equals to the text (provided
 in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -339,7 +341,7 @@ in **"page2"."object2"**).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS selector) equals to the
 text (provided in **object2** from **page2**).
-25. `"..."."..." text should contain "..."` - verify that text of the element
+26. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS selector) contains the text (provided in
 "" as a string).
 - `... from ... text should contain "..."` - verify that text of the
@@ -351,19 +353,19 @@ element (provided in **"page1"."object1"** as CSS selector) contains the text
 - `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS selector) contains
 the text (provided in **object2** from **page2**).
-26. `URL should be "..."` - verify that URL of the current page equals to the
+27. `URL should be "..."` - verify that URL of the current page equals to the
 text (provided in "" as a string).
 - `URL should be "..."."..."` - verify that URL of the current page equals to
 the text (provided in **"page"."object"**).
 - `URL should be ... from ...` - verify that URL of the current page equals to
 the text (provided in **object** from **page**).
-27. `URL should contain "..."` - verify that URL of the current page contains
+28. `URL should contain "..."` - verify that URL of the current page contains
 the text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page
 contains the text (provided in **"page"."object"**).
 - `URL should contain ... from ...` - verify that URL of the current page
 contains the text (provided in **object** from **page**).
-28. `"..."."..." attribute "..." should contain "..."` - verify that the
+29. `"..."."..." attribute "..." should contain "..."` - verify that the
 attribute (provided in "" as a string) of the element (provided in
 **"page"."object"**) contains provided string (provided in "" as a string).
 - `... from ... attribute "..." should contain "..."` - verify that the
