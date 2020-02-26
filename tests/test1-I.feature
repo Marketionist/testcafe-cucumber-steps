@@ -18,25 +18,10 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
     Given I go to pageTest1 from test-page page
     Then the title should be "Test1 Page"
 
-  Scenario: 'I reload the page' should refresh the page, 'should be present' should verify the element
+  Scenario: 'I reload the page' should refresh the page
     Given I go to "test-page"."pageTest1"
     And I reload the page
     Then "test-page"."linkTest2Page" should be present
-
-  Scenario: 'I reload the page' should refresh the page, 'should be present' should verify the element (text style step)
-    Given I go to "test-page"."pageTest1"
-    And I reload the page
-    Then linkTest2Page from test-page page should be present
-
-  Scenario: 'should not be present': link on Page1 test page should not be present
-    When I go to "test-page"."pageTest1"
-    And I wait for 200 ms
-    Then "test-page"."linkInvisibleTest2Page" should not be present
-
-  Scenario: 'should not be present': text error on Page1 test page should not be present (text style step, XPath)
-    When I go to "test-page"."pageTest1"
-    And I wait for 200 ms
-    Then textErrorXPath from test-page page should not be present
 
   Scenario: 'I click' Page1 test page link should lead to Page2 test page, 'I wait for' should wait for 200 ms
     Given I go to URL "http://localhost:8001/test1.html"
