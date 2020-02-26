@@ -595,7 +595,9 @@ Then('{string}.{string} attribute {string} should contain {string}',
             elem = `${locator}[${attribute}*="${attributeValue}"]`;
         }
 
-        await t.expect(Selector(elem).exists).ok();
+        await t.expect(Selector(elem).exists).ok(
+            `expected element's attribute '${attribute}' to include '${attributeValue}'`
+        );
     }
 );
 
@@ -610,6 +612,8 @@ Then('{word} from {word}( page) attribute {string} should contain {string}',
             elem = `${locator}[${attribute}*="${attributeValue}"]`;
         }
 
-        await t.expect(Selector(elem).exists).ok();
+        await t.expect(Selector(elem).exists).ok(
+            `expected element's attribute '${attribute}' to include '${attributeValue}'`
+        );
     }
 );
