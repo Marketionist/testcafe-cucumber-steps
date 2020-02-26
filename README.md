@@ -124,8 +124,7 @@ and then launch tests with:
 npm run test-e2e
 ```
 
-> Use `gherkin-testcafe --help` command to see all options (all
-> [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
+> All [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 > are supported).
 
 Additionally, you can specify:
@@ -151,7 +150,8 @@ Additionally, you can specify:
     node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --param-type-registry-file ./a-file-that-exports-a-parameter-type-registry.js
     ```
 
-    > See Cucumber Expressions in [gherkin-testcafe](https://github.com/kiwigrid/gherkin-testcafe#cucumber-expressions)
+    > See Cucumber Expressions in
+    > [gherkin-testcafe](https://github.com/kiwigrid/gherkin-testcafe#cucumber-expressions)
     > and Custom Parameter types in
     > [cucumber.io](https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types).
 
@@ -312,9 +312,10 @@ function) provided in **object** from **page**.
 18. `I/user accept(s) further browser alerts` - accept (OK) all further browser
 alerts (after this step).
 19. `I/user dismiss(es) further browser alerts` - dismiss (Cancel) all further
-browser alert (after this step).
+browser alerts (after this step).
 20. `I/user press(es) "..."` - press the specified keyboard keys (provided in ""
-as a string - [list of supported keys and key combinations](https://devexpress.github.io/testcafe/documentation/test-api/actions/press-key.html#browser-processing-emulation)).
+as a string - see the
+[list of supported keys and key combinations](https://devexpress.github.io/testcafe/documentation/test-api/actions/press-key.html#browser-processing-emulation)).
 21. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
 debugging.
 
