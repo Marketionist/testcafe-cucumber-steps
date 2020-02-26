@@ -83,3 +83,10 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 2
     When I dismiss further browser alerts
     And I click "alert-page"."buttonLaunchAlert"
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
+
+  Scenario: 'I press' should press the specified keyboard keys
+    Given I go to URL "http://localhost:8001/test2.html"
+    And I type "Text is 12" in "test2-page"."inputColors"
+    And I click "test2-page"."inputColors"
+    When I press "home right right right right delete delete delete"
+    Then "test2-page"."blockInputColor" text should be "Text 12"
