@@ -23,15 +23,13 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
     And I reload the page
     Then "test-page"."linkTest2Page" should be present
 
-  Scenario: 'I click' Page1 test page link should lead to Page2 test page, 'I wait for' should wait for 200 ms
+  Scenario: 'I click' Page1 test page link should lead to Page2 test page
     Given I go to URL "http://localhost:8001/test1.html"
-    And I wait for 200 ms
     And I click "test-page"."linkTest2Page"
     Then the title should be "Test2 Page"
 
-  Scenario: 'I click' Page1 test page link should lead to Page2 test page, 'I wait for' should wait for 200 ms (text style step, XPath)
+  Scenario: 'I click' Page1 test page link should lead to Page2 test page (text style step, XPath)
     Given I go to URL "http://localhost:8001/test1.html"
-    And I wait for 200 ms
     And I click linkTest2PageXPath from test-page page
     Then the title should be "Test2 Page"
 
@@ -75,13 +73,11 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 1
 
   Scenario: 'I double click' on Page1 test page link should lead to Page2 test page
     When I go to URL "http://localhost:8001/test1.html"
-    And I wait for 200 ms
     And I double click "test-page"."linkTest2Page"
     Then the title should be "Test2 Page"
 
   Scenario: 'I double click' on Page1 test page link should lead to Page2 test page (text style step)
     When I go to URL "http://localhost:8001/test1.html"
-    And I wait for 200 ms
     And I double click linkTest2Page from test-page page
     Then the title should be "Test2 Page"
 

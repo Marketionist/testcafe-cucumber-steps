@@ -28,25 +28,23 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 1
     And user reloads the page
     Then linkTest2Page from test-page should be present
 
-  Scenario: 'should not be present': link on Page1 test page should not be present
+  Scenario: 'should not be present': link on Page1 test page should not be present, 'user waits for' should wait for 200 ms
     When user goes to "test-page"."pageTest1"
     And user waits for 200 ms
     Then "test-page"."linkInvisibleTest2Page" should not be present
 
-  Scenario: 'should not be present': text error on Page1 test page should not be present (text style step, XPath)
+  Scenario: 'should not be present': text error on Page1 test page should not be present, 'user waits for' should wait for 200 ms (text style step, XPath)
     When user goes to "test-page"."pageTest1"
     And user waits for 200 ms
     Then textErrorXPath from test-page should not be present
 
-  Scenario: 'user clicks' Page1 test page link should lead to Page2 test page, 'user waits for' should wait for 200 ms
+  Scenario: 'user clicks' Page1 test page link should lead to Page2 test page
     Given user goes to URL "http://localhost:8001/test1.html"
-    And user waits for 200 ms
     And user clicks "test-page"."linkTest2Page"
     Then the title should be "Test2 Page"
 
-  Scenario: 'user clicks' Page1 test page link should lead to Page2 test page, 'user waits for' should wait for 200 ms (text style step, XPath)
+  Scenario: 'user clicks' Page1 test page link should lead to Page2 test page (text style step, XPath)
     Given user goes to URL "http://localhost:8001/test1.html"
-    And user waits for 200 ms
     And user clicks linkTest2PageXPath from test-page
     Then the title should be "Test2 Page"
 
@@ -90,13 +88,11 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 1
 
   Scenario: 'user double clicks' on Page1 test page link should lead to Page2 test page
     When user goes to URL "http://localhost:8001/test1.html"
-    And user waits for 200 ms
     And user double clicks "test-page"."linkTest2Page"
     Then the title should be "Test2 Page"
 
   Scenario: 'user double clicks' on Page1 test page link should lead to Page2 test page (text style step)
     When user goes to URL "http://localhost:8001/test1.html"
-    And user waits for 200 ms
     And user double clicks linkTest2Page from test-page
     Then the title should be "Test2 Page"
 
