@@ -464,6 +464,22 @@ Then('{word} from {word}( page) should be present', async function (
     await t.expect(Selector(elem).exists).ok();
 });
 
+Then('{int} {string}.{string} should be present', async function (
+    t, [number, page, element]
+) {
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).count).eql(number);
+});
+
+Then('{int} {word} from {word}( page) should be present', async function (
+    t, [number, element, page]
+) {
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).count).eql(number);
+});
+
 Then('{string}.{string} should not be present', async function (
     t, [page, element]
 ) {
