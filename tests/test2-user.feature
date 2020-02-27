@@ -26,41 +26,41 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     Then blockCredentials from test2-page text should be "testUser1111"
 
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text
-    When user goes to URL "http://localhost:8001/test1.html"
-    And user moves to "test-page"."titleTest1"
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user moves to "test-page"."titleTest1"
     Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
 
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text (text style step)
-    When user goes to URL "http://localhost:8001/test1.html"
-    And user moves to titleTest1 from test-page
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user moves to titleTest1 from test-page
     Then blockTextTest from test-page text should contain txtTest1 from test-page
 
   Scenario: 'user moves to with an offset' should trigger element's hovered state
-    When user goes to URL "http://localhost:8001/test1.html"
-    And user moves to "test-page"."titleTest1" with an offset of x: 10px, y: 5px
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user moves to "test-page"."titleTest1" with an offset of x: 10px, y: 5px
     Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
 
   Scenario: 'user moves to with an offset' should trigger element's hovered state (text style step)
-    When user goes to URL "http://localhost:8001/test1.html"
-    And user moves to titleTest1 from test-page with an offset of x: 10px, y: 5px
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user moves to titleTest1 from test-page with an offset of x: 10px, y: 5px
     Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
 
   Scenario: 'user switches to' iframe should change the context to this iframe
-    When user goes to URL "http://localhost:8001/test-iframe.html"
-    And user switches to "iframe-page"."iframeTest1Page" frame
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
+    When user switches to "iframe-page"."iframeTest1Page" frame
     Then "test-page"."linkTest2Page" should be present
 
   Scenario: 'user switches to' iframe should change the context to this iframe (text style step)
-    When user goes to URL "http://localhost:8001/test-iframe.html"
-    And user switches to iframeTest1Page frame from iframe-page
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
+    When user switches to iframeTest1Page frame from iframe-page
     Then "test-page"."linkTest2Page" should be present
 
   Scenario: 'user switches to main frame' should change the context back to the main page
-    When user goes to URL "http://localhost:8001/test-iframe.html"
+    Given user goes to URL "http://localhost:8001/test-iframe.html"
     And user switches to "iframe-page"."iframeTest1Page" frame
-    Then "test-page"."linkTest2Page" should be present
-    And user switches to main frame
-    And "test-page"."linkTest2Page" should not be present
+    And "test-page"."linkTest2Page" should be present
+    When user switches to main frame
+    Then "test-page"."linkTest2Page" should not be present
 
   Scenario: 'user executes function' should change the content on the page
     Given user goes to URL "http://localhost:8001/test1.html"
