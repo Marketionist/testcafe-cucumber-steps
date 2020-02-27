@@ -19,6 +19,7 @@ let test2Page = {
     inputPassword: '//*[@id="input-password"]',
     buttonLogin: '#login',
     blockCredentials: '#block-credentials',
+    input: 'input',
     updateText: function () {
         document.getElementById('text-test').innerHTML = 'Text to test ' +
             'script execution';
