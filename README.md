@@ -125,7 +125,7 @@ npm run test-e2e
 ```
 
 > All [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
-> are supported).
+> are supported.
 
 Additionally, you can specify:
 
