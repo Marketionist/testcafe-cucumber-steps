@@ -5,27 +5,57 @@
 
 const { Given, When, Then } = require('cucumber');
 const { ClientFunction, Selector } = require('testcafe');
-const pageObjectsFolderPath = process.env.PO_FOLDER_PATH || 'tests/page-model';
 const path = require('path');
-const fs = require('fs');
 const SelectorXPath = require('./utils/selector-xpath.js');
+const readDirectories = require('./utils/read-directories.js');
 
 const isCalledExternally = __dirname.includes('node_modules');
 
-const fullPageObjectsFolderPath = isCalledExternally ?
-    path.join(__dirname, '../..', pageObjectsFolderPath) :
-    path.join(__dirname, pageObjectsFolderPath);
+const pageObjectsFolderPathes = 'PO_FOLDER_PATH' in process.env ?
+    process.env.PO_FOLDER_PATH.replace(/\s+/g, '').split(',') :
+    ['tests/page-model'];
+
+const fullPageObjectsFolderPathes = isCalledExternally ?
+    pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
+        return path.join(__dirname, '../..', pageObjectsFolderPath)
+    }) :
+    pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
+        return path.join(__dirname, pageObjectsFolderPath)
+    });
 
 // Require all Page Object files in directory
 let pageObjects = {};
 
-fs.readdirSync(fullPageObjectsFolderPath).filter(
-    (value) => value.includes('.js')
-).map((file) => {
-    const fileName = path.basename(file, '.js');
+/**
+ * Requires Page Object files
+ * @returns {array} allRequiredPageObjects
+ */
+async function requirePageObjects () {
+    const allPageObjectFiles = await readDirectories(
+        fullPageObjectsFolderPathes);
+    const allRequiredPageObjects = allPageObjectFiles.filter(
+        (value) => {
+            return value.includes('.js');
+        }
+    ).map((file) => {
+        const fileName = path.basename(file, '.js');
 
-    pageObjects[fileName] = require(path.join(fullPageObjectsFolderPath, file));
-});
+        pageObjects[fileName] = require(file);
+
+        return file;
+    });
+
+    const spacesToIndent = 4;
+
+    console.log(
+        '\nPage Objects from PO_FOLDER_PATH:',
+        `\n${JSON.stringify(pageObjects, null, spacesToIndent)}\n\n`
+    );
+
+    return allRequiredPageObjects;
+}
+
+requirePageObjects();
 
 /**
  * Checks for XPath and gets proper element for further actions
