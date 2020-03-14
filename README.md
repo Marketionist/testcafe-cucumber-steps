@@ -115,6 +115,9 @@ your Page Objects folder:
 PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
 
+> You can specify multiple Page Object folders by separating them with commas:
+> `PO_FOLDER_PATH='main/my-custom1,login/my-custom2,auth,create/my-custom3'`
+
 Also you can just add `test-e2e` command to `scripts` in `package.json`:
 ```
 "test-e2e": "PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
