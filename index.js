@@ -67,10 +67,17 @@ function getElement (page, elem) {
     const locator = pageObjects[page][elem];
     let element;
 
-    if (locator[0] + locator[1] === '//') {
-        element = SelectorXPath(locator);
-    } else {
-        element = locator;
+    try {
+        if (locator[0] + locator[1] === '//') {
+            element = SelectorXPath(locator);
+        } else {
+            element = locator;
+        }
+    } catch (error) {
+        throw new ReferenceError(
+            'Something is wrong with selector, maybe it is not defined in ' +
+                'Page Object: ' + error
+        );
     }
 
     return element;
