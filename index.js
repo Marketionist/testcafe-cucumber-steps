@@ -8,6 +8,7 @@ const { ClientFunction, Selector } = require('testcafe');
 const path = require('path');
 const SelectorXPath = require('./utils/selector-xpath.js');
 const readDirectories = require('./utils/read-directories.js');
+const errors = require('./utils/errors.js');
 
 const isCalledExternally = __dirname.includes('node_modules');
 
@@ -74,10 +75,7 @@ function getElement (page, elem) {
             element = locator;
         }
     } catch (error) {
-        throw new ReferenceError(
-            'Something is wrong with selector, maybe it is not defined in ' +
-                'Page Object: ' + error
-        );
+        throw new ReferenceError(`${errors.SELECTOR_NOT_DEFINED} ${error}`);
     }
 
     return element;
@@ -491,8 +489,7 @@ Then('{string}.{string} should be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).ok(
-        'expected element to be present: ' +
-        `'${elem}'`
+        `${errors.ELEMENT_NOT_PRESENT} '${elem}'`
     );
 });
 
@@ -502,8 +499,7 @@ Then('{word} from {word}( page) should be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).ok(
-        'expected element to be present: ' +
-        `'${elem}'`
+        `${errors.ELEMENT_NOT_PRESENT}' ${elem}'`
     );
 });
 
@@ -529,8 +525,7 @@ Then('{string}.{string} should not be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).notOk(
-        'expected element not to be present: ' +
-        `'${elem}'`
+        `${errors.ELEMENT_PRESENT}' ${elem}'`
     );
 });
 
@@ -540,8 +535,7 @@ Then('{word} from {word}( page) should not be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).notOk(
-        'expected element not to be present: ' +
-        `'${elem}'`
+        `${errors.ELEMENT_PRESENT}' ${elem}'`
     );
 });
 
@@ -665,7 +659,7 @@ Then('{string}.{string} attribute {string} should contain {string}',
         }
 
         await t.expect(Selector(elem).exists).ok(
-            `expected element's attribute '${attribute}' to include '${attributeValue}'`
+            `${errors.ATTRIBUTE_NOT_INCLUDES} '${attribute}' to include '${attributeValue}'`
         );
     }
 );
@@ -682,7 +676,7 @@ Then('{word} from {word}( page) attribute {string} should contain {string}',
         }
 
         await t.expect(Selector(elem).exists).ok(
-            `expected element's attribute '${attribute}' to include '${attributeValue}'`
+            `${errors.ATTRIBUTE_NOT_INCLUDES} '${attribute}' to include '${attributeValue}'`
         );
     }
 );
