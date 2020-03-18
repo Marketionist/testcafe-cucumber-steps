@@ -490,7 +490,10 @@ Then('{string}.{string} should be present', async function (
 ) {
     const elem = getElement(page, element);
 
-    await t.expect(Selector(elem).exists).ok();
+    await t.expect(Selector(elem).exists).ok(
+        'expected element to be present: ' +
+        `'${elem}'`
+    );
 });
 
 Then('{word} from {word}( page) should be present', async function (
@@ -498,7 +501,10 @@ Then('{word} from {word}( page) should be present', async function (
 ) {
     const elem = getElement(page, element);
 
-    await t.expect(Selector(elem).exists).ok();
+    await t.expect(Selector(elem).exists).ok(
+        'expected element to be present: ' +
+        `'${elem}'`
+    );
 });
 
 Then('{int} {string}.{string} should be present', async function (
