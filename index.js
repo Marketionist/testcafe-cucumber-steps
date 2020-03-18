@@ -528,7 +528,10 @@ Then('{string}.{string} should not be present', async function (
 ) {
     const elem = getElement(page, element);
 
-    await t.expect(Selector(elem).exists).notOk();
+    await t.expect(Selector(elem).exists).notOk(
+        'expected element not to be present: ' +
+        `'${elem}'`
+    );
 });
 
 Then('{word} from {word}( page) should not be present', async function (
@@ -536,7 +539,10 @@ Then('{word} from {word}( page) should not be present', async function (
 ) {
     const elem = getElement(page, element);
 
-    await t.expect(Selector(elem).exists).notOk();
+    await t.expect(Selector(elem).exists).notOk(
+        'expected element not to be present: ' +
+        `'${elem}'`
+    );
 });
 
 Then('{string}.{string} text should be {string}', async function (
