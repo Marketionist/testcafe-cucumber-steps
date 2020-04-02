@@ -489,7 +489,7 @@ Then('{string}.{string} should be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).ok(
-        `${errors.ELEMENT_NOT_PRESENT} '${elem}'`
+        `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}"`
     );
 });
 
@@ -499,7 +499,7 @@ Then('{word} from {word}( page) should be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).ok(
-        `${errors.ELEMENT_NOT_PRESENT}' ${elem}'`
+        `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}"`
     );
 });
 
@@ -525,7 +525,7 @@ Then('{string}.{string} should not be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).notOk(
-        `${errors.ELEMENT_PRESENT}' ${elem}'`
+        `${errors.ELEMENT_PRESENT} "${page}"."${element}"`
     );
 });
 
@@ -535,7 +535,7 @@ Then('{word} from {word}( page) should not be present', async function (
     const elem = getElement(page, element);
 
     await t.expect(Selector(elem).exists).notOk(
-        `${errors.ELEMENT_PRESENT}' ${elem}'`
+        `${errors.ELEMENT_PRESENT} "${page}"."${element}"`
     );
 });
 
@@ -659,7 +659,7 @@ Then('{string}.{string} attribute {string} should contain {string}',
         }
 
         await t.expect(Selector(elem).exists).ok(
-            `${errors.ATTRIBUTE_NOT_INCLUDES} '${attribute}' to include '${attributeValue}'`
+            `${errors.ATTRIBUTE_NOT_INCLUDES} "${page}"."${element}" -> "${attribute}" to include "${attributeValue}"`
         );
     }
 );
@@ -676,7 +676,7 @@ Then('{word} from {word}( page) attribute {string} should contain {string}',
         }
 
         await t.expect(Selector(elem).exists).ok(
-            `${errors.ATTRIBUTE_NOT_INCLUDES} '${attribute}' to include '${attributeValue}'`
+            `${errors.ATTRIBUTE_NOT_INCLUDES} "${page}"."${element}" -> "${attribute}" to include "${attributeValue}"`
         );
     }
 );
