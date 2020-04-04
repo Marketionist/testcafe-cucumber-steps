@@ -81,6 +81,19 @@ function getElement (page, elem) {
     return element;
 }
 
+/**
+ * Sets cookies on the current website
+ * @param {string} cookies
+ */
+function setCookies (cookies) {
+    const domain = window.location.hostname.split('.').filter((part) => {
+        return part !== 'www';
+    }).join('.');
+
+    document.cookie = `${cookies};domain=.${domain};path=/`;
+    window.location.reload();
+}
+
 // #### Given steps ############################################################
 
 Given('I/user go(es) to URL {string}', async function (t, [url]) {
@@ -93,6 +106,30 @@ Given('I/user go(es) to {string}.{string}', async function (t, [page, element]) 
 
 Given('I/user go(es) to {word} from {word}( page)', async function (t, [element, page]) {
     await t.navigateTo(pageObjects[page][element]);
+});
+
+Given('I/user set(s) cookies to {string}', async function (t, [cookies]) {
+    const executeSetCookies = ClientFunction((setCookiesFunction, cookiesString) => {
+        return setCookiesFunction(cookiesString);
+    });
+
+    await executeSetCookies(setCookies, cookies);
+});
+
+Given('I/user set(s) cookies to {string}.{string}', async function (t, [page, element]) {
+    const executeSetCookies = ClientFunction((setCookiesFunction, cookiesString) => {
+        return setCookiesFunction(cookiesString);
+    });
+
+    await executeSetCookies(setCookies, pageObjects[page][element]);
+});
+
+Given('I/user set(s) cookies to {word} from {word}( page)', async function (t, [element, page]) {
+    const executeSetCookies = ClientFunction((setCookiesFunction, cookiesString) => {
+        return setCookiesFunction(cookiesString);
+    });
+
+    await executeSetCookies(setCookies, pageObjects[page][element]);
 });
 
 // #### When steps #############################################################
