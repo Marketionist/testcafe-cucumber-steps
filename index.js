@@ -82,15 +82,15 @@ function getElement (page, elem) {
 }
 
 /**
- * Sets cookies on the current website
- * @param {string} cookies
+ * Sets cookie on the current website
+ * @param {string} cookie
  */
-function setCookies (cookies) {
+function setCookie (cookie) {
     const domain = window.location.hostname.split('.').filter((part) => {
         return part !== 'www';
     }).join('.');
 
-    document.cookie = `${cookies};domain=.${domain};path=/`;
+    document.cookie = `${cookie};domain=.${domain};path=/`;
     window.location.reload();
 }
 
@@ -108,28 +108,28 @@ Given('I/user go(es) to {word} from {word}( page)', async function (t, [element,
     await t.navigateTo(pageObjects[page][element]);
 });
 
-Given('I/user set(s) cookies to {string}', async function (t, [cookies]) {
-    const executeSetCookies = ClientFunction((setCookiesFunction, cookiesString) => {
-        return setCookiesFunction(cookiesString);
+Given('I/user set(s) cookie {string}', async function (t, [cookie]) {
+    const executeSetCookie = ClientFunction((setCookieFunction, cookieString) => {
+        return setCookieFunction(cookieString);
     });
 
-    await executeSetCookies(setCookies, cookies);
+    await executeSetCookie(setCookie, cookie);
 });
 
-Given('I/user set(s) cookies to {string}.{string}', async function (t, [page, element]) {
-    const executeSetCookies = ClientFunction((setCookiesFunction, cookiesString) => {
-        return setCookiesFunction(cookiesString);
+Given('I/user set(s) cookie {string}.{string}', async function (t, [page, element]) {
+    const executeSetCookie = ClientFunction((setCookieFunction, cookieString) => {
+        return setCookieFunction(cookieString);
     });
 
-    await executeSetCookies(setCookies, pageObjects[page][element]);
+    await executeSetCookie(setCookie, pageObjects[page][element]);
 });
 
-Given('I/user set(s) cookies to {word} from {word}( page)', async function (t, [element, page]) {
-    const executeSetCookies = ClientFunction((setCookiesFunction, cookiesString) => {
-        return setCookiesFunction(cookiesString);
+Given('I/user set(s) cookie {word} from {word}( page)', async function (t, [element, page]) {
+    const executeSetCookie = ClientFunction((setCookieFunction, cookieString) => {
+        return setCookieFunction(cookieString);
     });
 
-    await executeSetCookies(setCookies, pageObjects[page][element]);
+    await executeSetCookie(setCookie, pageObjects[page][element]);
 });
 
 // #### When steps #############################################################
