@@ -72,7 +72,7 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     When user executes updateText function from test2-page
     Then "test-page"."blockTextTest" text should contain "Text to test script execution"
 
-  Scenario: 'user sets cookie' should change the content on the page (cookie provided in step string)
+  Scenario: 'user sets cookie' should change the content on the page (cookie provided in the step string)
     Given user goes to URL "http://localhost:8001/test1.html"
     When user sets cookie "my_test_cookie1=11"
     And user sets cookie "my_test_cookie2=22"

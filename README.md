@@ -206,14 +206,21 @@ You can see the example of how to use predefined steps in
 
 ### Given steps
 1. `I/user go(es) to URL "..."` - open a site (by its URL provided in "" as a
-string) in the current browser window/tab.
+string - for example: `"https://github.com/Marketionist"`) in the current
+browser window/tab.
 2. `I/user go(es) to "..."."..."` - open a site (by its URL provided in
 **"page"."object"**) in the current browser window/tab.
 - `I/user go(es) to ... from ...` - open a site (by its URL provided in
 **object** from **page**) in the current browser window/tab.
+3. `I/user set(s) cookie "..."` - set cookie on the current site (cookie
+provided in "" as a string - for example: `"my_test_cookie1=11"`).
+- `I/user set(s) cookie "..."."..."` - set cookie on the current site (cookie
+provided in **"page"."object"**).
+- `I/user set(s) cookie ... from ...` - set cookie on the current site (cookie
+provided in **object** from **page**).
 
 ### When steps
-3. `I/user log(s) in with l: "..." in "..."."..." and p: "..." in
+4. `I/user log(s) in with l: "..." in "..."."..." and p: "..." in
 "..."."..." and click(s) "..."."..."` - log in to any site with login (provided
 in "" as a string), login/username input (provided in **page1**.**object1** as
 CSS selector), password (provided in "" as a string), password input (provided
@@ -240,27 +247,27 @@ selector), password (provided in **object3** from **page3** as CSS or XPath
 selector), password input (provided in **object4** from **page4** as CSS or
 XPath selector), login button (provided in **object5** from **page5** as CSS or
 XPath selector).
-4. `I/user reload(s) the page` - reload current page.
-5. `I/user click(s) "..."."..."` - click on any element (provided in
+5. `I/user reload(s) the page` - reload current page.
+6. `I/user click(s) "..."."..."` - click on any element (provided in
 **"page"."object"** as CSS or XPath selector).
 - `I/user click(s) ... from ...` - click on any element (provided in **object**
 from **page** as CSS or XPath selector).
-6. `I/user wait(s) for ... ms` - wait for provided amount of time (in
+7. `I/user wait(s) for ... ms` - wait for provided amount of time (in
 milliseconds).
-7. `I/user wait(s) and click(s) "..."."..."` - wait for 300 ms and then click on
+8. `I/user wait(s) and click(s) "..."."..."` - wait for 300 ms and then click on
 any element (provided in **"page"."object"** as CSS or XPath selector).
 - `I/user wait(s) and click(s) ... from ...` - wait for 300 ms and then click on
 any element (provided in **object** from **page** as CSS or XPath selector).
-8. `I/user click(s) "..."."..." if present` - click on any element (provided in
+9. `I/user click(s) "..."."..." if present` - click on any element (provided in
 **"page"."object"** as CSS or XPath selector) only if it is present on the page.
 - `I/user click(s) ... from ... if present` - click on any element (provided in
 **object** from **page** as CSS or XPath selector) only if it is present on the
 page.
-9. `I/user double click(s) "..."."..."` - double click on any element (provided
+10. `I/user double click(s) "..."."..."` - double click on any element (provided
 in **"page"."object"** as CSS or XPath selector).
 - `I/user double click(s) ... from ...` - double click on any element (provided
 in **object** from **page** as CSS or XPath selector).
-10. `I/user type(s) "..." in "..."."..."` - type any text (provided in "" as a
+11. `I/user type(s) "..." in "..."."..."` - type any text (provided in "" as a
 string) in the input field (provided in **"page"."object"** as CSS or XPath
 selector).
 - `I/user type(s) "..." in ... from ...` - type any text (provided in "" as a
@@ -272,7 +279,7 @@ CSS selector).
 - `I/user type(s) ... from ... in ... from ...` - type any text (provided in
 **object1** from **page1**) in the input field (provided in **object2** from
 **page2** as CSS or XPath selector).
-11. `I/user clear(s) "..."."..." and type(s) "..."` - overwrite any text
+12. `I/user clear(s) "..."."..." and type(s) "..."` - overwrite any text
 (provided in "" as a string) in the input field (provided in **"page"."object"**
 as CSS or XPath selector).
 - `I/user clear(s) ... from ... and type(s) "..."` - overwrite any text
@@ -284,7 +291,7 @@ as CSS or XPath selector).
 - `I/user clear(s) ... from ... and type(s) ... from ...` - overwrite any text
 (provided in **object1** from **page1**) in the input field (provided in
 **object2** from **page2** as CSS or XPath selector).
-12. `I/user select(s) "..." in "..."."..."` - select any option (provided in ""
+13. `I/user select(s) "..." in "..."."..."` - select any option (provided in ""
 as a string) in the dropdown (provided in **"page"."object"** as CSS or XPath
 selector).
 - `I/user select(s) "..." in ... from ...` - select any option (provided in ""
@@ -296,13 +303,13 @@ selector).
 - `I/user select(s) ... from ... in ... from ...` - select any option
 (provided in **object1** from **page1**) in the dropdown (provided in
 **object2** from **page2** as CSS or XPath selector).
-13. `I/user move(s) to "..."."..."` - move the mouse pointer over any element
+14. `I/user move(s) to "..."."..."` - move the mouse pointer over any element
 (hover with cursor an element provided in **"page"."object"** as CSS or XPath
 selector).
 - `I/user move(s) to ... from ...` - move the mouse pointer over any element
 (hover with cursor an element provided in **object** from **page** as CSS
 selector).
-14. `I/user move(s) to "..."."..." with an offset of x: ...px, y: ...px` - move
+15. `I/user move(s) to "..."."..." with an offset of x: ...px, y: ...px` - move
 the mouse pointer over any element (hover with cursor an element provided in
 **"page"."object"** as CSS or XPath selector) with an offset of x: ...px,
 y: ...px.
@@ -310,44 +317,44 @@ y: ...px.
 the mouse pointer over any element (hover with cursor an element provided in
 **object** from **page** as CSS or XPath selector) with an offset of x: ...px,
 y: ...px.
-15. `I/user switch(es) to "..."."..." frame` - switch the context to iframe
+16. `I/user switch(es) to "..."."..." frame` - switch the context to iframe
 (provided in **"page"."object"** as CSS or XPath selector).
 - `I/user switch(es) to ... frame from ...` - switch the context to iframe
 (provided in **object** from **page** as CSS or XPath selector).
-16. `I/user switch(es) to main frame` - switch the context back to default
+17. `I/user switch(es) to main frame` - switch the context back to default
 (initial) frame.
-17. `I/user execute(s) "..."."..." function` - execute script (JavaScript
+18. `I/user execute(s) "..."."..." function` - execute script (JavaScript
 function) provided in **"page"."object"**.
 - `I/user execute(s) ... function from ...` - execute script (JavaScript
 function) provided in **object** from **page**.
-18. `I/user accept(s) further browser alerts` - accept (OK) all further browser
+19. `I/user accept(s) further browser alerts` - accept (OK) all further browser
 alerts (after this step).
-19. `I/user dismiss(es) further browser alerts` - dismiss (Cancel) all further
+20. `I/user dismiss(es) further browser alerts` - dismiss (Cancel) all further
 browser alerts (after this step).
-20. `I/user press(es) "..."` - press the specified keyboard keys (provided in ""
+21. `I/user press(es) "..."` - press the specified keyboard keys (provided in ""
 as a string - see the
 [list of supported keys and key combinations](https://devexpress.github.io/testcafe/documentation/test-api/actions/press-key.html#browser-processing-emulation)).
-21. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
+22. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
 debugging.
 
 ### Then steps
-22. `the title should be "..."` - verify that title of the current browser
+23. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-23. `"..."."..." should be present` - verify that element (provided in
+24. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-24. `... "..."."..." should be present` - verify that the number of elements
+25. `... "..."."..." should be present` - verify that the number of elements
 (provided in **"page"."object"** as CSS or XPath selector) are present on the
 page.
 - `... ... from ... should be present` - verify that the number of elements
 (provided in **object** from **page** as CSS or XPath selector) are present on
 the page.
-25. `"..."."..." should not be present` - verify that element (provided in
+26. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-26. `"..."."..." text should be "..."` - verify that text of the element
+27. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -359,7 +366,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-27. `"..."."..." text should contain "..."` - verify that text of the element
+28. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
@@ -371,19 +378,19 @@ the text (provided in **"page2"."object2"**).
 - `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS or XPath selector)
 contains the text (provided in **object2** from **page2**).
-28. `URL should be "..."` - verify that URL of the current page equals to the
+29. `URL should be "..."` - verify that URL of the current page equals to the
 text (provided in "" as a string).
 - `URL should be "..."."..."` - verify that URL of the current page equals to
 the text (provided in **"page"."object"**).
 - `URL should be ... from ...` - verify that URL of the current page equals to
 the text (provided in **object** from **page**).
-29. `URL should contain "..."` - verify that URL of the current page contains
+30. `URL should contain "..."` - verify that URL of the current page contains
 the text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page
 contains the text (provided in **"page"."object"**).
 - `URL should contain ... from ...` - verify that URL of the current page
 contains the text (provided in **object** from **page**).
-30. `"..."."..." attribute "..." should contain "..."` - verify that the
+31. `"..."."..." attribute "..." should contain "..."` - verify that the
 attribute (provided in "" as a string) of the element (provided in
 **"page"."object"**) contains provided string (provided in "" as a string).
 - `... from ... attribute "..." should contain "..."` - verify that the
