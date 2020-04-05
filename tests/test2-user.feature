@@ -1,4 +1,4 @@
-@fast @user-steps
+@fast @user-steps @test
 
 Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   As a user of TestCafe
@@ -71,6 +71,26 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     Given user goes to URL "http://localhost:8001/test1.html"
     When user executes updateText function from test2-page
     Then "test-page"."blockTextTest" text should contain "Text to test script execution"
+
+  Scenario: 'user sets cookie' should change the content on the page (cookie provided in step string)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets cookie "my_test_cookie1=11"
+    And user sets cookie "my_test_cookie2=22"
+    And user executes "test2-page"."updateTextWithCookies" function
+    And user waits for 5000 ms
+    Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11; my_test_cookie2=22"
+
+  Scenario: 'user sets cookie' should change the content on the page
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets cookie "test2-page"."cookieTest"
+    And user executes "test2-page"."updateTextWithCookies" function
+    Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11"
+
+  Scenario: 'user sets cookie' should change the content on the page (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets cookie cookieTest from test2-page
+    And user executes "test2-page"."updateTextWithCookies" function
+    Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11"
 
   Scenario: 'user accepts further browser alerts' should get the alert accepted
     Given user goes to URL "http://localhost:8001/test-alert.html"
