@@ -94,6 +94,30 @@ function setCookie (cookie) {
     window.location.reload();
 }
 
+/**
+ * Creates request
+ * @param {string} method
+ * @param {string} requestUrl
+ * @param {string} bodyString
+ * @returns {Promise} response
+ */
+function createRequest (method, requestUrl, bodyString) {
+    return new Promise((resolve) => {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open(method, requestUrl, true);
+
+        xhr.onload = () => {
+            resolve(xhr.responseText);
+        };
+
+        // Set headers
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.send(bodyString);
+    });
+}
+
 // #### Given steps ############################################################
 
 Given('I/user go(es) to URL {string}', async function (t, [url]) {
@@ -131,6 +155,48 @@ Given('I/user set(s) cookie {word} from {word}( page)', async function (t, [elem
 
     await executeSetCookie(setCookie, pageObjects[page][element]);
 });
+
+Given('I/user send(s) {string} request to {string} with body {string}', async function (
+    t, [method, reqUrl, body]
+) {
+    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+        return sendRequestFunction(requestMethod, requestUrl, bodyString);
+    });
+
+    await sendCustomRequest(createRequest, method, reqUrl, body);
+});
+
+Given('I/user send(s) {string} request to {string} with body {string}.{string}', async function (
+    t, [method, reqUrl, page, element]
+) {
+    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+        return sendRequestFunction(requestMethod, requestUrl, bodyString);
+    });
+
+    await sendCustomRequest(createRequest, method, reqUrl, pageObjects[page][element]);
+});
+
+Given('I/user send(s) {string} request to {string}.{string} with body {string}.{string}', async function (
+    t, [method, page1, element1, page2, element2]
+) {
+    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+        return sendRequestFunction(requestMethod, requestUrl, bodyString);
+    });
+
+    await sendCustomRequest(createRequest, method, pageObjects[page1][element1], pageObjects[page2][element2]);
+});
+
+Given(
+    'I/user send(s) {string} request to {word} from {word}( page) with body {word} from {word}( page)',
+    async function (t, [method, element1, page1, element2, page2]
+    ) {
+        const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+            return sendRequestFunction(requestMethod, requestUrl, bodyString);
+        });
+
+        await sendCustomRequest(createRequest, method, pageObjects[page1][element1], pageObjects[page2][element2]);
+    }
+);
 
 // #### When steps #############################################################
 
