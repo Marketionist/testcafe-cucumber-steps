@@ -20,9 +20,13 @@ let test2Page = {
     buttonLogin: '#login',
     blockCredentials: '#block-credentials',
     input: 'input',
+    cookieTest: 'my_test_cookie1=11',
     updateText: function () {
         document.getElementById('text-test').innerHTML = 'Text to test ' +
             'script execution';
+    },
+    updateTextWithCookies: function () {
+        document.getElementById('text-test').innerHTML = `${document.cookie}`;
     }
 
 };
