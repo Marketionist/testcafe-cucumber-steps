@@ -11,8 +11,8 @@ let test2Page = {
     blockDropdownColor: '#block-dropdown-color',
     inputColors: '#input-colors',
     blockInputColor: '#block-input-color',
-    test1Url: 'http://localhost:8001/test1.html',
-    test1Path: '/test1.html',
+    urlTest1: 'http://localhost:8001/test1.html',
+    pathTest1: '/test1.html',
     loginTest2: 'testUser',
     passwordTest2: '1111',
     inputUsername: '#input-username',
@@ -21,6 +21,8 @@ let test2Page = {
     blockCredentials: '#block-credentials',
     input: 'input',
     cookieTest: 'my_test_cookie1=11',
+    bodyTest: '{ "test1": 1, "test2": 2 }',
+    urlTestRequest: 'http://httpbin.org/post',
     updateText: function () {
         document.getElementById('text-test').innerHTML = 'Text to test ' +
             'script execution';

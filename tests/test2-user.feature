@@ -92,6 +92,21 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     And user executes "test2-page"."updateTextWithCookies" function
     Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11"
 
+  Scenario: 'user sends "POST" request' should return the content of the page (body provided in the step string)
+    When user sends "POST" request to "http://httpbin.org/post" with body "{ \"test1\": 1, \"test2\": 2 }"
+
+  Scenario: 'user sends "GET" request' should return the content of the page (body provided in the step string)
+    When user sends "GET" request to "http://httpbin.org/get?foo1=bar1&foo2=bar2" with body ""
+
+  Scenario: 'user sends "POST" request' should return the content of the page (Page Object style step)
+    When user sends "POST" request to "https://postman-echo.com/post" with body "test2-page"."bodyTest"
+
+  Scenario: 'user sends "POST" request' should return the content of the page (full Page Object style step)
+    When user sends "POST" request to "test2-page"."urlTestRequest" with body "test2-page"."bodyTest"
+
+  Scenario: 'user sends "POST" request' should return the content of the page (full text style step)
+    When user sends "POST" request to urlTestRequest from test2-page with body bodyTest from test2-page
+
   Scenario: 'user accepts further browser alerts' should get the alert accepted
     Given user goes to URL "http://localhost:8001/test-alert.html"
     When user accepts further browser alerts
@@ -117,11 +132,11 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
 
   Scenario: 'URL should be' should verify that current URL equals provided string (Page Object style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    Then URL should be "test2-page"."test1Url"
+    Then URL should be "test2-page"."urlTest1"
 
   Scenario: 'URL should be' should verify that current URL equals provided string (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    Then URL should be test1Url from test2-page
+    Then URL should be urlTest1 from test2-page
 
   Scenario: 'URL should contain' should verify that current URL contains provided string
     Given user goes to URL "http://localhost:8001/test1.html"
@@ -129,11 +144,11 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
 
   Scenario: 'URL should contain' should verify that current URL contains provided string (Page Object style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    Then URL should contain "test2-page"."test1Path"
+    Then URL should contain "test2-page"."pathTest1"
 
   Scenario: 'URL should contain' should verify that current URL contains provided string (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    Then URL should contain test1Path from test2-page
+    Then URL should contain pathTest1 from test2-page
 
   Scenario: 'attribute should contain' should verify that the attribute of the element contains provided string
     Given user goes to "test2-page"."pageTest2"

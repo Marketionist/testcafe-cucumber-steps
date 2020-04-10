@@ -10,6 +10,8 @@ const SelectorXPath = require('./utils/selector-xpath.js');
 const readDirectories = require('./utils/read-directories.js');
 const errors = require('./utils/errors.js');
 
+const spacesToIndent = 4;
+
 const isCalledExternally = __dirname.includes('node_modules');
 
 const pageObjectsFolderPathes = 'PO_FOLDER_PATH' in process.env ?
@@ -45,8 +47,6 @@ async function requirePageObjects () {
 
         return file;
     });
-
-    const spacesToIndent = 4;
 
     console.log(
         '\nPage Objects from PO_FOLDER_PATH:',
@@ -94,6 +94,50 @@ function setCookie (cookie) {
     window.location.reload();
 }
 
+/**
+ * Creates request
+ * @param {string} method
+ * @param {string} requestUrl
+ * @param {string} bodyString
+ * @returns {Promise} response
+ */
+function createRequest (method, requestUrl, bodyString) {
+    return new Promise((resolve) => {
+        const xhr = new XMLHttpRequest();
+        const requestBody = bodyString.length > 0 ? JSON.stringify(JSON.parse(bodyString)) : '';
+
+        xhr.open(method, requestUrl, true);
+
+        // Set headers
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.send(requestBody);
+
+        xhr.onload = () => {
+            resolve(xhr.responseText);
+        };
+    });
+}
+
+/**
+ * Prints response JSON stringified if it is not empty
+ * @param {string} response
+ * @returns {string} response
+ */
+function printResponseStringified (response) {
+    let responseStringified;
+
+    if (response.length > 0) {
+        responseStringified = JSON.stringify(response, null, spacesToIndent);
+
+        console.log(`\n${responseStringified}`);
+    } else {
+        responseStringified = '';
+    }
+
+    return responseStringified;
+}
+
 // #### Given steps ############################################################
 
 Given('I/user go(es) to URL {string}', async function (t, [url]) {
@@ -131,6 +175,60 @@ Given('I/user set(s) cookie {word} from {word}( page)', async function (t, [elem
 
     await executeSetCookie(setCookie, pageObjects[page][element]);
 });
+
+Given('I/user send(s) {string} request to {string} with body {string}', async function (
+    t, [method, reqUrl, body]
+) {
+    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+        return sendRequestFunction(requestMethod, requestUrl, bodyString);
+    });
+
+    const response = await sendCustomRequest(createRequest, method, reqUrl, body);
+
+    printResponseStringified(response);
+});
+
+Given('I/user send(s) {string} request to {string} with body {string}.{string}', async function (
+    t, [method, reqUrl, page, element]
+) {
+    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+        return sendRequestFunction(requestMethod, requestUrl, bodyString);
+    });
+
+    const response = await sendCustomRequest(createRequest, method, reqUrl, pageObjects[page][element]);
+
+    printResponseStringified(response);
+});
+
+Given('I/user send(s) {string} request to {string}.{string} with body {string}.{string}', async function (
+    t, [method, page1, element1, page2, element2]
+) {
+    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+        return sendRequestFunction(requestMethod, requestUrl, bodyString);
+    });
+
+    const response = await sendCustomRequest(
+        createRequest, method, pageObjects[page1][element1], pageObjects[page2][element2]
+    );
+
+    printResponseStringified(response);
+});
+
+Given(
+    'I/user send(s) {string} request to {word} from {word}( page) with body {word} from {word}( page)',
+    async function (t, [method, element1, page1, element2, page2]
+    ) {
+        const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
+            return sendRequestFunction(requestMethod, requestUrl, bodyString);
+        });
+
+        const response = await sendCustomRequest(
+            createRequest, method, pageObjects[page1][element1], pageObjects[page2][element2]
+        );
+
+        printResponseStringified(response);
+    }
+);
 
 // #### When steps #############################################################
 
