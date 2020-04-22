@@ -6,6 +6,8 @@
 const { Given, When, Then } = require('cucumber');
 const { ClientFunction, Selector } = require('testcafe');
 const path = require('path');
+const http = require('http');
+const url = require('url');
 const SelectorXPath = require('./utils/selector-xpath.js');
 const readDirectories = require('./utils/read-directories.js');
 const errors = require('./utils/errors.js');
@@ -101,41 +103,59 @@ function setCookie (cookie) {
  * @param {string} bodyString
  * @returns {Promise} response
  */
-function createRequest (method, requestUrl, bodyString) {
-    return new Promise((resolve) => {
-        const xhr = new XMLHttpRequest();
+function createRequest (method, requestUrl, bodyString = '') {
+    return new Promise((resolve, reject) => {
+        // Check incoming body string to have proper JSON inside of it
         const requestBody = bodyString.length > 0 ? JSON.stringify(JSON.parse(bodyString)) : '';
+        const contentType = method.toUpperCase() === 'GET' ? 'text/html' : 'application/json';
 
-        xhr.open(method, requestUrl, true);
-
-        // Set headers
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.send(requestBody);
-
-        xhr.onload = () => {
-            resolve(xhr.responseText);
+        const parsedUrl = url.parse(requestUrl);
+        const options = {
+            protocol: parsedUrl.protocol,
+            auth: parsedUrl.auth,
+            hostname: parsedUrl.hostname,
+            path: parsedUrl.path,
+            hash: parsedUrl.hash,
+            port: parsedUrl.port,
+            method: method,
+            headers: {
+                'Content-Type': contentType,
+                'Connection': 'close',
+                'Content-Length': Buffer.byteLength(requestBody)
+            }
         };
+
+        const req = http.request(options, (res) => {
+            let data = '';
+
+            console.log(`\nResponse status: ${res.statusCode}`);
+            console.log(`\nResponse headers: ${JSON.stringify(res.headers, null, spacesToIndent)}`);
+
+            res.setEncoding('utf8');
+
+            res.on('data', (chunk) => {
+                // Accumulate all data from response
+                data += chunk;
+            });
+            res.on('end', () => {
+                let response = data.length > 0 ? data : 'empty';
+
+                console.log(`\nResponse body: ${response}`);
+                // Resolve after response was finished and all data from response was accumulated
+                resolve(data);
+            });
+        });
+
+        req.on('error', (err) => {
+            console.log(`Problem with request: ${err.message}`);
+            reject(err);
+        });
+
+        // Write data to request body
+        req.write(requestBody);
+        req.end();
+
     });
-}
-
-/**
- * Prints response JSON stringified if it is not empty
- * @param {string} response
- * @returns {string} response
- */
-function printResponseStringified (response) {
-    let responseStringified;
-
-    if (response.length > 0) {
-        responseStringified = JSON.stringify(response, null, spacesToIndent);
-
-        console.log(`\n${responseStringified}`);
-    } else {
-        responseStringified = '';
-    }
-
-    return responseStringified;
 }
 
 // #### Given steps ############################################################
@@ -179,54 +199,26 @@ Given('I/user set(s) cookie {word} from {word}( page)', async function (t, [elem
 Given('I/user send(s) {string} request to {string} with body {string}', async function (
     t, [method, reqUrl, body]
 ) {
-    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
-        return sendRequestFunction(requestMethod, requestUrl, bodyString);
-    });
-
-    const response = await sendCustomRequest(createRequest, method, reqUrl, body);
-
-    printResponseStringified(response);
+    await createRequest(method, reqUrl, body);
 });
 
 Given('I/user send(s) {string} request to {string} with body {string}.{string}', async function (
     t, [method, reqUrl, page, element]
 ) {
-    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
-        return sendRequestFunction(requestMethod, requestUrl, bodyString);
-    });
-
-    const response = await sendCustomRequest(createRequest, method, reqUrl, pageObjects[page][element]);
-
-    printResponseStringified(response);
+    await createRequest(method, reqUrl, pageObjects[page][element]);
 });
 
 Given('I/user send(s) {string} request to {string}.{string} with body {string}.{string}', async function (
     t, [method, page1, element1, page2, element2]
 ) {
-    const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
-        return sendRequestFunction(requestMethod, requestUrl, bodyString);
-    });
-
-    const response = await sendCustomRequest(
-        createRequest, method, pageObjects[page1][element1], pageObjects[page2][element2]
-    );
-
-    printResponseStringified(response);
+    await createRequest(method, pageObjects[page1][element1], pageObjects[page2][element2]);
 });
 
 Given(
     'I/user send(s) {string} request to {word} from {word}( page) with body {word} from {word}( page)',
     async function (t, [method, element1, page1, element2, page2]
     ) {
-        const sendCustomRequest = ClientFunction((sendRequestFunction, requestMethod, requestUrl, bodyString) => {
-            return sendRequestFunction(requestMethod, requestUrl, bodyString);
-        });
-
-        const response = await sendCustomRequest(
-            createRequest, method, pageObjects[page1][element1], pageObjects[page2][element2]
-        );
-
-        printResponseStringified(response);
+        await createRequest(method, pageObjects[page1][element1], pageObjects[page2][element2]);
     }
 );
 
