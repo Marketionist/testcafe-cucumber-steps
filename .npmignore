@@ -5,6 +5,9 @@ logs
 # Dependency directory
 node_modules
 
+# TestCafe screenshots directory
+tests/screenshots
+
 *.DS_Store
 .*
 !.travis.yml
