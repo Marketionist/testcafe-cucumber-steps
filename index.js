@@ -7,7 +7,7 @@ const { Given, When, Then } = require('cucumber');
 const { ClientFunction, Selector } = require('testcafe');
 const path = require('path');
 const http = require('http');
-const url = require('url');
+const parseUrl = require('url').parse;
 const SelectorXPath = require('./utils/selector-xpath.js');
 const readDirectories = require('./utils/read-directories.js');
 const errors = require('./utils/errors.js');
@@ -109,7 +109,7 @@ function createRequest (method, requestUrl, bodyString = '') {
         const requestBody = bodyString.length > 0 ? JSON.stringify(JSON.parse(bodyString)) : '';
         const contentType = method.toUpperCase() === 'GET' ? 'text/html' : 'application/json';
 
-        const parsedUrl = url.parse(requestUrl);
+        const parsedUrl = parseUrl(requestUrl);
         const options = {
             protocol: parsedUrl.protocol,
             auth: parsedUrl.auth,
