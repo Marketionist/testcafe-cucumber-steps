@@ -45,8 +45,9 @@ tests - see the presentation of why and how you can easily use
 
 * [Installation fast](#installation-fast)
 * [Installation detailed](#installation-detailed)
-  * [Importing and running in CLI](#importing-and-running-in-cli)
-  * [Importing and running with config file](#importing-and-running-with-config-file)
+* [Writing tests](#writing-tests)
+* [Importing and running in CLI](#importing-and-running-in-cli)
+* [Importing and running with config file](#importing-and-running-with-config-file)
 * [List of predefined steps](#list-of-predefined-steps)
   * [Given steps](#given-steps)
   * [When steps](#when-steps)
@@ -64,8 +65,8 @@ node node_modules/testcafe-cucumber-steps/utils/prepare.js
 ```
 
 Then just see the [list of predefined steps](#list-of-predefined-steps) and
-start writing tests (in `./tests/*.feature`) and adding Page Objects
-(in `./tests/page-model/*.js`).
+start writing tests (in `tests/*.feature`) and adding Page Objects
+(in `tests/page-model/*.js`).
 
 Run the tests with:
 ```
@@ -95,14 +96,93 @@ save it to your `package.json` just run:
 npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
 ```
 
-If you also want to have pre-created config (`./.testcaferc.json`) and example
-test files (`./tests/test-example.feature, ./tests/page-model/test-page-example.js`) -
+If you also want to have pre-created config (`.testcaferc.json`) and example
+test files (`tests/test-example.feature`, `tests/page-model/test-page-example.js`) -
 run additionally:
 ```
 node node_modules/testcafe-cucumber-steps/utils/prepare.js
 ```
 
-### Importing and running in CLI
+## Writing tests
+To give a short example of how you can write the tests - here is 
+`test-main-page.feature` feature file:
+```
+# tests/test-main-page.feature
+
+Feature: My portal main page tests
+  As a user of My portal
+  I should be able to use main page
+  to log in
+
+  Scenario: Open the main page, page title should be present
+    Given user goes to URL "http://myportal.test/login.html"
+    Then the title should be "Test1 main page"
+
+  Scenario: Products link should lead to Products page
+    Given user goes to pageMain from main-page
+    When user clicks linkProducts from main-page
+    Then URL should contain "/products"
+    And the title should contain "Test1 Products"
+
+  Scenario: Log in, link with username and status should be present
+    Given user goes to pageMain from main-page
+    When user types "mytestuser" in inputLogin from main-page
+    And user types "mytestpassword" in inputPassword from main-page
+    And user clicks buttonLogin from main-page
+    Then linkUsernameLoggedIn from main-page should be present
+```
+
+And the Page Object file for this tests will look like this:
+```
+// tests/page-model/main-page.js
+
+let mainPage = {
+
+    pageMain: 'http://myportal.test/login.html',
+    linkProducts: '.link-products',
+    inputLogin: '#login',
+    inputPassword: '#pass',
+    buttonLogin: '.btn-login',
+    linkUsernameLoggedIn: 'a.username-authorized'
+
+};
+
+module.exports = mainPage;
+```
+
+If you want the Page Objects to look even shorter - you can write the same tests
+like this:
+```
+# tests/test-main-page.feature
+
+Feature: My portal main page tests
+  As a user of My portal
+  I should be able to use main page
+  to log in
+
+  Scenario: Open the main page, page title should be present
+    Given user goes to URL "http://myportal.test/login.html"
+    Then the title should be "Test1 main page"
+
+  Scenario: Products link should lead to Products page
+    Given user goes to "main-page"."pageMain"
+    When user clicks "main-page"."linkProducts"
+    Then URL should contain "/products"
+    And the title should contain "Test1 Products"
+
+  Scenario: Log in, link with username and status should be present
+    Given user goes to "main-page"."pageMain"
+    When user types "mytestuser" in "main-page"."inputLogin"
+    And user types "mytestpassword" in "main-page"."inputPassword"
+    And user clicks "main-page"."buttonLogin"
+    Then "main-page"."linkUsernameLoggedIn" should be present
+```
+
+You can see more examples of how to use predefined steps in
+[`test1-user.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test1-user.feature) and
+[`test2-user.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test2-user.feature).
+
+## Importing and running in CLI
 To get access to all Cucumber steps defined in this package just specify the
 path to this package when launching tests:
 ```
@@ -159,7 +239,7 @@ Additionally, you can specify:
     > and Custom Parameter types in
     > [cucumber.io](https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types).
 
-### Importing and running with config file
+## Importing and running with config file
 To make life easier and not to specify all options in CLI command, a
 `.testcaferc.json` configuration file can be created in the root directory of
 your project to store all settings (pathes to all step definitions and tests
@@ -196,14 +276,11 @@ PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe
 All options that are specified in CLI command will override settings from `.testcaferc.json`.
 
 > For all possible settings see:
-> - [TestCafe configuration file description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html)
-> - [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json)
-> - [all TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
+> - [TestCafe configuration file description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html) and
+> [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json)
+> - [TestCafe command line options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 
 ## List of predefined steps
-You can see the example of how to use predefined steps in
-[`test.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test.feature).
-
 ### Given steps
 1. `I/user go(es) to URL "..."` - open a site (by its URL provided in "" as a
 string - for example: `"https://github.com/Marketionist"`) in the current
@@ -355,21 +432,23 @@ debugging.
 ### Then steps
 24. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-25. `"..."."..." should be present` - verify that element (provided in
+25. `the title should contain "..."` - verify that title of the current browser
+window/tab contains the text (provided in "" as a string).
+26. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-26. `... "..."."..." should be present` - verify that the number of elements
+27. `... "..."."..." should be present` - verify that the number of elements
 (provided in **"page"."object"** as CSS or XPath selector) are present on the
 page.
 - `... ... from ... should be present` - verify that the number of elements
 (provided in **object** from **page** as CSS or XPath selector) are present on
 the page.
-27. `"..."."..." should not be present` - verify that element (provided in
+28. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-28. `"..."."..." text should be "..."` - verify that text of the element
+29. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -381,7 +460,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-29. `"..."."..." text should contain "..."` - verify that text of the element
+30. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
@@ -393,19 +472,19 @@ the text (provided in **"page2"."object2"**).
 - `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS or XPath selector)
 contains the text (provided in **object2** from **page2**).
-30. `URL should be "..."` - verify that URL of the current page equals to the
+31. `URL should be "..."` - verify that URL of the current page equals to the
 text (provided in "" as a string).
 - `URL should be "..."."..."` - verify that URL of the current page equals to
 the text (provided in **"page"."object"**).
 - `URL should be ... from ...` - verify that URL of the current page equals to
 the text (provided in **object** from **page**).
-31. `URL should contain "..."` - verify that URL of the current page contains
+32. `URL should contain "..."` - verify that URL of the current page contains
 the text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page
 contains the text (provided in **"page"."object"**).
 - `URL should contain ... from ...` - verify that URL of the current page
 contains the text (provided in **object** from **page**).
-32. `"..."."..." attribute "..." should contain "..."` - verify that the
+33. `"..."."..." attribute "..." should contain "..."` - verify that the
 attribute (provided in "" as a string) of the element (provided in
 **"page"."object"**) contains provided string (provided in "" as a string).
 - `... from ... attribute "..." should contain "..."` - verify that the
