@@ -21,8 +21,8 @@ let test2Page = {
     blockCredentials: '#block-credentials',
     input: 'input',
     cookieTest: 'my_test_cookie1=11',
-    bodyTest: '{ "test1": 1, "test2": 2 }',
-    urlTestRequest: 'http://httpbin.org/post',
+    bodyTest: '{"items":3,"item1":"nice","item2":true,"item3":[1,2,3]}',
+    urlTestRequest: 'http://localhost:8001/post',
     updateText: function () {
         document.getElementById('text-test').innerHTML = 'Text to test ' +
             'script execution';
