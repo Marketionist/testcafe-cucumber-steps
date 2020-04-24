@@ -93,13 +93,13 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11"
 
   Scenario: 'user sends "POST" request' should return the content of the page (body provided in the step string)
-    When user sends "POST" request to "http://httpbin.org/post" with body "{ \"test1\": 1, \"test2\": 2 }"
+    When user sends "POST" request to "http://localhost:8001/post" with body "{ \"test1\": 1, \"test2\": 2 }"
 
   Scenario: 'user sends "GET" request' should return the content of the page (body provided in the step string)
-    When user sends "GET" request to "http://httpbin.org/get?foo1=bar1&foo2=bar2" with body ""
+    When user sends "GET" request to "http://localhost:8001/" with body ""
 
   Scenario: 'user sends "POST" request' should return the content of the page (Page Object style step)
-    When user sends "POST" request to "https://postman-echo.com/post" with body "test2-page"."bodyTest"
+    When user sends "POST" request to "http://localhost:8001/post" with body "test2-page"."bodyTest"
 
   Scenario: 'user sends "POST" request' should return the content of the page (full Page Object style step)
     When user sends "POST" request to "test2-page"."urlTestRequest" with body "test2-page"."bodyTest"
