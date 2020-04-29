@@ -10,6 +10,11 @@ While not absolutely mandatory, it could be good if you first open an
 for any bug or feature request. This allows discussion on the proper course of
 action to take before coding begins.
 
+## General rules
+Most of the information you need to start contributing code changes can be found
+[here](https://guides.github.com/activities/contributing-to-open-source/).
+In short: fork, make your changes and submit a pull request (PR).
+
 ## Code Style Guide
 In case your editor does not respect `.editorconfig`, here is a summary of rules:
 
@@ -20,15 +25,6 @@ In case your editor does not respect `.editorconfig`, here is a summary of rules
 - quotes - single-quote
 - syntax - ES6/ES2015+
 - variable declarations - use `const` and `let`
-
-## Building
-```shell
-npm install
-```
-
-## Changing
-Most of the information you need to contribute code changes can [be found here](https://guides.github.com/activities/contributing-to-open-source/).
-In short: fork, make your changes and submit a pull request (PR).
 
 ### Fork
 Fork the project [on Github](https://github.com/Marketionist/testcafe-cucumber-steps)
@@ -72,8 +68,13 @@ git fetch upstream
 git rebase upstream/master
 ```
 
+### Install all dependencies
+```shell
+npm run install-all
+```
+
 ### Test
-Bug fixes and features **should have tests**. Look at other tests to see how
+New features **should have tests**. Look at other tests to see how
 they should be structured.
 
 This project makes use of code linting and e2e tests to make sure we don't break
@@ -98,6 +99,7 @@ A good PR comment message can look like this:
 ```text
 Explain PR normatively in one line
 
+Details (optional):
 Details of PR message are a few lines of text, explaining things
 in more detail, possibly giving some background about the issue
 being fixed, etc.
