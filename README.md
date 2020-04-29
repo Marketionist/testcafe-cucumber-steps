@@ -20,8 +20,8 @@ tests - see the presentation of why and how you can easily use
     <tbody>
         <tr>
             <td>8.x</td>
-            <td rowspan=6>1.x</td>
-            <td rowspan=6>5.x, 6.x</td>
+            <td rowspan=7>1.x</td>
+            <td rowspan=7>5.x, 6.x</td>
         </tr>
         <tr>
             <td>9.x</td>
@@ -38,6 +38,9 @@ tests - see the presentation of why and how you can easily use
         <tr>
             <td>13.x</td>
         </tr>
+        <tr>
+            <td>14.x</td>
+        </tr>
     </tbody>
 </table>
 
@@ -53,6 +56,7 @@ tests - see the presentation of why and how you can easily use
   * [When steps](#when-steps)
   * [Then steps](#then-steps)
 * [Bonus feature: use XPath selectors in TestCafe](#bonus-feature-use-xpath-selectors-in-testcafe)
+* [Contributing](#contributing)
 * [Thanks](#thanks)
 
 ## Installation fast
@@ -178,7 +182,7 @@ Feature: My portal main page tests
     Then "main-page"."linkUsernameLoggedIn" should be present
 ```
 
-You can see more examples of how to use predefined steps in
+See more examples of how to use predefined steps in
 [`test1-user.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test1-user.feature) and
 [`test2-user.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test2-user.feature).
 
@@ -496,6 +500,12 @@ As you know TestCafe does not support XPath selectors out of the box. But now
 you can use them in TestCafe Cucumber steps - just write XPath selector in
 a Page Object file the same way as you do with CSS selectors - see the example
 in [`test-page.js`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/page-model/test-page.js).
+
+## Contributing
+You are welcome to contribute to this repository - please see
+[CONTRIBUTING.md](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/CONTRIBUTING.md)
+to help you get started. It is not mandatory, so you can just create a pull
+request and we will help you refine it along the way.
 
 ## Thanks
 If this package was helpful to you, please give it a **★ Star** on
