@@ -2,6 +2,8 @@
 
 // #############################################################################
 
+const stamp = require('../../utils/stamp.js');
+
 let test2Page = {
 
     protocol: 'http://',
@@ -34,5 +36,6 @@ let test2Page = {
 };
 
 test2Page.pageTest2 = `${test2Page.protocol}localhost:8001/test2.html`;
+test2Page.timestamp = `timestamp:${stamp.getTimestamp()}`;
 
 module.exports = test2Page;

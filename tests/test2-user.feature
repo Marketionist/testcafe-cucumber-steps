@@ -107,6 +107,11 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   Scenario: 'user sends "POST" request' should return the content of the page (full text style step)
     When user sends "POST" request to urlTestRequest from test2-page with body bodyTest from test2-page
 
+  Scenario: 'utils/set-timestamp.js' should set global variable with timestamp string
+    Given user goes to URL "http://localhost:8001/test2.html"
+    When user types "test2-page"."timestamp" in "test2-page"."inputColors"
+    Then "test2-page"."blockInputColor" text should be "test2-page"."timestamp"
+
   Scenario: 'user accepts further browser alerts' should get the alert accepted
     Given user goes to URL "http://localhost:8001/test-alert.html"
     When user accepts further browser alerts
