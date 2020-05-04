@@ -13,14 +13,10 @@ let stamp = {
         return process.env.TIMESTAMP;
     },
     getTimestamp: function () {
-        process.env.TIMESTAMP = this._timestamp.length > 0 ? this._timestamp : this.resetTimestamp()
+        process.env.TIMESTAMP = this._timestamp.length > 0 ? this._timestamp : this.resetTimestamp();
 
         return process.env.TIMESTAMP;
     }
 };
-
-stamp.getTimestamp();
-
-console.log(`process.env.TIMESTAMP: ${process.env.TIMESTAMP}`);
 
 module.exports = stamp;
