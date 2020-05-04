@@ -62,6 +62,22 @@ async function requirePageObjects () {
 requirePageObjects();
 
 /**
+ * Checks if locator is XPath
+ * @param {string} locator
+ * @returns {boolean}
+ */
+function isXPath (locator) {
+    const firstCharOfLocator = 0;
+    const thirdCharOfLocator = 2;
+    const fourthCharOfLocator = 3;
+
+    const result = locator.slice(firstCharOfLocator, thirdCharOfLocator) === '//' ||
+        locator.slice(firstCharOfLocator, fourthCharOfLocator) === '(//'
+
+    return result;
+}
+
+/**
  * Checks for XPath and gets proper element for further actions
  * @param {string} page
  * @param {string} elem
@@ -72,7 +88,7 @@ function getElement (page, elem) {
     let element;
 
     try {
-        if (locator[0] + locator[1] === '//') {
+        if (isXPath(locator)) {
             element = SelectorXPath(locator);
         } else {
             element = locator;
@@ -780,7 +796,7 @@ Then('{string}.{string} attribute {string} should contain {string}',
         const locator = pageObjects[page][element];
         let elem;
 
-        if (locator[0] + locator[1] === '//') {
+        if (isXPath(locator)) {
             elem = SelectorXPath(`${locator.slice(0, -1)} and contains(@${attribute}, "${attributeValue}")]`);
         } else {
             elem = `${locator}[${attribute}*="${attributeValue}"]`;
@@ -797,7 +813,7 @@ Then('{word} from {word}( page) attribute {string} should contain {string}',
         const locator = pageObjects[page][element];
         let elem;
 
-        if (locator[0] + locator[1] === '//') {
+        if (isXPath(locator)) {
             elem = SelectorXPath(`${locator.slice(0, -1)} and contains(@${attribute}, "${attributeValue}")]`);
         } else {
             elem = `${locator}[${attribute}*="${attributeValue}"]`;
