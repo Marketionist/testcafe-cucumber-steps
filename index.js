@@ -11,6 +11,7 @@ const parseUrl = require('url').parse;
 const SelectorXPath = require('./utils/selector-xpath.js');
 const readDirectories = require('./utils/read-directories.js');
 const errors = require('./utils/errors.js');
+const stamp = require('./utils/stamp.js');
 
 const spacesToIndent = 4;
 
@@ -807,3 +808,9 @@ Then('{word} from {word}( page) attribute {string} should contain {string}',
         );
     }
 );
+
+module.exports = {
+    SelectorXPath: SelectorXPath,
+    readDirectories: readDirectories,
+    stamp: stamp
+};
