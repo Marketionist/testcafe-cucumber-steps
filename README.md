@@ -55,7 +55,9 @@ tests - see the presentation of why and how you can easily use
   * [Given steps](#given-steps)
   * [When steps](#when-steps)
   * [Then steps](#then-steps)
-* [Bonus feature: use XPath selectors in TestCafe](#bonus-feature-use-xpath-selectors-in-testcafe)
+* [Bonus feature 1: use XPath selectors in TestCafe](#bonus-feature-1-use-xpath-selectors-in-testcafe)
+* [Bonus feature 2: generate timestamp or random digits](#bonus-feature-2-generate-timestamp-or-random-digits)
+* [Bonus feature 3: read directories and get files](#bonus-feature-3-read-directories-and-get-files)
 * [Contributing](#contributing)
 * [Thanks](#thanks)
 
@@ -495,11 +497,49 @@ attribute (provided in "" as a string) of the element (provided in
 attribute (provided in "" as a string) of the element (provided in
 **"page"."object"**) contains provided string (provided in "" as a string).
 
-## Bonus feature: use XPath selectors in TestCafe
+## Bonus feature 1: use XPath selectors in TestCafe
 As you know TestCafe does not support XPath selectors out of the box. But now
 you can use them in TestCafe Cucumber steps - just write XPath selector in
 a Page Object file the same way as you do with CSS selectors - see the example
 in [`test-page.js`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/page-model/test-page.js).
+It can also be used in your custom Cucumber steps - for example:
+```
+const { SelectorXPath } = require('testcafe-cucumber-steps');
+
+const buttonStartTest = SelectorXPath('//*[ancestor::*[@class="test-panel"] and contains(text(), "Start test")]');
+```
+
+## Bonus feature 2: generate timestamp or random digits
+There ususally is a need to generate random names. Timestamp can be used to
+generate a unique string of 13+ digits:
+```
+const { stamp } = require('testcafe-cucumber-steps');
+
+const randomDigits = stamp.getTimestamp(); // '1588556993141'
+const newTestName = `My new test ${randomDigits}`; // 'My new test 1588556993141'
+```
+It will also write generated digits to a global environment variable
+`process.env.TIMESTAMP` that can be easily accessed in any place of your tests:
+```
+console.log(process.env.TIMESTAMP); // '1588556993141'
+```
+To get new timestamp:
+```
+const newRandomDigits = stamp.resetTimestamp(); // '1588558255810'
+
+console.log(process.env.TIMESTAMP); // '1588558255810'
+```
+
+## Bonus feature 3: read directories and get files
+Read the array of directories and get the array of files from this directories:
+```
+const { readDirectories } = require('testcafe-cucumber-steps');
+
+const pathToDirectory1 = path.join(__dirname, '/directory1');
+const pathToDirectory2 = path.join(__dirname, '../..', '/directory2');
+
+const allFiles = await readDirectories([pathToDirectory1, pathToDirectory2]);
+```
 
 ## Contributing
 You are welcome to contribute to this repository - please see
