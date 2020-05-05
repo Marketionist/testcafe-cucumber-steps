@@ -94,7 +94,7 @@ function getElement (page, elem) {
             element = locator;
         }
     } catch (error) {
-        throw new ReferenceError(`${errors.SELECTOR_NOT_DEFINED} ${error}`);
+        throw new ReferenceError(`${errors.SELECTOR_NOT_DEFINED} "${page}"."${element}" ${error}`);
     }
 
     return element;
