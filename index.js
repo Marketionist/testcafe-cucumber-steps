@@ -8,10 +8,8 @@ const { ClientFunction, Selector } = require('testcafe');
 const path = require('path');
 const http = require('http');
 const parseUrl = require('url').parse;
-const SelectorXPath = require('./utils/selector-xpath.js');
-const readDirectories = require('./utils/read-directories.js');
+const { SelectorXPath, readDirectories, stamp } = require('./utils/index.js');
 const errors = require('./utils/errors.js');
-const stamp = require('./utils/stamp.js');
 
 const spacesToIndent = 4;
 
@@ -34,7 +32,7 @@ let pageObjects = {};
 
 /**
  * Requires Page Object files
- * @returns {array} allRequiredPageObjects
+ * @returns {Array} allRequiredPageObjects
  */
 async function requirePageObjects () {
     const allPageObjectFiles = await readDirectories(
@@ -63,24 +61,20 @@ requirePageObjects();
 
 /**
  * Checks if locator is XPath
- * @param {string} locator
- * @returns {boolean}
+ * @param {String} locator
+ * @returns {Boolean}
  */
 function isXPath (locator) {
     const firstCharOfLocator = 0;
-    const thirdCharOfLocator = 2;
     const fourthCharOfLocator = 3;
 
-    const result = locator.slice(firstCharOfLocator, thirdCharOfLocator) === '//' ||
-        locator.slice(firstCharOfLocator, fourthCharOfLocator) === '(//'
-
-    return result;
+    return locator.slice(firstCharOfLocator, fourthCharOfLocator).includes('//');
 }
 
 /**
  * Checks for XPath and gets proper element for further actions
- * @param {string} page
- * @param {string} elem
+ * @param {String} page
+ * @param {String} elem
  * @returns {Object} element
  */
 function getElement (page, elem) {
@@ -102,7 +96,7 @@ function getElement (page, elem) {
 
 /**
  * Sets cookie on the current website
- * @param {string} cookie
+ * @param {String} cookie
  */
 function setCookie (cookie) {
     const domain = window.location.hostname.split('.').filter((part) => {
@@ -115,9 +109,9 @@ function setCookie (cookie) {
 
 /**
  * Creates request
- * @param {string} method
- * @param {string} requestUrl
- * @param {string} bodyString
+ * @param {String} method
+ * @param {String} requestUrl
+ * @param {String} bodyString
  * @returns {Promise} response
  */
 function createRequest (method, requestUrl, bodyString = '') {
