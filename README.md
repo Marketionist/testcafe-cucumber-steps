@@ -504,7 +504,7 @@ a Page Object file the same way as you do with CSS selectors - see the example
 in [`test-page.js`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/page-model/test-page.js).
 It can also be used in your custom Cucumber steps - for example:
 ```
-const { SelectorXPath } = require('testcafe-cucumber-steps');
+const { SelectorXPath } = require('./node_modules/testcafe-cucumber-steps/utils/index.js');
 
 const buttonStartTest = SelectorXPath('//*[ancestor::*[@class="test-panel"] and contains(text(), "Start test")]');
 ```
@@ -513,7 +513,7 @@ const buttonStartTest = SelectorXPath('//*[ancestor::*[@class="test-panel"] and 
 There ususally is a need to generate random names. Timestamp can be used to
 generate a unique string of 13+ digits:
 ```
-const { stamp } = require('testcafe-cucumber-steps');
+const { stamp } = require('./node_modules/testcafe-cucumber-steps/utils/index.js');
 
 const randomDigits = stamp.getTimestamp(); // '1588556993141'
 const newTestName = `My new test ${randomDigits}`; // 'My new test 1588556993141'
@@ -533,7 +533,7 @@ console.log(process.env.TIMESTAMP); // '1588558255810'
 ## Bonus feature 3: read directories and get files
 Read the array of directories and get the array of files from this directories:
 ```
-const { readDirectories } = require('testcafe-cucumber-steps');
+const { readDirectories } = require('./node_modules/testcafe-cucumber-steps/utils/index.js');
 
 const pathToDirectory1 = path.join(__dirname, '/directory1');
 const pathToDirectory2 = path.join(__dirname, '../..', '/directory2');
