@@ -111,14 +111,29 @@ function setCookie (cookie) {
  * Creates request
  * @param {String} method
  * @param {String} requestUrl
+ * @param {String} headersString
  * @param {String} bodyString
  * @returns {Promise} response
  */
-function createRequest (method, requestUrl, bodyString = '') {
+function createRequest (
+    method,
+    requestUrl,
+    headersString = '',
+    bodyString = ''
+) {
     return new Promise((resolve, reject) => {
         // Check incoming body string to have proper JSON inside of it
         const requestBody = bodyString.length > 0 ? JSON.stringify(JSON.parse(bodyString)) : '';
         const contentType = method.toUpperCase() === 'GET' ? 'text/html' : 'application/json';
+
+        // Check incoming headers string to have proper JSON inside of it
+        const requestHeaders = headersString.length > 0 ?
+            JSON.parse(headersString) :
+            {
+                'Content-Type': contentType,
+                'Connection': 'close',
+                'Content-Length': Buffer.byteLength(requestBody)
+            };
 
         const parsedUrl = parseUrl(requestUrl);
         const options = {
@@ -129,11 +144,7 @@ function createRequest (method, requestUrl, bodyString = '') {
             hash: parsedUrl.hash,
             port: parsedUrl.port,
             method: method,
-            headers: {
-                'Content-Type': contentType,
-                'Connection': 'close',
-                'Content-Length': Buffer.byteLength(requestBody)
-            }
+            headers: requestHeaders
         };
 
         const req = http.request(options, (res) => {
@@ -210,26 +221,66 @@ Given('I/user set(s) cookie {word} from {word}( page)', async function (t, [elem
 Given('I/user send(s) {string} request to {string} with body {string}', async function (
     t, [method, reqUrl, body]
 ) {
-    await createRequest(method, reqUrl, body);
+    await createRequest(method, reqUrl, '', body);
 });
 
 Given('I/user send(s) {string} request to {string} with body {string}.{string}', async function (
     t, [method, reqUrl, page, element]
 ) {
-    await createRequest(method, reqUrl, pageObjects[page][element]);
+    await createRequest(method, reqUrl, '', pageObjects[page][element]);
 });
 
 Given('I/user send(s) {string} request to {string}.{string} with body {string}.{string}', async function (
     t, [method, page1, element1, page2, element2]
 ) {
-    await createRequest(method, pageObjects[page1][element1], pageObjects[page2][element2]);
+    await createRequest(method, pageObjects[page1][element1], '', pageObjects[page2][element2]);
 });
 
 Given(
     'I/user send(s) {string} request to {word} from {word}( page) with body {word} from {word}( page)',
     async function (t, [method, element1, page1, element2, page2]
     ) {
-        await createRequest(method, pageObjects[page1][element1], pageObjects[page2][element2]);
+        await createRequest(method, pageObjects[page1][element1], '', pageObjects[page2][element2]);
+    }
+);
+
+Given('I/user send(s) {string} request to {string} with headers {string} and body {string}', async function (
+    t, [method, reqUrl, headers, body]
+) {
+    await createRequest(method, reqUrl, headers, body);
+});
+
+Given(
+    'I/user send(s) {string} request to {string} with headers {string}.{string} and body {string}.{string}',
+    async function (t, [method, reqUrl, page1, element1, page2, element2]) {
+        await createRequest(method, reqUrl, pageObjects[page1][element1], pageObjects[page2][element2]);
+    }
+);
+
+Given(
+    'I/user send(s) {string} request to {string}.{string} with headers {string}.{string} and body {string}.{string}',
+    async function (t, [method, page1, element1, page2, element2, page3, element3]) {
+        await createRequest(
+            method,
+            pageObjects[page1][element1],
+            pageObjects[page2][element2],
+            pageObjects[page3][element3]
+        );
+    }
+);
+
+Given(
+    // eslint-disable-next-line cucumber/expression-type
+    'I/user send(s) {string} request to {word} from {word}( page) with ' +
+    'headers {word} from {word}( page) and body {word} from {word}( page)',
+    async function (t, [method, element1, page1, element2, page2, element3, page3]
+    ) {
+        await createRequest(
+            method,
+            pageObjects[page1][element1],
+            pageObjects[page2][element2],
+            pageObjects[page3][element3]
+        );
     }
 );
 

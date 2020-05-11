@@ -107,6 +107,21 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
   Scenario: 'user sends "POST" request' should return the content of the page (full text style step)
     When user sends "POST" request to urlTestRequest from test2-page with body bodyTest from test2-page
 
+  Scenario: 'user sends "POST" request' should return the content of the page (body provided in the step string)
+    When user sends "POST" request to "http://localhost:8001/post" with headers "{ \"Content-Type\": \"application/json\", \"Authorization\": \"Bearer aBcD1234\" }" and body "{ \"test1\": 1, \"test2\": 2 }"
+
+  Scenario: 'user sends "POST" request' should return the content of the page (body provided in the step string)
+    When user sends "POST" request to "http://localhost:8001/post" with headers "" and body "{ \"test1\": 1, \"test2\": 2 }"
+
+  Scenario: 'user sends "POST" request' should return the content of the page (Page Object style step)
+    When user sends "POST" request to "http://localhost:8001/post" with headers "test2-page"."headersTest" and body "test2-page"."bodyTest"
+
+  Scenario: 'user sends "POST" request' should return the content of the page (full Page Object style step)
+    When user sends "POST" request to "test2-page"."urlTestRequest" with headers "test2-page"."headersTest" and body "test2-page"."bodyTest"
+
+  Scenario: 'user sends "POST" request' should return the content of the page (full text style step)
+    When user sends "POST" request to urlTestRequest from test2-page with headers headersTest from test2-page and body bodyTest from test2-page
+
   Scenario: 'utils/set-timestamp.js' should set global variable with timestamp string
     Given user goes to URL "http://localhost:8001/test2.html"
     When user types "test2-page"."timestamp" in "test2-page"."inputColors"
