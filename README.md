@@ -305,6 +305,9 @@ provided in **object** from **page**).
 (request method provided in "" as a string - for example: `POST`) to URL
 (provided in "" as a string - for example: `"http://httpbin.org/post"`) with
 body (provided in "" as JSON - for example: `"{ \"test1\": 1, \"test2\": 2 }"`).
+> GET request will be sent with default header `'Content-Type': 'text/html'`,
+> all other requests will be sent with default header
+> `'Content-Type': 'application/json'`.
 - `I/user send(s) "..." request to "..." with body "..."."..."` - send request
 (request method provided in "" as a string - for example: `POST`) to URL
 (provided in "" as a string - for example: `"http://httpbin.org/post"`) with
