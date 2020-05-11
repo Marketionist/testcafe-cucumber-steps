@@ -221,26 +221,26 @@ Given('I/user set(s) cookie {word} from {word}( page)', async function (t, [elem
 Given('I/user send(s) {string} request to {string} with body {string}', async function (
     t, [method, reqUrl, body]
 ) {
-    await createRequest(method, reqUrl, body);
+    await createRequest(method, reqUrl, '', body);
 });
 
 Given('I/user send(s) {string} request to {string} with body {string}.{string}', async function (
     t, [method, reqUrl, page, element]
 ) {
-    await createRequest(method, reqUrl, pageObjects[page][element]);
+    await createRequest(method, reqUrl, '', pageObjects[page][element]);
 });
 
 Given('I/user send(s) {string} request to {string}.{string} with body {string}.{string}', async function (
     t, [method, page1, element1, page2, element2]
 ) {
-    await createRequest(method, pageObjects[page1][element1], pageObjects[page2][element2]);
+    await createRequest(method, pageObjects[page1][element1], '', pageObjects[page2][element2]);
 });
 
 Given(
     'I/user send(s) {string} request to {word} from {word}( page) with body {word} from {word}( page)',
     async function (t, [method, element1, page1, element2, page2]
     ) {
-        await createRequest(method, pageObjects[page1][element1], pageObjects[page2][element2]);
+        await createRequest(method, pageObjects[page1][element1], '', pageObjects[page2][element2]);
     }
 );
 
