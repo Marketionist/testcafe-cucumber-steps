@@ -7,6 +7,7 @@ const { Given, When, Then } = require('cucumber');
 const { ClientFunction, Selector } = require('testcafe');
 const path = require('path');
 const http = require('http');
+const https = require('https');
 const parseUrl = require('url').parse;
 const { SelectorXPath, readDirectories, stamp } = require('./utils/index.js');
 const errors = require('./utils/errors.js');
@@ -108,6 +109,32 @@ function setCookie (cookie) {
 }
 
 /**
+ * Handles response from request
+ * @param {Object} response
+ * @param {Function} callbackFunction
+ */
+function handleResponse (response, callbackFunction) {
+    let data = '';
+
+    console.log(`\nResponse status: ${response.statusCode}`);
+    console.log(`\nResponse headers: ${JSON.stringify(response.headers, null, spacesToIndent)}`);
+
+    response.setEncoding('utf8');
+
+    response.on('data', (chunk) => {
+        // Accumulate all data from response
+        data += chunk;
+    });
+    response.on('end', () => {
+        let res = data.length > 0 ? data : 'empty';
+
+        console.log(`\nResponse body: ${res}`);
+        // Resolve after response was finished and all data from response was accumulated
+        callbackFunction(data);
+    });
+}
+
+/**
  * Creates request
  * @param {String} method
  * @param {String} requestUrl
@@ -147,26 +174,17 @@ function createRequest (
             headers: requestHeaders
         };
 
-        const req = http.request(options, (res) => {
-            let data = '';
+        let req;
 
-            console.log(`\nResponse status: ${res.statusCode}`);
-            console.log(`\nResponse headers: ${JSON.stringify(res.headers, null, spacesToIndent)}`);
-
-            res.setEncoding('utf8');
-
-            res.on('data', (chunk) => {
-                // Accumulate all data from response
-                data += chunk;
+        if (requestUrl.includes('https')) {
+            req = https.request(options, (res) => {
+                handleResponse(res, resolve);
             });
-            res.on('end', () => {
-                let response = data.length > 0 ? data : 'empty';
-
-                console.log(`\nResponse body: ${response}`);
-                // Resolve after response was finished and all data from response was accumulated
-                resolve(data);
+        } else {
+            req = http.request(options, (res) => {
+                handleResponse(res, resolve);
             });
-        });
+        }
 
         req.on('error', (err) => {
             console.log(`Problem with request: ${err.message}`);
@@ -657,11 +675,11 @@ When('I/user debug(s)', async function (t) {
 // #### Then steps #############################################################
 
 const getTitle = ClientFunction(() => {
-    return document.title;
+    return window.document.title;
 });
 
 const getLocation = ClientFunction(() => {
-    return document.location.href;
+    return window.location.href;
 });
 
 Then('the title should be {string}', async function (t, [text]) {

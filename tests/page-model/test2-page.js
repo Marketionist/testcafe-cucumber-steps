@@ -2,7 +2,7 @@
 
 // #############################################################################
 
-const stamp = require('../../utils/stamp.js');
+const { stamp } = require('../../utils/index.js');
 
 let test2Page = {
 
