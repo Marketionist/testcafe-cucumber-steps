@@ -57,7 +57,8 @@ tests - see the presentation of why and how you can easily use
   * [Then steps](#then-steps)
 * [Bonus feature 1: use XPath selectors in TestCafe](#bonus-feature-1-use-xpath-selectors-in-testcafe)
 * [Bonus feature 2: generate timestamp or random digits](#bonus-feature-2-generate-timestamp-or-random-digits)
-* [Bonus feature 3: read directories and get files](#bonus-feature-3-read-directories-and-get-files)
+* [Bonus feature 3: send GET, POST and other requests](#bonus-feature-3-send-get-post-and-other-requests)
+* [Bonus feature 4: read directories and get files](#bonus-feature-4-read-directories-and-get-files)
 * [Contributing](#contributing)
 * [Thanks](#thanks)
 
@@ -553,7 +554,29 @@ const newRandomDigits = stamp.resetTimestamp(); // '1588558255810'
 console.log(process.env.TIMESTAMP); // '1588558255810'
 ```
 
-## Bonus feature 3: read directories and get files
+## Bonus feature 3: send GET, POST and other requests
+Send request to any URL and get response. Function should be called with
+arguments: method, request URL, headers, body (or just empty strings '' if any
+argument is not required in your request):
+```
+const { createRequest } = require('./node_modules/testcafe-cucumber-steps/utils/index.js');
+
+const responseGet = await createRequest(
+    'GET',
+    'https://www.google.com/',
+    '',
+    ''
+);
+
+const responsePost = await createRequest(
+    'POST',
+    'http://httpbin.org/post',
+    '{ "Content-Type": "application/json", "Authorization": "Bearer aBcD1234" }',
+    '{ "test1": 1, "test2": 2 }'
+);
+```
+
+## Bonus feature 4: read directories and get files
 Read the array of directories and get the array of files from this directories:
 ```
 const { readDirectories } = require('./node_modules/testcafe-cucumber-steps/utils/index.js');
