@@ -40,6 +40,9 @@
   ],
   "author": "Dmytro Shpakovskyi",
   "license": "MIT",
+  "dependencies": {
+    "js-automation-tools": "^1.0.0"
+  },
   "peerDependencies": {
     "cucumber": ">=5.1.0",
     "gherkin-testcafe": ">=2.4.2",

@@ -6,7 +6,8 @@
 const { Given, When, Then } = require('cucumber');
 const { ClientFunction, Selector } = require('testcafe');
 const path = require('path');
-const { SelectorXPath, readDirectories, stamp, createRequest } = require('./utils/index.js');
+const { readDirectories, createRequest } = require('js-automation-tools');
+const SelectorXPath = require('./utils/selector-xpath.js');
 const errors = require('./utils/errors.js');
 
 const spacesToIndent = 4;
@@ -794,9 +795,3 @@ Then('{word} from {word}( page) attribute {string} should contain {string}',
         );
     }
 );
-
-module.exports = {
-    SelectorXPath: SelectorXPath,
-    readDirectories: readDirectories,
-    stamp: stamp
-};

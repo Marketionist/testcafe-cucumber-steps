@@ -2,7 +2,7 @@
 
 // #############################################################################
 
-const { stamp } = require('../../utils/index.js');
+const { stamp } = require('js-automation-tools');
 
 let test2Page = {
 
