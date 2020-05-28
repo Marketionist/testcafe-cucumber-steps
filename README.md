@@ -55,7 +55,7 @@ tests - see the presentation of why and how you can easily use
   * [Given steps](#given-steps)
   * [When steps](#when-steps)
   * [Then steps](#then-steps)
-* [Bonus feature: use XPath selectors in TestCafe](#bonus-feature-1-use-xpath-selectors-in-testcafe)
+* [Bonus feature: use XPath selectors in TestCafe](#bonus-feature-use-xpath-selectors-in-testcafe)
 * [Contributing](#contributing)
 * [Thanks](#thanks)
 
