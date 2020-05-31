@@ -323,6 +323,32 @@ When('I/user wait(s) and click(s) {word} from {word}( page)', async function (
     await t.wait(timeToWait).click(elem);
 });
 
+When('I/user wait(s) up to {int} ms for {string}.{string} to appear', async function (
+    t, [timeToWait, page, element]
+) {
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).with(
+        { timeout: timeToWait, visibilityCheck: true }
+    ).exists).ok(
+        `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}" up to ${timeToWait} ms`,
+        { timeout: timeToWait }
+    );
+});
+
+When('I/user wait(s) up to {int} ms for {word} from {word}( page) to appear', async function (
+    t, [timeToWait, element, page]
+) {
+    const elem = getElement(page, element);
+
+    await t.expect(Selector(elem).with(
+        { timeout: timeToWait, visibilityCheck: true }
+    ).exists).ok(
+        `${errors.ELEMENT_NOT_PRESENT} "${page}"."${element}" up to ${timeToWait} ms`,
+        { timeout: timeToWait }
+    );
+});
+
 When('I/user click(s) {string}.{string} if present', async function (
     t, [page, element]
 ) {
