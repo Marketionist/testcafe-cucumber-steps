@@ -1,4 +1,4 @@
-@fast @user-steps
+@fast @user-steps @test1
 
 Feature: Running Cucumber with TestCafe - test "user ..." steps feature 1
   As a user of TestCafe
@@ -65,6 +65,14 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 1
     Given user goes to "test-page"."pageTest1"
     When user waits and clicks linkTest2Page from test-page
     Then the title should be "Test2 Page"
+
+  Scenario: 'user waits to appear' should wait for the content to appear up to provided number of ms
+    Given user goes to "test-page"."pageLoader"
+    When user waits up to 10000 ms for "test-page"."blockTestContent" to appear
+
+  Scenario: 'user waits to appear' should wait for the content to appear up to provided number of ms (text style step)
+    Given user goes to pageLoader from test-page
+    When user waits up to 10000 ms for blockTestContentXPath from test-page to appear
 
   Scenario: 'user clicks if present': link on Page1 test page should be clicked if it is visible and lead to Page2 test page
     Given user goes to "test-page"."pageTest1"
