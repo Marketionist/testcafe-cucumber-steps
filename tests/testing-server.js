@@ -12,11 +12,11 @@ nodeTestingServer.config = {
         '/test1.html': `<title>Test1 Page</title><a id="link-test2-page" href="
             http://localhost:8001/test2.html">Test2 page</a>
             <script>
-                window.onload = function() {
-                    document.querySelector('h1').addEventListener("mouseover", function() {
+                window.onload = function () {
+                    document.querySelector('h1').addEventListener("mouseover", function () {
                         document.getElementById("text-test").innerHTML = 'Test 1 sample text';
                     });
-                    document.querySelector('h1').addEventListener("mouseout", function() {
+                    document.querySelector('h1').addEventListener("mouseout", function () {
                         document.getElementById("text-test").innerHTML = '';
                     });
                 }
@@ -25,17 +25,17 @@ nodeTestingServer.config = {
             <p id="text-test"></p>`,
         '/test2.html': `<title>Test2 Page</title>
             <script>
-                window.onload = function() {
-                    document.getElementById("login").addEventListener("click", function() {
+                window.onload = function () {
+                    document.getElementById("login").addEventListener("click", function () {
                         document.getElementById("block-credentials").innerHTML = document
                             .getElementById("input-username").value + document
                             .getElementById("input-password").value;
                     });
-                    document.getElementById("input-colors").addEventListener("input", function() {
+                    document.getElementById("input-colors").addEventListener("input", function () {
                         document.getElementById("block-input-color").innerHTML = document
                             .getElementById("input-colors").value;
                     });
-                    document.getElementById("dropdown-colors").addEventListener("change", function() {
+                    document.getElementById("dropdown-colors").addEventListener("change", function () {
                         document.getElementById("block-dropdown-color").innerHTML = document
                             .getElementById("dropdown-colors").value;
                     });
@@ -80,8 +80,8 @@ nodeTestingServer.config = {
             </iframe>`,
         '/test-alert.html': `<title>Test Page with alert</title>
             <script>
-                window.onload = function() {
-                    document.getElementById("button-launch-alert").addEventListener("click", function() {
+                window.onload = function () {
+                    document.getElementById("button-launch-alert").addEventListener("click", function () {
                         let alertStatus;
                         if (confirm("Accept (OK) or Dismiss (Cancel) - press a button!") == true) {
                             alertStatus = "Alert was accepted!";
@@ -94,7 +94,50 @@ nodeTestingServer.config = {
             </script>
             <h1>Test page with alert</h1>
             <button id="button-launch-alert">Launch alert</button>
-            <p id="block-alert-status"></p>`
+            <p id="block-alert-status"></p>`,
+        '/test-loader.html': `<title>Test Page with loader</title>
+            <style>
+                #loader {
+                    width: 70%;
+                    height: 70%;
+                    position: fixed;
+                    z-index: 9999;
+                    background-color: #FFD700;
+                }
+            </style>
+            <script>
+                function insertAfter(referenceNode, newNode) {
+                    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+                }
+                function showLoader (idValue, timeToSpin = 5000) {
+                    const blockLoader = document.createElement('div');
+
+                    blockLoader.setAttribute('id', idValue);
+                    document.body.insertBefore(blockLoader, document.body.firstChild);
+
+                    setTimeout(function () {
+                        document.getElementById(idValue).remove();
+                    }, timeToSpin);
+                }
+                function showContentWithDelay (timeDelay = 5000) {
+                    const title = document.querySelector('h1');
+                    let blockContent = document.createElement('p');
+                    blockContent.setAttribute('id', 'block-content');
+                    blockContent.innerHTML = 'This is a test content on a page with loader';
+
+                    setTimeout(function () {
+                        insertAfter(title, blockContent);
+                    }, timeDelay);
+                }
+                document.addEventListener('DOMContentLoaded', () => {
+                    const timeout1 = 6000;
+                    const timeout2 = 8000;
+
+                    showLoader('loader', timeout1);
+                    showContentWithDelay(timeout2);
+                });
+            </script>
+            <h1>Test page with loader</h1>`
     }
 }
 // Start node testing server

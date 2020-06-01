@@ -14,7 +14,11 @@ let testPage = {
     txtTest1: 'Test 1 sample',
     txtTest2: 'Test2',
     linkInvisibleTest2Page: '#link-invisible-test2-page',
-    linkInvisibleTest2PageXPath: '//*[@id="link-invisible-test2-page"]'
+    linkInvisibleTest2PageXPath: '//*[@id="link-invisible-test2-page"]',
+    pageLoader: 'http://localhost:8001/test-loader.html',
+    blockTestContent: '#block-content',
+    blockTestContentXPath: `//*[@id="block-content" and contains(text(),
+         "This is a test content on a page with loader")]`
 
 };
 
