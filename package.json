@@ -41,7 +41,7 @@
   "author": "Dmytro Shpakovskyi",
   "license": "MIT",
   "dependencies": {
-    "js-automation-tools": "^1.0.3"
+    "js-automation-tools": "^1.0.4"
   },
   "peerDependencies": {
     "cucumber": ">=5.1.0",
