@@ -570,6 +570,39 @@ When('I/user switch(es) to main frame', async function (t) {
     await t.switchToMainWindow();
 });
 
+When('I/user set(s) {string} file path in {string}.{string}', async function (
+    t, [pathToFile, page, element]
+) {
+    const elem = getElement(page, element);
+
+    await t.setFilesToUpload(elem, [pathToFile]);
+});
+
+When('I/user set(s) {string} file path in {word} from {word}( page)', async function (
+    t, [pathToFile, element, page]
+) {
+    const elem = getElement(page, element);
+
+    await t.setFilesToUpload(elem, [pathToFile]);
+});
+
+When('I/user set(s) {string}.{string} file path in {string}.{string}', async function (
+    t, [page1, element1, page2, element2]
+) {
+    const elem = getElement(page2, element2);
+
+    await t.setFilesToUpload(elem, [pageObjects[page1][element1]]);
+});
+
+When(
+    'I/user set(s) {word} from {word}( page) file path in {word} from {word}( page)',
+    async function (t, [element1, page1, element2, page2]) {
+        const elem = getElement(page2, element2);
+
+        await t.setFilesToUpload(elem, [pageObjects[page1][element1]]);
+    }
+);
+
 When('I/user execute(s) {string}.{string} function', async function (
     t, [page, element]
 ) {
