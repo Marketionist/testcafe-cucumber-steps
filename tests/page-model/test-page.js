@@ -18,7 +18,9 @@ let testPage = {
     pageLoader: 'http://localhost:8001/test-loader.html',
     blockTestContent: '#block-content',
     blockTestContentXPath: `//*[@id="block-content" and contains(text(),
-         "This is a test content on a page with loader")]`
+         "This is a test content on a page with loader")]`,
+    inputUploadFile: '[type="file"]',
+    pathToImage1: 'media/test-image1.jpg'
 
 };
 

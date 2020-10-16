@@ -62,6 +62,26 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 2
     When I switch to main frame
     Then "test-page"."linkTest2Page" should not be present
 
+  Scenario: 'I set file path' should set the path to the file (string) inside the Upload image input
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set "media/test-image1.jpg" file path in "test-page"."inputUploadFile"
+    Then "test-page"."inputUploadFile" should be present
+
+  Scenario: 'I set file path' should set the path to the file (string) inside the Upload image input (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set "media/test-image1.jpg" file path in inputUploadFile from test-page
+    Then "test-page"."inputUploadFile" should be present
+
+  Scenario: 'I set file path' should set the path to the file (page object) inside the Upload image input
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set "test-page"."pathToImage1" file path in "test-page"."inputUploadFile"
+    Then "test-page"."inputUploadFile" should be present
+
+  Scenario: 'I set file path' should set the path to the file (page object) inside the Upload image input (text style step)
+    Given I go to URL "http://localhost:8001/test1.html"
+    When I set pathToImage1 from test-page file path in inputUploadFile from test-page
+    Then "test-page"."inputUploadFile" should be present
+
   Scenario: 'I execute function' should change the content on the page
     Given I go to URL "http://localhost:8001/test1.html"
     When I execute "test2-page"."updateText" function
