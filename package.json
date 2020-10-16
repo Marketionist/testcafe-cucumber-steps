@@ -1,6 +1,6 @@
 {
   "name": "testcafe-cucumber-steps",
-  "version": "1.13.2",
+  "version": "1.14.0",
   "description": "Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e) tests",
   "main": "index.js",
   "engines": {
