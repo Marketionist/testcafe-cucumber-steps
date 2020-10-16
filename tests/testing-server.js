@@ -22,7 +22,12 @@ nodeTestingServer.config = {
                 }
             </script>
             <h1>Test1 page</h1>
-            <p id="text-test"></p>`,
+            <p id="text-test"></p>
+            <p>
+                <label for="image">Upload image:</label>
+                <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif">
+                <input type="submit" value="Upload">
+            </p>`,
         '/test2.html': `<title>Test2 Page</title>
             <script>
                 window.onload = function () {
