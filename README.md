@@ -543,7 +543,7 @@ a Page Object file the same way as you do with CSS selectors - see the example
 in [`test-page.js`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/page-model/test-page.js).
 It can also be used in your custom Cucumber steps - for example:
 ```
-const { SelectorXPath } = require('./node_modules/testcafe-cucumber-steps/utils/index.js');
+const SelectorXPath = require('./node_modules/testcafe-cucumber-steps/utils/selector-xpath.js');
 
 const buttonStartTest = SelectorXPath('//*[ancestor::*[@class="test-panel"] and contains(text(), "Start test")]');
 ```
