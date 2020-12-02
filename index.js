@@ -283,7 +283,7 @@ When(
 );
 
 When('I/user reload(s) the page', async function (t) {
-    await t.eval(() => location.reload(true));
+    await t.eval(() => location.reload());
 });
 
 When('I/user click(s) {string}.{string}', async function (t, [page, element]) {
