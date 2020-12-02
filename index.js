@@ -623,6 +623,30 @@ When('I/user execute(s) {word} function from {word}( page)', async function (
     await executeCustomFunction(pageObjects[page][element]);
 });
 
+When(
+    'I/user drag(s)-and-drop(s) {string}.{string} to {string}.{string}',
+    async function (
+        t, [page1, element1, page2, element2]
+    ) {
+        const elemToDrag = getElement(page1, element1);
+        const elemToDropTo = getElement(page2, element2);
+
+        await t.dragToElement(elemToDrag, elemToDropTo);
+    }
+);
+
+When(
+    'I/user drag(s)-and-drop(s) {word} from {word}( page) in {word} from {word}( page)',
+    async function (
+        t, [element1, page1, element2, page2]
+    ) {
+        const elemToDrag = getElement(page1, element1);
+        const elemToDropTo = getElement(page2, element2);
+
+        await t.dragToElement(elemToDrag, elemToDropTo);
+    }
+);
+
 When('I/user accept(s) further browser alerts', async function (t) {
     await t.setNativeDialogHandler(() => true);
 });
