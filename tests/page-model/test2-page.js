@@ -14,6 +14,7 @@ let test2Page = {
     inputColors: '#input-colors',
     blockInputColor: '#block-input-color',
     urlTest1: 'http://localhost:8001/test1.html',
+    urlTest2: 'http://localhost:8001/test2.html',
     pathTest1: '/test1.html',
     loginTest2: 'testUser',
     passwordTest2: '1111',

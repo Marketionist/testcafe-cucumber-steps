@@ -27,70 +27,70 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
 
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user moves to "test-page"."titleTest1"
-    Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
+    When user moves to "test1-page"."titleTest1"
+    Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
 
   Scenario: 'user moves to' element should trigger its hovered state, 'text should contain' should verify the text (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user moves to titleTest1 from test-page
-    Then blockTextTest from test-page text should contain txtTest1 from test-page
+    When user moves to titleTest1 from test1-page
+    Then blockTextTest from test1-page text should contain txtTest1 from test1-page
 
   Scenario: 'user moves to with an offset' should trigger element's hovered state
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user moves to "test-page"."titleTest1" with an offset of x: 10px, y: 5px
-    Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
+    When user moves to "test1-page"."titleTest1" with an offset of x: 10px, y: 5px
+    Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
 
   Scenario: 'user moves to with an offset' should trigger element's hovered state (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user moves to titleTest1 from test-page with an offset of x: 10px, y: 5px
-    Then "test-page"."blockTextTest" text should contain "test-page"."txtTest1"
+    When user moves to titleTest1 from test1-page with an offset of x: 10px, y: 5px
+    Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
 
   Scenario: 'user switches to' iframe should change the context to this iframe
     Given user goes to URL "http://localhost:8001/test-iframe.html"
     When user switches to "iframe-page"."iframeTest1Page" frame
-    Then "test-page"."linkTest2Page" should be present
+    Then "test1-page"."linkTest2Page" should be present
 
   Scenario: 'user switches to' iframe should change the context to this iframe (text style step)
     Given user goes to URL "http://localhost:8001/test-iframe.html"
     When user switches to iframeTest1Page frame from iframe-page
-    Then "test-page"."linkTest2Page" should be present
+    Then "test1-page"."linkTest2Page" should be present
 
   Scenario: 'user switches to main frame' should change the context back to the main page
     Given user goes to URL "http://localhost:8001/test-iframe.html"
     And user switches to "iframe-page"."iframeTest1Page" frame
-    And "test-page"."linkTest2Page" should be present
+    And "test1-page"."linkTest2Page" should be present
     When user switches to main frame
-    Then "test-page"."linkTest2Page" should not be present
+    Then "test1-page"."linkTest2Page" should not be present
 
   Scenario: 'user sets file path' should set the path to the file (string) inside the Upload image input
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user sets "media/test-image1.jpg" file path in "test-page"."inputUploadFile"
-    Then "test-page"."inputUploadFile" should be present
+    When user sets "media/test-image1.jpg" file path in "test1-page"."inputUploadFile"
+    Then "test1-page"."inputUploadFile" should be present
 
   Scenario: 'user sets file path' should set the path to the file (string) inside the Upload image input (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user sets "media/test-image1.jpg" file path in inputUploadFile from test-page
-    Then "test-page"."inputUploadFile" should be present
+    When user sets "media/test-image1.jpg" file path in inputUploadFile from test1-page
+    Then "test1-page"."inputUploadFile" should be present
 
   Scenario: 'user sets file path' should set the path to the file (page object) inside the Upload image input
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user sets "test-page"."pathToImage1" file path in "test-page"."inputUploadFile"
-    Then "test-page"."inputUploadFile" should be present
+    When user sets "test1-page"."pathToImage1" file path in "test1-page"."inputUploadFile"
+    Then "test1-page"."inputUploadFile" should be present
 
   Scenario: 'user sets file path' should set the path to the file (page object) inside the Upload image input (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user sets pathToImage1 from test-page file path in inputUploadFile from test-page
-    Then "test-page"."inputUploadFile" should be present
+    When user sets pathToImage1 from test1-page file path in inputUploadFile from test1-page
+    Then "test1-page"."inputUploadFile" should be present
 
   Scenario: 'user executes function' should change the content on the page
     Given user goes to URL "http://localhost:8001/test1.html"
     When user executes "test2-page"."updateText" function
-    Then "test-page"."blockTextTest" text should contain "Text to test script execution"
+    Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
 
   Scenario: 'user executes function' should change the content on the page (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
     When user executes updateText function from test2-page
-    Then "test-page"."blockTextTest" text should contain "Text to test script execution"
+    Then "test1-page"."blockTextTest" text should contain "Text to test script execution"
 
   Scenario: 'user sets cookie' should change the content on the page (cookie provided in the step string)
     Given user goes to URL "http://localhost:8001/test1.html"
@@ -98,19 +98,19 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     And user sets cookie "my_test_cookie2=22"
     And user executes "test2-page"."updateTextWithCookies" function
     And user waits for 5000 ms
-    Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11; my_test_cookie2=22"
+    Then "test1-page"."blockTextTest" text should contain "my_test_cookie1=11; my_test_cookie2=22"
 
   Scenario: 'user sets cookie' should change the content on the page
     Given user goes to URL "http://localhost:8001/test1.html"
     When user sets cookie "test2-page"."cookieTest"
     And user executes "test2-page"."updateTextWithCookies" function
-    Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11"
+    Then "test1-page"."blockTextTest" text should contain "my_test_cookie1=11"
 
   Scenario: 'user sets cookie' should change the content on the page (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
     When user sets cookie cookieTest from test2-page
     And user executes "test2-page"."updateTextWithCookies" function
-    Then "test-page"."blockTextTest" text should contain "my_test_cookie1=11"
+    Then "test1-page"."blockTextTest" text should contain "my_test_cookie1=11"
 
   Scenario: 'user sends "POST" request' should return the content of the page (body provided in the step string)
     When user sends "POST" request to "http://localhost:8001/post" with body "{ \"test1\": 1, \"test2\": 2 }"
@@ -158,6 +158,21 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     When user dismisses further browser alerts
     And user clicks "alert-page"."buttonLaunchAlert"
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
+
+  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (URL provided in the step string)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user opens "http://localhost:8001/test2.html" in new browser window
+    Then URL should contain "/test2.html"
+
+  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (Page Object style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user opens "test2-page"."urlTest2" in new browser window
+    Then URL should contain "/test2.html"
+
+  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (text style step)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user opens urlTest2 from test2-page page in new browser window
+    Then URL should contain "/test2.html"
 
   Scenario: 'user presses' should press the specified keyboard keys
     Given user goes to URL "http://localhost:8001/test2.html"

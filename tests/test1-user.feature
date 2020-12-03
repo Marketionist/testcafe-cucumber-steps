@@ -11,22 +11,22 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 1
     And the title should contain "st1 Pa"
 
   Scenario: 'user goes to page' should open corresponding page
-    Given user goes to "test-page"."pageTest1"
+    Given user goes to "test1-page"."pageTest1"
     Then the title should be "Test1 Page"
 
   Scenario: 'user goes to page' should open corresponding page (text style step)
-    Given user goes to pageTest1 from test-page
+    Given user goes to pageTest1 from test1-page
     Then the title should be "Test1 Page"
 
   Scenario: 'user reloads the page' should refresh the page, 'should be present' should verify the element
-    Given user goes to "test-page"."pageTest1"
+    Given user goes to "test1-page"."pageTest1"
     And user reloads the page
-    Then "test-page"."linkTest2Page" should be present
+    Then "test1-page"."linkTest2Page" should be present
 
   Scenario: 'user reloads the page' should refresh the page, 'should be present' should verify the element (text style step)
-    Given user goes to "test-page"."pageTest1"
+    Given user goes to "test1-page"."pageTest1"
     And user reloads the page
-    Then linkTest2Page from test-page should be present
+    Then linkTest2Page from test1-page should be present
 
   Scenario: 'number should be present' should verify the number of elements
     Given user goes to "test2-page"."pageTest2"
@@ -37,79 +37,79 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 1
     Then 4 input from test2-page should be present
 
   Scenario: 'should not be present': link on Page1 test page should not be present, 'user waits for' should wait for 200 ms
-    Given user goes to "test-page"."pageTest1"
+    Given user goes to "test1-page"."pageTest1"
     And user waits for 200 ms
-    Then "test-page"."linkInvisibleTest2Page" should not be present
+    Then "test1-page"."linkInvisibleTest2Page" should not be present
 
   Scenario: 'should not be present': text error on Page1 test page should not be present, 'user waits for' should wait for 200 ms (text style step, XPath)
-    Given user goes to "test-page"."pageTest1"
+    Given user goes to "test1-page"."pageTest1"
     And user waits for 200 ms
-    Then textErrorXPath from test-page should not be present
+    Then textErrorXPath from test1-page should not be present
 
   Scenario: 'user clicks' Page1 test page link should lead to Page2 test page
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user clicks "test-page"."linkTest2Page"
+    When user clicks "test1-page"."linkTest2Page"
     Then the title should be "Test2 Page"
 
   Scenario: 'user clicks' Page1 test page link should lead to Page2 test page (text style step, XPath)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user clicks linkTest2PageXPath from test-page
+    When user clicks linkTest2PageXPath from test1-page
     Then the title should be "Test2 Page"
 
   Scenario: 'user waits and clicks' on Page1 test page link should lead to Page2 test page
-    Given user goes to "test-page"."pageTest1"
-    When user waits and clicks "test-page"."linkTest2Page"
+    Given user goes to "test1-page"."pageTest1"
+    When user waits and clicks "test1-page"."linkTest2Page"
     Then the title should be "Test2 Page"
 
   Scenario: 'user waits and clicks' on Page1 test page link should lead to Page2 test page (text style step)
-    Given user goes to "test-page"."pageTest1"
-    When user waits and clicks linkTest2Page from test-page
+    Given user goes to "test1-page"."pageTest1"
+    When user waits and clicks linkTest2Page from test1-page
     Then the title should be "Test2 Page"
 
   Scenario: 'user waits to appear' should wait for the content to appear up to provided number of ms
-    Given user goes to "test-page"."pageLoader"
-    When user waits up to 10000 ms for "test-page"."blockTestContent" to appear
+    Given user goes to "test1-page"."pageLoader"
+    When user waits up to 10000 ms for "test1-page"."blockTestContent" to appear
 
   Scenario: 'user waits to appear' should wait for the content to appear up to provided number of ms (text style step)
-    Given user goes to pageLoader from test-page
-    When user waits up to 10000 ms for blockTestContentXPath from test-page to appear
+    Given user goes to pageLoader from test1-page
+    When user waits up to 10000 ms for blockTestContentXPath from test1-page to appear
 
   Scenario: 'user clicks if present': link on Page1 test page should be clicked if it is visible and lead to Page2 test page
-    Given user goes to "test-page"."pageTest1"
+    Given user goes to "test1-page"."pageTest1"
     And user waits for 200 ms
-    When user clicks "test-page"."linkTest2Page" if present
+    When user clicks "test1-page"."linkTest2Page" if present
     And user waits for 200 ms
     Then the title should be "Test2 Page"
 
   Scenario: 'user clicks if present': link on Page1 test page should not be clicked if it is not present
-    Given user goes to "test-page"."pageTest1"
+    Given user goes to "test1-page"."pageTest1"
     And user waits for 200 ms
-    When user clicks "test-page"."linkInvisibleTest2Page" if present
+    When user clicks "test1-page"."linkInvisibleTest2Page" if present
     And user waits for 200 ms
     Then the title should be "Test1 Page"
 
   Scenario: 'user clicks if present': link on Page1 test page should be clicked if it is visible and lead to Page2 test page (text style step, XPath)
-    Given user goes to pageTest1 from test-page
+    Given user goes to pageTest1 from test1-page
     And user waits for 200 ms
-    When user clicks linkTest2PageXPath from test-page if present
+    When user clicks linkTest2PageXPath from test1-page if present
     And user waits for 200 ms
     Then the title should be "Test2 Page"
 
   Scenario: 'user clicks if present': link on Page1 test page should not be clicked if it is not present (text style step, XPath)
-    Given user goes to pageTest1 from test-page
+    Given user goes to pageTest1 from test1-page
     And user waits for 200 ms
-    When user clicks linkInvisibleTest2PageXPath from test-page if present
+    When user clicks linkInvisibleTest2PageXPath from test1-page if present
     And user waits for 200 ms
     Then the title should be "Test1 Page"
 
   Scenario: 'user double clicks' on Page1 test page link should lead to Page2 test page
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user double clicks "test-page"."linkTest2Page"
+    When user double clicks "test1-page"."linkTest2Page"
     Then the title should be "Test2 Page"
 
   Scenario: 'user double clicks' on Page1 test page link should lead to Page2 test page (text style step)
     Given user goes to URL "http://localhost:8001/test1.html"
-    When user double clicks linkTest2Page from test-page
+    When user double clicks linkTest2Page from test1-page
     Then the title should be "Test2 Page"
 
   Scenario: 'user types' "Green" (string) text inside input should get this text typed in, 'text should be' should verify the text
