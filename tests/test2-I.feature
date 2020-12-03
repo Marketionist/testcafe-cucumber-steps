@@ -119,6 +119,12 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 2
     When I open urlTest2 from test2-page page in new browser window
     Then URL should contain "/test2.html"
 
+  Scenario: 'I close current browser window' should close current browser window/tab
+    Given I go to URL "http://localhost:8001/test1.html"
+    And I open urlTest2 from test2-page page in new browser window
+    When I close current browser window
+    Then URL should contain "/test1.html"
+
   Scenario: 'I press' should press the specified keyboard keys
     Given I go to URL "http://localhost:8001/test2.html"
     And I type "Text is 12" in "test2-page"."inputColors"
