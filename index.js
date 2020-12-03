@@ -676,6 +676,10 @@ When(
     }
 );
 
+When('I/user close(s) current browser window', async function (t) {
+    await t.closeWindow();
+});
+
 When('I/user press(es) {string}', async function (t, [text]) {
     await t.pressKey(text);
 });
