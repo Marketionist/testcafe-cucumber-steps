@@ -655,6 +655,27 @@ When('I/user dismiss(es) further browser alerts', async function (t) {
     await t.setNativeDialogHandler(() => false);
 });
 
+When(
+    'I/user open(s) {string} in new browser window',
+    async function (t, [url]) {
+        await t.openWindow(url);
+    }
+);
+
+When(
+    'I/user open(s) {string}.{string} in new browser window',
+    async function (t, [page, element]) {
+        await t.openWindow(pageObjects[page][element]);
+    }
+);
+
+When(
+    'I/user open(s) {word} from {word}( page) in new browser window',
+    async function (t, [element, page]) {
+        await t.openWindow(pageObjects[page][element]);
+    }
+);
+
 When('I/user press(es) {string}', async function (t, [text]) {
     await t.pressKey(text);
 });
