@@ -2,7 +2,7 @@
 
 // #############################################################################
 
-let testPage = {
+let test1Page = {
 
     pageTest1: 'http://localhost:8001/test1.html',
     textErrorXPath: `//*[ancestor::*[@class="todo-container" and 
@@ -24,4 +24,4 @@ let testPage = {
 
 };
 
-module.exports = testPage;
+module.exports = test1Page;
