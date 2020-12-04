@@ -636,7 +636,7 @@ When(
 );
 
 When(
-    'I/user drag(s)-and-drop(s) {word} from {word}( page) in {word} from {word}( page)',
+    'I/user drag(s)-and-drop(s) {word} from {word}( page) to {word} from {word}( page)',
     async function (
         t, [element1, page1, element2, page2]
     ) {
