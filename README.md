@@ -467,7 +467,7 @@ function) provided in **object** from **page**.
 23. `I/user drag(s)-and-drop(s) "..."."..." to "..."."..."` - drag-and-drop
 element (provided in **"page1"."object1"** as CSS or XPath selector) to another
 element (provided in **"page2"."object2"** as CSS or XPath selector).
-- `I/user drag(s)-and-drop(s) ... from ... in ... from ...` - drag-and-drop
+- `I/user drag(s)-and-drop(s) ... from ... to ... from ...` - drag-and-drop
 element (provided in **object1** from **page1** as CSS or XPath selector) to
 another element (provided in **object2** from **page2** as CSS or XPath selector
 ).
