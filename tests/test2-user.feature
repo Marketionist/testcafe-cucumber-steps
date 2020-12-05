@@ -187,6 +187,13 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     When user presses "home right right right right delete delete delete"
     Then "test2-page"."blockInputColor" text should be "Text 12"
 
+  Scenario: 'user sets PAGE_URL environment variable', 'user goes to PAGE_URL' should set PAGE_URL environment variable and open a page with this URL
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user sets PAGE_URL environment variable
+    And user goes to URL "http://localhost:8001/test2.html"
+    And user goes to PAGE_URL
+    Then URL should contain "/test1.html"
+
   Scenario: 'URL should be' should verify that current URL equals provided string
     Given user goes to URL "http://localhost:8001/test1.html"
     Then URL should be "http://localhost:8001/test1.html"
