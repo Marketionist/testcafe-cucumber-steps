@@ -106,6 +106,34 @@ function setCookie (cookie) {
     window.location.reload();
 }
 
+/**
+ * Gets title of the current page
+ * @returns {String} title
+ */
+const getTitle = ClientFunction(() => {
+    try {
+        const pageTitle = window.document.title;
+
+        return pageTitle;
+    } catch (error) {
+        throw new Error(`${errors.NO_TITLE} ${error}`);
+    }
+});
+
+/**
+ * Gets URL of the current page
+ * @returns {String} URL
+ */
+const getCurrentPageUrl = ClientFunction(() => {
+    try {
+        const pageUrl = window.location.href;
+
+        return pageUrl;
+    } catch (error) {
+        throw new Error(`${errors.NO_URL} ${error}`);
+    }
+});
+
 // #### Given steps ############################################################
 
 Given('I/user go(es) to URL {string}', async function (t, [url]) {
@@ -690,14 +718,6 @@ When('I/user debug(s)', async function (t) {
 
 // #### Then steps #############################################################
 
-const getTitle = ClientFunction(() => {
-    return window.document.title;
-});
-
-const getLocation = ClientFunction(() => {
-    return window.location.href;
-});
-
 Then('the title should be {string}', async function (t, [text]) {
     await t.expect(getTitle()).eql(text);
 });
@@ -833,13 +853,13 @@ Then(
 );
 
 Then('URL should be {string}', async function (t, [url]) {
-    await t.expect(getLocation()).eql(url);
+    await t.expect(getCurrentPageUrl()).eql(url);
 });
 
 Then('URL should be {string}.{string}', async function (t, [page, element]) {
     const url = getElement(page, element);
 
-    await t.expect(getLocation()).eql(url);
+    await t.expect(getCurrentPageUrl()).eql(url);
 });
 
 Then('URL should be {word} from {word}( page)', async function (
@@ -847,11 +867,11 @@ Then('URL should be {word} from {word}( page)', async function (
 ) {
     const url = getElement(page, element);
 
-    await t.expect(getLocation()).eql(url);
+    await t.expect(getCurrentPageUrl()).eql(url);
 });
 
 Then('URL should contain {string}', async function (t, [url]) {
-    await t.expect(getLocation()).contains(url);
+    await t.expect(getCurrentPageUrl()).contains(url);
 });
 
 Then('URL should contain {string}.{string}', async function (
@@ -859,7 +879,7 @@ Then('URL should contain {string}.{string}', async function (
 ) {
     const url = getElement(page, element);
 
-    await t.expect(getLocation()).contains(url);
+    await t.expect(getCurrentPageUrl()).contains(url);
 });
 
 Then('URL should contain {word} from {word}( page)', async function (
@@ -867,7 +887,7 @@ Then('URL should contain {word} from {word}( page)', async function (
 ) {
     const url = getElement(page, element);
 
-    await t.expect(getLocation()).contains(url);
+    await t.expect(getCurrentPageUrl()).contains(url);
 });
 
 Then('{string}.{string} attribute {string} should contain {string}',
