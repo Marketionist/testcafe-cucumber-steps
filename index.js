@@ -712,6 +712,16 @@ When('I/user press(es) {string}', async function (t, [text]) {
     await t.pressKey(text);
 });
 
+When('I/user set(s) PAGE_URL environment variable', async function () {
+    process.env.PAGE_URL = await getCurrentPageUrl();
+
+    console.log(`process.env.PAGE_URL: ${process.env.PAGE_URL}`);
+});
+
+When('I/user go(es) to PAGE_URL', async function (t) {
+    await t.navigateTo(process.env.PAGE_URL);
+});
+
 When('I/user debug(s)', async function (t) {
     await t.debug();
 });
