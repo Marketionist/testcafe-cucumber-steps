@@ -13,7 +13,7 @@ tests - see the presentation of why and how you can easily use
     <thead>
         <tr>
             <th><a href="http://nodejs.org/" rel="nofollow" target="_blank">Node.js</a></th>
-            <th><a href="https://devexpress.github.io/testcafe" rel="nofollow" target="_blank">TestCafe</a></th>
+            <th><a href="https://github.com/DevExpress/testcafe" rel="nofollow" target="_blank">TestCafe</a></th>
             <th><a href="https://github.com/cucumber/cucumber-js" rel="nofollow" target="_blank">Cucumber</a></th>
         </tr>
     </thead>
