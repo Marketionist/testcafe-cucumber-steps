@@ -320,7 +320,8 @@ When('I/user click(s) {string}.{string}', async function (t, [page, element]) {
     try {
         await t.click(elem);
     } catch (error) {
-        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}" ${error}`);
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
     }
 });
 
@@ -332,7 +333,8 @@ When(
         try {
             await t.click(elem);
         } catch (error) {
-            throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}" ${error}`);
+            throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+                ${JSON.stringify(error, null, spacesToIndent)}`);
         }
     }
 );
@@ -347,7 +349,12 @@ When('I/user wait(s) and click(s) {string}.{string}', async function (
     const elem = getElement(page, element);
     const timeToWait = 300;
 
-    await t.wait(timeToWait).click(elem);
+    try {
+        await t.wait(timeToWait).click(elem);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
 });
 
 When('I/user wait(s) and click(s) {word} from {word}( page)', async function (
@@ -356,7 +363,12 @@ When('I/user wait(s) and click(s) {word} from {word}( page)', async function (
     const elem = getElement(page, element);
     const timeToWait = 300;
 
-    await t.wait(timeToWait).click(elem);
+    try {
+        await t.wait(timeToWait).click(elem);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
 });
 
 When('I/user wait(s) up to {int} ms for {string}.{string} to appear', async function (
@@ -414,7 +426,12 @@ When('I/user double click(s) {string}.{string}', async function (
 ) {
     const elem = getElement(page, element);
 
-    await t.doubleClick(elem);
+    try {
+        await t.doubleClick(elem);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
 });
 
 When('I/user double click(s) {word} from {word}( page)', async function (
@@ -422,7 +439,12 @@ When('I/user double click(s) {word} from {word}( page)', async function (
 ) {
     const elem = getElement(page, element);
 
-    await t.doubleClick(elem);
+    try {
+        await t.doubleClick(elem);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
 });
 
 When('I/user type(s) {string} in {string}.{string}', async function (
@@ -508,7 +530,12 @@ When('I/user select(s) {string} in {string}.{string}', async function (
     const dropdown = Selector(elem);
     const option = dropdown.find('option');
 
-    await t.click(dropdown).click(option.withText(text));
+    try {
+        await t.click(dropdown).click(option.withText(text));
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
 });
 
 When('I/user select(s) {string} in {word} from {word}( page)', async function (
@@ -518,7 +545,12 @@ When('I/user select(s) {string} in {word} from {word}( page)', async function (
     const dropdown = Selector(elem);
     const option = dropdown.find('option');
 
-    await t.click(dropdown).click(option.withText(text));
+    try {
+        await t.click(dropdown).click(option.withText(text));
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
 });
 
 When('I/user select(s) {string}.{string} in {string}.{string}', async function (
@@ -528,8 +560,13 @@ When('I/user select(s) {string}.{string} in {string}.{string}', async function (
     const dropdown = Selector(elem);
     const option = dropdown.find('option');
 
-    await t.click(dropdown)
-        .click(option.withText(pageObjects[page1][element1]));
+    try {
+        await t.click(dropdown)
+            .click(option.withText(pageObjects[page1][element1]));
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page2}"."${element2}"
+            ${JSON.stringify(error, null, spacesToIndent)}`);
+    }
 });
 
 When(
@@ -539,8 +576,13 @@ When(
         const dropdown = Selector(elem);
         const option = dropdown.find('option');
 
-        await t.click(dropdown)
-            .click(option.withText(pageObjects[page1][element1]));
+        try {
+            await t.click(dropdown)
+                .click(option.withText(pageObjects[page1][element1]));
+        } catch (error) {
+            throw new Error(`${errors.NO_ELEMENT} "${page2}"."${element2}"
+                ${JSON.stringify(error, null, spacesToIndent)}`);
+        }
     }
 );
 
