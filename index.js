@@ -317,7 +317,11 @@ When('I/user reload(s) the page', async function (t) {
 When('I/user click(s) {string}.{string}', async function (t, [page, element]) {
     const elem = getElement(page, element);
 
-    await t.click(elem);
+    try {
+        await t.click(elem);
+    } catch (error) {
+        throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}" ${error}`);
+    }
 });
 
 When(
@@ -325,7 +329,11 @@ When(
     async function (t, [element, page]) {
         const elem = getElement(page, element);
 
-        await t.click(elem);
+        try {
+            await t.click(elem);
+        } catch (error) {
+            throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}" ${error}`);
+        }
     }
 );
 
