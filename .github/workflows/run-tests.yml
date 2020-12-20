@@ -1,0 +1,47 @@
+name: Run tests
+
+on:
+  # Trigger the workflow on push or pull (only for the master branch) request
+  push:
+    branches:
+      - '**'
+    paths-ignore:
+      - '**/media/**'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**/media/**'
+
+jobs:  
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-20.04
+        node-version: [10.x, 12.x, 13.x, 14.x]
+
+    steps:
+      - name: Git checkout and install Chrome
+        uses: actions/checkout@v2
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y dpkg # To upgrade to dpkg >= 1.17.5ubuntu5.8, which fixes https://bugs.launchpad.net/ubuntu/+source/dpkg/+bug/1730627
+      - run: sudo apt-get install -y libappindicator1 fonts-liberation
+      - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - run: sudo dpkg -i google-chrome*.deb
+      - run: google-chrome --version
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm run install-all
+        env:
+          CI: true
+      - run: npm run lint
+        env:
+          CI: true
+      - run: npm test
+        env:
+          CI: true
