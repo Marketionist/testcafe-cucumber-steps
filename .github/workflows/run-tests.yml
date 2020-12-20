@@ -1,7 +1,6 @@
 name: Run tests
 
 on: [push, pull_request]
-  # Trigger the workflow on push or pull (only for the master branch) request
   push:
     branches:
       - '**'
@@ -30,7 +29,7 @@ jobs:
     - name: Install Chrome
 
     - run: sudo apt-get update
-    - run: sudo apt-get install -y dpkg  # to upgrade to dpkg >= 1.17.5ubuntu5.8, which fixes https://bugs.launchpad.net/ubuntu/+source/dpkg/+bug/1730627
+    - run: sudo apt-get install -y dpkg
     - run: sudo apt-get install -y libappindicator1 fonts-liberation
     - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - run: sudo dpkg -i google-chrome*.deb
