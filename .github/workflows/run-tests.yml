@@ -1,4 +1,4 @@
-name: Run tests
+name: Build and Test
 
 on:
   # Trigger the workflow on push or pull (only for the master branch) request
