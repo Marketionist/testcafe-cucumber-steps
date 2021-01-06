@@ -64,7 +64,7 @@ If you want to start writing tests as fast as possible, here are the commands
 you'll need to execute:
 ```
 npm init --yes
-npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
+npm install testcafe-cucumber-steps cucumber@6.0.5 testcafe gherkin-testcafe --save-dev
 node node_modules/testcafe-cucumber-steps/utils/prepare.js
 ```
 
@@ -97,7 +97,7 @@ npm init --yes
 To install the testcafe-cucumber-steps package and its peerDependencies and to
 save it to your `package.json` just run:
 ```
-npm install testcafe-cucumber-steps cucumber testcafe gherkin-testcafe --save-dev
+npm install testcafe-cucumber-steps cucumber@6.0.5 testcafe gherkin-testcafe --save-dev
 ```
 
 If you also want to have pre-created config (`.testcaferc.json`) and example
