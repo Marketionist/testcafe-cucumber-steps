@@ -11,6 +11,14 @@ nodeTestingServer.config = {
     pages: {
         '/test1.html': `<title>Test1 Page</title><a id="link-test2-page" href="
             http://localhost:8001/test2.html">Test2 page</a>
+            <style>
+                #block-menu {
+                    width: 20%;
+                    height: 20%;
+                    z-index: 9999;
+                    background-color: #FFD700;
+                }
+            </style>
             <script>
                 window.onload = function () {
                     document.querySelector('h1').addEventListener("mouseover", function () {
@@ -18,6 +26,15 @@ nodeTestingServer.config = {
                     });
                     document.querySelector('h1').addEventListener("mouseout", function () {
                         document.getElementById("text-test").innerHTML = '';
+                    });
+                    document.querySelector('#button-menu-right-click').addEventListener("contextmenu", function () {
+                        document.getElementById("text-test").innerHTML = '';
+                        const blockMenuContainer = document.getElementById("block-menu-container");
+                        const blockMenu = document.createElement('div');
+
+                        blockMenu.setAttribute('id', 'block-menu');
+                        blockMenu.innerHTML = 'Menu goes here...';
+                        blockMenuContainer.insertBefore(blockMenu, blockMenuContainer.firstChild);
                     });
                 }
             </script>
@@ -27,6 +44,9 @@ nodeTestingServer.config = {
                 <label for="image">Upload image:</label>
                 <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif">
                 <input type="submit" value="Upload">
+            </p>
+            <p id="block-menu-container">
+                <button id="button-menu-right-click">Right click menu</button>
             </p>`,
         '/test2.html': `<title>Test2 Page</title>
             <script>
