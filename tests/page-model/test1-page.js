@@ -20,7 +20,10 @@ let test1Page = {
     blockTestContentXPath: `//*[@id="block-content" and contains(text(),
          "This is a test content on a page with loader")]`,
     inputUploadFile: '[type="file"]',
-    pathToImage1: 'media/test-image1.jpg'
+    pathToImage1: 'media/test-image1.jpg',
+    buttonMenuRightClick: '#button-menu-right-click',
+    buttonMenuRightClickXPath: '//*[@id="button-menu-right-click"]',
+    blockMenu: '#block-menu'
 
 };
 
