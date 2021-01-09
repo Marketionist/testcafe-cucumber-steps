@@ -1,12 +1,12 @@
 name: Build and Test
 
 on:
-  # Trigger the workflow on push or pull (only for the master branch) request
-  push:
-    branches:
-      - '**'
-    paths-ignore:
-      - '**/media/**'
+  # Trigger the workflow on pull request (only for the master branch)
+  # push:
+  #   branches:
+  #     - '**'
+  #   paths-ignore:
+  #     - '**/media/**'
   pull_request:
     branches:
       - master
