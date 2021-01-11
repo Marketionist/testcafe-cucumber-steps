@@ -339,6 +339,34 @@ When(
     }
 );
 
+When(
+    'I/user right click(s) {string}.{string}',
+    async function (t, [page, element]) {
+        const elem = getElement(page, element);
+
+        try {
+            await t.rightClick(elem);
+        } catch (error) {
+            throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+                ${JSON.stringify(error, null, spacesToIndent)}`);
+        }
+    }
+);
+
+When(
+    'I/user right click(s) {word} from {word}( page)',
+    async function (t, [element, page]) {
+        const elem = getElement(page, element);
+
+        try {
+            await t.rightClick(elem);
+        } catch (error) {
+            throw new Error(`${errors.NO_ELEMENT} "${page}"."${element}"
+                ${JSON.stringify(error, null, spacesToIndent)}`);
+        }
+    }
+);
+
 When('I/user wait(s) for {int} ms', async function (t, [timeToWait]) {
     await t.wait(timeToWait);
 });

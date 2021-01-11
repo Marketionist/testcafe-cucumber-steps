@@ -56,6 +56,16 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 1
     When user clicks linkTest2PageXPath from test1-page
     Then the title should be "Test2 Page"
 
+  Scenario: 'user right clicks' on Right click menu button should open a menu
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user right clicks "test1-page"."buttonMenuRightClick"
+    Then "test1-page"."blockMenu" should be present
+
+  Scenario: 'user right clicks' on Right click menu button should open a menu (text style step, XPath)
+    Given user goes to URL "http://localhost:8001/test1.html"
+    When user right clicks buttonMenuRightClickXPath from test1-page
+    Then blockMenu from test1-page should be present
+
   Scenario: 'user waits and clicks' on Page1 test page link should lead to Page2 test page
     Given user goes to "test1-page"."pageTest1"
     When user waits and clicks "test1-page"."linkTest2Page"
