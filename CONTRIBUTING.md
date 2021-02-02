@@ -31,7 +31,7 @@ Fork the project [on Github](https://github.com/Marketionist/testcafe-cucumber-s
 and check out your copy locally:
 
 ```shell
-git clone https://github.com/Marketionist/testcafe-cucumber-steps.git
+git clone git@github.com:Marketionist/testcafe-cucumber-steps.git
 cd testcafe-cucumber-steps
 ```
 
@@ -91,8 +91,8 @@ triggered by each pull request.
 git push origin my-feature-branch
 ```
 
-Go to https://github.com/yourusername/testcafe-cucumber-steps.git and press the
-_New pull request_ button and fill out the form.
+Go to https://github.com/yourusername/testcafe-cucumber-steps and press the
+_Pull request_ link and fill out the form.
 
 A good PR comment message can look like this:
 
