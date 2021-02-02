@@ -164,6 +164,7 @@ nodeTestingServer.config = {
             </script>
             <h1>Test page with loader</h1>`
     }
-}
+};
+
 // Start node testing server
 nodeTestingServer.start();
