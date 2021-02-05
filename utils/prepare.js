@@ -7,8 +7,8 @@ const fs = require('fs');
 const util = require('util');
 const writeFile = util.promisify(fs.writeFile);
 
-const pathToTestsDir = path.join(__dirname, '../../../tests');
-const pathToPageObjectsDir = path.join(pathToTestsDir, '/page-model');
+const pathToTestsDir = path.join(__dirname, '..', '..', '..', 'tests');
+const pathToPageObjectsDir = path.join(pathToTestsDir, 'page-model');
 const pathToTestExample = path.join(pathToTestsDir, 'test-example.feature');
 const testExampleContent = `@fast @example-tests
 
@@ -37,7 +37,7 @@ let testPage = {
 testPage.linkOurProducts = \`\${testPage.header} a[title="Our products"]\`;
 
 module.exports = testPage;`;
-const pathToConfigExample = path.join(pathToTestsDir, '../', '.testcaferc.json');
+const pathToConfigExample = path.join(pathToTestsDir, '..', '.testcaferc.json');
 const configExampleContent = `{
     "browsers": "chrome",
     "src": ["node_modules/testcafe-cucumber-steps/index.js", "tests/**/*.js", "tests/**/*.feature"],
@@ -91,13 +91,13 @@ const createFiles = async (filesArray) => {
             fs.mkdirSync(pathToPageObjectsDir);
         }
 
-        const writeFiles = filesArray.map(async (value) => {
-            return await createFile(value.path, value.content);
+        const writeFiles = filesArray.map((value) => {
+            return createFile(value.path, value.content);
         });
 
         await Promise.all(writeFiles);
     } catch (error) {
-        console.log('Error creating a files:', error);
+        console.log('Error creating files:', error);
     }
 };
 
