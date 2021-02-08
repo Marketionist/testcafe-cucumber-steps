@@ -16,11 +16,11 @@ const isCalledExternally = __dirname.includes('node_modules');
 
 const pageObjectsFolderPathes = 'PO_FOLDER_PATH' in process.env ?
     process.env.PO_FOLDER_PATH.replace(/\s+/g, '').split(',') :
-    ['tests/page-model'];
+    [path.join('tests', 'page-model')];
 
 const fullPageObjectsFolderPathes = isCalledExternally ?
     pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
-        return path.join(__dirname, '../..', pageObjectsFolderPath)
+        return path.join(__dirname, '..', '..', pageObjectsFolderPath)
     }) :
     pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
         return path.join(__dirname, pageObjectsFolderPath)
