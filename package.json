@@ -7,7 +7,7 @@
     "node": ">=8.x.x"
   },
   "scripts": {
-    "install-all": "npm install && npm install cucumber@6.0.5 testcafe gherkin-testcafe --no-save",
+    "install-all": "npm install && npm install cucumber@6.0.5 testcafe gherkin-testcafe@2.5.1 --no-save",
     "lint": "node_modules/.bin/eslint *.js utils/*.js tests/**/*.feature",
     "test": "PO_FOLDER_PATH='tests/page-model' node ./node_modules/gherkin-testcafe/main.js --concurrency 4 'chrome:headless' *.js tests/**/*.feature --tags @fast,@long --app 'node tests/testing-server.js'",
     "patch": "npm version patch -m \"Bumped up package version to %s\" && git push && git push origin --tags && npm publish",
@@ -41,7 +41,7 @@
   "author": "Dmytro Shpakovskyi",
   "license": "MIT",
   "dependencies": {
-    "js-automation-tools": "^1.0.5"
+    "js-automation-tools": "^1.2.0"
   },
   "peerDependencies": {
     "cucumber": ">=5.1.0",
@@ -49,9 +49,9 @@
     "testcafe": ">=1.3.3"
   },
   "devDependencies": {
-    "eslint": "^7.11.0",
+    "eslint": "^7.23.0",
     "eslint-plugin-cucumber": "^1.4.0",
     "eslint-plugin-testcafe": "^0.2.1",
-    "node-testing-server": "^1.5.1"
+    "node-testing-server": "^1.5.2"
   }
 }
