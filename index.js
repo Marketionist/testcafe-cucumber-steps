@@ -3,12 +3,26 @@
 
 // #############################################################################
 
-const { Given, When, Then } = require('cucumber');
 const { ClientFunction, Selector } = require('testcafe');
 const path = require('path');
 const { readDirectories, createRequest } = require('js-automation-tools');
 const SelectorXPath = require('./utils/selector-xpath.js');
 const errors = require('./utils/errors.js');
+
+let Given;
+let When;
+let Then;
+
+try {
+    Given = require('cucumber').Given;
+    When = require('cucumber').When;
+    Then = require('cucumber').Then;
+} catch (error) {
+    console.log('Using \'@cucumber/cucumber\'');
+    Given = require('@cucumber/cucumber').Given;
+    When = require('@cucumber/cucumber').When;
+    Then = require('@cucumber/cucumber').Then;
+}
 
 const spacesToIndent = 4;
 
