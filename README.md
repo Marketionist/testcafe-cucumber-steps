@@ -21,7 +21,7 @@ tests - see the presentation of why and how you can easily use
         <tr>
             <td>8.x</td>
             <td rowspan=7>1.x</td>
-            <td rowspan=7>5.x, 6.x</td>
+            <td rowspan=7>5.x, 6.x, 7.x</td>
         </tr>
         <tr>
             <td>9.x</td>
@@ -62,10 +62,10 @@ tests - see the presentation of why and how you can easily use
 ## Installation fast
 If you want to start writing tests as fast as possible, here are the commands
 you'll need to execute:
-```
-npm init --yes
-npm install testcafe-cucumber-steps cucumber@6.0.5 testcafe gherkin-testcafe --save-dev
-node node_modules/testcafe-cucumber-steps/utils/prepare.js
+```bash
+npm init --yes # To create a basic package.json
+npm install testcafe-cucumber-steps @cucumber/cucumber testcafe gherkin-testcafe --save-dev # To install dependencies and save them to package.json
+node node_modules/testcafe-cucumber-steps/utils/prepare.js # To create basic test and Page Object files
 ```
 
 Then just see the [list of predefined steps](#list-of-predefined-steps) and
@@ -73,44 +73,53 @@ start writing tests (in `tests/*.feature`) and adding Page Objects
 (in `tests/page-model/*.js`).
 
 Run the tests with:
-```
+```bash
 node_modules/.bin/gherkin-testcafe chrome,firefox
 ```
 
-> All [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
+> Note: all [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 > are supported.
 
 ![Install testcafe-cucumber-steps](https://raw.githubusercontent.com/Marketionist/testcafe-cucumber-steps/master/media/testcafe-cucumber-steps-installation.gif)
 
 ## Installation detailed
-> This package is lightweight and has only 3 peerDependencies - it uses:
+> Note: this package is lightweight and has only 3 peerDependencies - it uses:
 > - [cucumber](https://github.com/cucumber/cucumber-js) to parse step definitions
 > - [testcafe](https://github.com/DevExpress/testcafe) to execute steps
 > - [gherkin-testcafe](https://github.com/kiwigrid/gherkin-testcafe) to connect TestCafe with Cucumber
 
 First of all you will need to create `package.json` if you do not have one in
 the root folder of your project:
-```
+```bash
 npm init --yes
 ```
 
 To install the testcafe-cucumber-steps package and its peerDependencies and to
 save it to your `package.json` just run:
+
+```bash
+npm install testcafe-cucumber-steps @cucumber/cucumber testcafe gherkin-testcafe --save-dev # In case if you want to use Cucumber 7 (the recent one)
 ```
-npm install testcafe-cucumber-steps cucumber@6.0.5 testcafe gherkin-testcafe --save-dev
+OR
+```bash
+npm install testcafe-cucumber-steps cucumber@6.0.5 testcafe gherkin-testcafe@2.5.1 --save-dev # In case if you want to use Cucumber 6
+```
+OR
+```bash
+npm install testcafe-cucumber-steps cucumber@5.1.0 testcafe gherkin-testcafe@2.5.1 --save-dev # In case if you want to use Cucumber 5
 ```
 
 If you also want to have pre-created config (`.testcaferc.json`) and example
 test files (`tests/test-example.feature`, `tests/page-model/test-page-example.js`) -
 run additionally:
-```
+```bash
 node node_modules/testcafe-cucumber-steps/utils/prepare.js
 ```
 
 ## Writing tests
 To give a short example of how you can write the tests - here is 
 `test-main-page.feature` feature file:
-```
+```gherkin
 # tests/test-main-page.feature
 
 Feature: My portal main page tests
@@ -137,7 +146,7 @@ Feature: My portal main page tests
 ```
 
 And the Page Object file for this tests will look like this:
-```
+```javascript
 // tests/page-model/main-page.js
 
 let mainPage = {
@@ -156,7 +165,7 @@ module.exports = mainPage;
 
 If you want the Page Objects to look even shorter - you can write the same tests
 like this:
-```
+```gherkin
 # tests/test-main-page.feature
 
 Feature: My portal main page tests
@@ -189,22 +198,22 @@ See more examples of how to use predefined steps in
 ## Importing and running in CLI
 To get access to all Cucumber steps defined in this package just specify the
 path to this package when launching tests:
-```
+```bash
 node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
 
 If you store your Page Objects not in `tests/page-model` folder, then
 `PO_FOLDER_PATH` environment variable has to be specified to show the path to
 your Page Objects folder:
-```
+```bash
 PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature
 ```
 
-> You can specify multiple Page Object folders by separating them with commas:
+> Note: you can specify multiple Page Object folders by separating them with commas:
 > `PO_FOLDER_PATH='main/my-custom1,login/my-custom2,auth,create/my-custom3'`
 
 Also you can just add `test-e2e` command to `scripts` in `package.json`:
-```
+```json
 "test-e2e": "PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe 'chrome:headless' node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature"
 ```
 and then launch tests with:
@@ -212,33 +221,33 @@ and then launch tests with:
 npm run test-e2e
 ```
 
-> All [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
+> Note: all [TestCafe CLI options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
 > are supported.
 
 Additionally, you can specify:
 
 - tags to run:
-    ```
+    ```bash
     node_modules/.bin/gherkin-testcafe chrome,firefox node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @fast
     ```
 
     When using more than one tag, the list needs to be comma separated:
-    ```
+    ```bash
     node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @fast,@long
     ```
 
     Negation of a tag (via `~`) is also possible (to run all scenarios that have
     tag `fast`, but not `long`):
-    ```
+    ```bash
     node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --tags @fast,~@long
     ```
 
 - custom parameter types:
-    ```
+    ```bash
     node_modules/.bin/gherkin-testcafe chrome node_modules/testcafe-cucumber-steps/index.js tests/**/*.js tests/**/*.feature --param-type-registry-file ./a-file-that-exports-a-parameter-type-registry.js
     ```
 
-    > See Cucumber Expressions in
+    > Note: see Cucumber Expressions in
     > [gherkin-testcafe](https://github.com/kiwigrid/gherkin-testcafe#cucumber-expressions)
     > and Custom Parameter types in
     > [cucumber.io](https://cucumber.io/docs/cucumber/cucumber-expressions/#custom-parameter-types).
@@ -248,7 +257,7 @@ To make life easier and not to specify all options in CLI command, a
 `.testcaferc.json` configuration file can be created in the root directory of
 your project to store all settings (pathes to all step definitions and tests
 should be specified inside the array in `src`):
-```
+```json
 {
     "browsers": "chrome",
     "src": ["node_modules/testcafe-cucumber-steps/index.js", "tests/**/*.js", "tests/**/*.feature"],
@@ -269,17 +278,17 @@ should be specified inside the array in `src`):
 }
 ```
 and then launch tests with:
-```
+```bash
 node_modules/.bin/gherkin-testcafe
 ```
 or if you use custom Page Objects folder:
-```
+```bash
 PO_FOLDER_PATH='tests/my-custom-page-objects' node_modules/.bin/gherkin-testcafe
 ```
 
 All options that are specified in CLI command will override settings from `.testcaferc.json`.
 
-> For all possible settings see:
+> Note: for all possible settings see:
 > - [TestCafe configuration file description](https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html) and
 > [example of .testcaferc.json](https://github.com/DevExpress/testcafe/blob/master/examples/.testcaferc.json)
 > - [TestCafe command line options](https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html)
@@ -303,7 +312,7 @@ provided in **object** from **page**).
 (request method provided in "" as a string - for example: `POST`) to URL
 (provided in "" as a string - for example: `"http://httpbin.org/post"`) with
 body (provided in "" as JSON - for example: `"{ \"test1\": 1, \"test2\": 2 }"`).
-> GET request will be sent with default header `'Content-Type': 'text/html'`,
+> Note: GET request will be sent with default header `'Content-Type': 'text/html'`,
 > all other requests will be sent with default header
 > `'Content-Type': 'application/json'`.
 - `I/user send(s) "..." request to "..." with body "..."."..."` - send request
@@ -565,7 +574,7 @@ you can use them in TestCafe Cucumber steps - just write XPath selector in
 a Page Object file the same way as you do with CSS selectors - see the example
 in [`test1-page.js`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/page-model/test1-page.js).
 It can also be used in your custom Cucumber steps - for example:
-```
+```javascript
 const SelectorXPath = require('testcafe-cucumber-steps/utils/selector-xpath.js');
 
 const buttonStartTest = SelectorXPath('//*[ancestor::*[@class="test-panel"] and contains(text(), "Start test")]');
