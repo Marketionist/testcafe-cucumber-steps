@@ -86,7 +86,7 @@ node_modules/.bin/gherkin-testcafe chrome,firefox
 > Note: this package is lightweight and has only 3 peerDependencies - it uses:
 > - [cucumber](https://github.com/cucumber/cucumber-js) to parse step definitions
 > - [testcafe](https://github.com/DevExpress/testcafe) to execute steps
-> - [gherkin-testcafe](https://github.com/kiwigrid/gherkin-testcafe) to connect TestCafe with Cucumber
+> - [gherkin-testcafe](https://github.com/Arthy000/gherkin-testcafe) to connect TestCafe with Cucumber
 
 First of all you will need to create `package.json` if you do not have one in
 the root folder of your project:
