@@ -45,14 +45,24 @@ Feature: Running Cucumber with TestCafe - test "I ..." steps feature 2
     When I move to titleTest1 from test1-page page with an offset of x: 10px, y: 5px
     Then "test1-page"."blockTextTest" text should contain "test1-page"."txtTest1"
 
-  Scenario: 'I switch to' iframe should change the context to this iframe
+  Scenario: 'I switch to frame' should change the context to this iframe
     Given I go to URL "http://localhost:8001/test-iframe.html"
     When I switch to "iframe-page"."iframeTest1Page" frame
     Then "test1-page"."linkTest2Page" should be present
 
-  Scenario: 'I switch to' iframe should change the context to this iframe (text style step)
+  Scenario: 'I switch to frame' should change the context to this iframe (text style step)
     Given I go to URL "http://localhost:8001/test-iframe.html"
     When I switch to iframeTest1Page frame from iframe-page page
+    Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'I wait up to and switch to frame' should wait for the iframe to load up to provided number of ms and then change the context to this iframe
+    Given I go to URL "http://localhost:8001/test-iframe.html"
+    When I wait up to 10000 ms and switch to "iframe-page"."iframeTest1Page" frame
+    Then "test1-page"."linkTest2Page" should be present
+
+  Scenario: 'I wait up to and switch to frame' should wait for the iframe to load up to provided number of ms and then change the context to this iframe (text style step)
+    Given I go to URL "http://localhost:8001/test-iframe.html"
+    When I wait up to 10000 ms and switch to iframeTest1Page frame from iframe-page page
     Then "test1-page"."linkTest2Page" should be present
 
   Scenario: 'I switch to main frame' should change the context back to the main page

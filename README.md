@@ -459,9 +459,17 @@ y: ...px.
 (provided in **"page"."object"** as CSS or XPath selector).
 - `I/user switch(es) to ... frame from ...` - switch the context to iframe
 (provided in **object** from **page** as CSS or XPath selector).
-21. `I/user switch(es) to main frame` - switch the context back to default
+21. `I/user wait(s) up to ... ms and switch(es) to "..."."..." frame` - wait up
+to provided amount of time (in milliseconds) for the iframe to load and then
+switch the context to that iframe (provided in **"page"."object"** as CSS or
+XPath selector).
+- `I/user wait(s) up to ... ms and switch(es) to ... frame from ...` - wait up
+to provided amount of time (in milliseconds) for the iframe to load and then
+switch the context to that iframe (provided in **object** from **page** as CSS
+or XPath selector).
+22. `I/user switch(es) to main frame` - switch the context back to default
 (initial) frame.
-22. `I/user set(s) "..." file path in "..."."..."` - set a file path (provided
+23. `I/user set(s) "..." file path in "..."."..."` - set a file path (provided
 in "" as a string) in the input (provided in **"page"."object"** as CSS or XPath
 selector). This step can be used to upload files and images.
 - `I/user set(s) "..." file path in ... from ...` - set a file path (provided in
@@ -473,59 +481,59 @@ selector).
 - `I/user set(s) ... from ... file path in ... from ...` - set a file path
 (provided in **object1** from **page1**) in the input (provided in
 **object2** from **page2** as CSS or XPath selector).
-23. `I/user execute(s) "..."."..." function` - execute script (JavaScript
+24. `I/user execute(s) "..."."..." function` - execute script (JavaScript
 function) provided in **"page"."object"**.
 - `I/user execute(s) ... function from ...` - execute script (JavaScript
 function) provided in **object** from **page**.
-24. `I/user drag(s)-and-drop(s) "..."."..." to "..."."..."` - drag-and-drop
+25. `I/user drag(s)-and-drop(s) "..."."..." to "..."."..."` - drag-and-drop
 element (provided in **"page1"."object1"** as CSS or XPath selector) to another
 element (provided in **"page2"."object2"** as CSS or XPath selector).
 - `I/user drag(s)-and-drop(s) ... from ... to ... from ...` - drag-and-drop
 element (provided in **object1** from **page1** as CSS or XPath selector) to
 another element (provided in **object2** from **page2** as CSS or XPath selector
 ).
-25. `I/user accept(s) further browser alerts` - accept (OK) all further browser
+26. `I/user accept(s) further browser alerts` - accept (OK) all further browser
 alerts (after this step).
-26. `I/user dismiss(es) further browser alerts` - dismiss (Cancel) all further
+27. `I/user dismiss(es) further browser alerts` - dismiss (Cancel) all further
 browser alerts (after this step).
-27. `I/user open(s) "..." in new browser window` - open a site (by its URL
+28. `I/user open(s) "..." in new browser window` - open a site (by its URL
 provided in "" as a string - for example: `"https://github.com/Marketionist"`)
 in the new browser window/tab.
 - `I/user open(s) "..."."..." in new browser window` - open a site (by its URL
 provided in **"page"."object"**) in the new browser window/tab.
 - `I/user open(s) ... from ... in new browser window` - open a site (by its URL
 provided in **object** from **page**) in the new browser window/tab.
-28. `I/user close(s) current browser window` - close current browser window/tab.
-29. `I/user press(es) "..."` - press the specified keyboard keys (provided in ""
+29. `I/user close(s) current browser window` - close current browser window/tab.
+30. `I/user press(es) "..."` - press the specified keyboard keys (provided in ""
 as a string - see the
 [list of supported keys and key combinations](https://devexpress.github.io/testcafe/documentation/test-api/actions/press-key.html#browser-processing-emulation)).
-30. `I/user set(s) PAGE_URL environment variable` - take current page URL and
+31. `I/user set(s) PAGE_URL environment variable` - take current page URL and
 write it to PAGE_URL environment variable.
-31. `I/user go(es) to PAGE_URL` - open a site from PAGE_URL environment
+32. `I/user go(es) to PAGE_URL` - open a site from PAGE_URL environment
 variable.
-32. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
+33. `I/user debug(s)` - set a breakpoint to stop the tests execution and start
 debugging.
 
 ### Then steps
-33. `the title should be "..."` - verify that title of the current browser
+34. `the title should be "..."` - verify that title of the current browser
 window/tab equals to the text (provided in "" as a string).
-34. `the title should contain "..."` - verify that title of the current browser
+35. `the title should contain "..."` - verify that title of the current browser
 window/tab contains the text (provided in "" as a string).
-35. `"..."."..." should be present` - verify that element (provided in
+36. `"..."."..." should be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is present on the page.
 - `... from ... should be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is present on the page.
-36. `... "..."."..." should be present` - verify that the number of elements
+37. `... "..."."..." should be present` - verify that the number of elements
 (provided in **"page"."object"** as CSS or XPath selector) are present on the
 page.
 - `... ... from ... should be present` - verify that the number of elements
 (provided in **object** from **page** as CSS or XPath selector) are present on
 the page.
-37. `"..."."..." should not be present` - verify that element (provided in
+38. `"..."."..." should not be present` - verify that element (provided in
 **"page"."object"** as CSS or XPath selector) is not present on the page.
 - `... from ... should not be present` - verify that element (provided in
 **object** from **page** as CSS or XPath selector) is not present on the page.
-38. `"..."."..." text should be "..."` - verify that text of the element
+39. `"..."."..." text should be "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) equals to the text
 (provided in "" as a string).
 - `... from ... text should be "..."` - verify that text of the element
@@ -537,7 +545,7 @@ text (provided in "" as a string).
 - `... from ... text should be ... from ...` - verify that text of the
 element (provided in **object1** from **page1** as CSS or XPath selector) equals
 to the text (provided in **object2** from **page2**).
-39. `"..."."..." text should contain "..."` - verify that text of the element
+40. `"..."."..." text should contain "..."` - verify that text of the element
 (provided in **"page"."object"** as CSS or XPath selector) contains the text
 (provided in "" as a string).
 - `... from ... text should contain "..."` - verify that text of the element
@@ -549,19 +557,19 @@ the text (provided in **"page2"."object2"**).
 - `... from ... text should contain ... from ...` - verify that text
 of the element (provided in **object1** from **page1** as CSS or XPath selector)
 contains the text (provided in **object2** from **page2**).
-40. `URL should be "..."` - verify that URL of the current page equals to the
+41. `URL should be "..."` - verify that URL of the current page equals to the
 text (provided in "" as a string).
 - `URL should be "..."."..."` - verify that URL of the current page equals to
 the text (provided in **"page"."object"**).
 - `URL should be ... from ...` - verify that URL of the current page equals to
 the text (provided in **object** from **page**).
-41. `URL should contain "..."` - verify that URL of the current page contains
+42. `URL should contain "..."` - verify that URL of the current page contains
 the text (provided in "" as a string).
 - `URL should contain "..."."..."` - verify that URL of the current page
 contains the text (provided in **"page"."object"**).
 - `URL should contain ... from ...` - verify that URL of the current page
 contains the text (provided in **object** from **page**).
-42. `"..."."..." attribute "..." should contain "..."` - verify that the
+43. `"..."."..." attribute "..." should contain "..."` - verify that the
 attribute (provided in "" as a string) of the element (provided in
 **"page"."object"**) contains provided string (provided in "" as a string).
 - `... from ... attribute "..." should contain "..."` - verify that the

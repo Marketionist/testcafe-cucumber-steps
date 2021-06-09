@@ -686,6 +686,34 @@ When('I/user switch(es) to {word} frame from {word}( page)', async function (
     await t.switchToIframe(elem);
 });
 
+When(
+    'I/user wait(s) up to {int} ms and switch(es) to {string}.{string} frame',
+    async function (
+        t, [timeToWait, page, element]
+    ) {
+        const elem = Selector(
+            getElement(page, element),
+            { timeout: timeToWait }
+        );
+
+        await t.switchToIframe(elem);
+    }
+);
+
+When(
+    'I/user wait(s) up to {int} ms and switch(es) to {word} frame from {word}( page)',
+    async function (
+        t, [timeToWait, element, page]
+    ) {
+        const elem = Selector(
+            getElement(page, element),
+            { timeout: timeToWait }
+        );
+
+        await t.switchToIframe(elem);
+    }
+);
+
 When('I/user switch(es) to main frame', async function (t) {
     await t.switchToMainWindow();
 });
