@@ -14,14 +14,14 @@ let When;
 let Then;
 
 try {
-    Given = require('cucumber').Given;
-    When = require('cucumber').When;
-    Then = require('cucumber').Then;
-} catch (error) {
-    console.log('Using \'@cucumber/cucumber\'');
     Given = require('@cucumber/cucumber').Given;
     When = require('@cucumber/cucumber').When;
     Then = require('@cucumber/cucumber').Then;
+} catch (error) {
+    console.log('Using older version of cucumber (< 7)');
+    Given = require('cucumber').Given;
+    When = require('cucumber').When;
+    Then = require('cucumber').Then;
 }
 
 const spacesToIndent = 4;
