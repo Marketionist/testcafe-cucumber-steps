@@ -34,7 +34,7 @@ let testPage = {
 
 };
 
-testPage.linkOurProducts = \`\${testPage.header} a[title="Our products"]\`;
+testPage.linkOurProducts = \`\${testPage.header} a[title*="roducts"]\`;
 
 module.exports = testPage;`;
 const pathToConfigExample = path.join(pathToTestsDir, '..', '.testcaferc.json');
