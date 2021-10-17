@@ -417,18 +417,17 @@ CSS selector).
 - `I/user type(s) ... from ... in ... from ...` - type any text (provided in
 **object1** from **page1**) in the input field (provided in **object2** from
 **page2** as CSS or XPath selector).
-16. `I/user clear(s) "..."."..." and type(s) "..."` - overwrite any text
-(provided in "" as a string) in the input field (provided in **"page"."object"**
-as CSS or XPath selector).
-- `I/user clear(s) ... from ... and type(s) "..."` - overwrite any text
-(provided in "" as a string) in the input field (provided in **object** from
-**page** as CSS or XPath selector).
-- `I/user clear(s) "..."."..." and type(s) "..."."..."` - overwrite any text
-(provided in **"page1"."object1"**) in the input field (provided in
-**"page2"."object2"** as CSS or XPath selector).
-- `I/user clear(s) ... from ... and type(s) ... from ...` - overwrite any text
-(provided in **object1** from **page1**) in the input field (provided in
-**object2** from **page2** as CSS or XPath selector).
+16. `I/user clear(s) "..."."..." and type(s) "..."` - clear the input field
+(provided in **"page"."object"** as CSS or XPath selector) and type any text
+(provided in "" as a string).
+- `I/user clear(s) ... from ... and type(s) "..."` - clear the input field
+(provided in **object** from **page** as CSS or XPath selector) and type any
+text (provided in "" as a string).
+- `I/user clear(s) "..."."..." and type(s) "..."."..."` - clear the input field (provided in **"page1"."object1"** as CSS or XPath selector) and type any text
+(provided in **"page2"."object2"**).
+- `I/user clear(s) ... from ... and type(s) ... from ...` - clear the input
+field (provided in **object1** from **page1** as CSS or XPath selector) and type
+any text (provided in **object2** from **page2**).
 17. `I/user select(s) "..." in "..."."..."` - select any option (provided in ""
 as a string) in the dropdown (provided in **"page"."object"** as CSS or XPath
 selector).
