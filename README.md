@@ -20,8 +20,8 @@ tests - see the presentation of why and how you can easily use
     <tbody>
         <tr>
             <td>8.x</td>
-            <td rowspan=7>1.x</td>
-            <td rowspan=7>5.x, 6.x, 7.x</td>
+            <td rowspan=11>1.x</td>
+            <td rowspan=11>5.x, 6.x, 7.x</td>
         </tr>
         <tr>
             <td>9.x</td>
@@ -40,6 +40,18 @@ tests - see the presentation of why and how you can easily use
         </tr>
         <tr>
             <td>14.x</td>
+        </tr>
+        <tr>
+            <td>15.x</td>
+        </tr>
+        <tr>
+            <td>16.x</td>
+        </tr>
+        <tr>
+            <td>17.x</td>
+        </tr>
+        <tr>
+            <td>18.x</td>
         </tr>
     </tbody>
 </table>
