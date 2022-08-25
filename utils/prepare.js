@@ -10,6 +10,7 @@ const writeFile = util.promisify(fs.writeFile);
 const pathToTestsDir = path.join(__dirname, '..', '..', '..', 'tests');
 const pathToPageObjectsDir = path.join(pathToTestsDir, 'page-model');
 const pathToTestExample = path.join(pathToTestsDir, 'test-example.feature');
+
 const testExampleContent = `@fast @example-tests
 
 Feature: Running Cucumber with TestCafe - test feature example
@@ -23,8 +24,10 @@ Feature: Running Cucumber with TestCafe - test feature example
     When user clicks linkAbout from test-page-example
     And user clicks "test-page-example"."linkOurProducts"
     Then the title should contain "Google"`;
+
 const pathToPageObjectsExample = path.join(pathToPageObjectsDir,
     'test-page-example.js');
+
 const pageObjectsExampleContent = `'use strict';
 
 let testPage = {
@@ -34,10 +37,12 @@ let testPage = {
 
 };
 
-testPage.linkOurProducts = \`\${testPage.header} a[title*="roducts"]\`;
+testPage.linkOurProducts = \`\${testPage.header} a[class*="link-products"]\`;
 
 module.exports = testPage;`;
+
 const pathToConfigExample = path.join(pathToTestsDir, '..', '.testcaferc.json');
+
 const configExampleContent = `{
     "browsers": "chrome",
     "src": ["node_modules/testcafe-cucumber-steps/index.js", "tests/**/*.js", "tests/**/*.feature"],
