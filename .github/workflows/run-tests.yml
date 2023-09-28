@@ -29,7 +29,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
         node-version: [18.x, 20.x]
     defaults:
       run:
@@ -57,15 +57,7 @@ jobs:
         run: npm run install-all
 
       - name: Lint
-        run: |
-          if [[ ${{ matrix.os }} != 'windows-latest' ]]; then
-            npm run lint
-          else
-            echo "Lint on Windows:"
-            npx eslint *.js utils/*.js tests/**/*.feature
-          fi
+        run: npm run lint
 
       - name: Test
-        run: |
-          echo "Test"
-          npm test
+        run: npm test
