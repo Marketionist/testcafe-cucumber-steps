@@ -1,6 +1,17 @@
 name: Build and Test
 
 on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: false
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
   # Trigger the workflow on pull request (only for the master branch)
   # push:
   #   branches:
@@ -18,30 +29,43 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-20.04
-        node-version: [14.x, 15.x, 16.x, 17.x, 18.x]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [18.x, 20.x]
+    defaults:
+      run:
+        shell: bash
 
     steps:
-      - name: Git checkout and install Chrome
-        uses: actions/checkout@v2
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y dpkg # To upgrade to dpkg >= 1.17.5ubuntu5.8, which fixes https://bugs.launchpad.net/ubuntu/+source/dpkg/+bug/1730627
-      - run: sudo apt-get install -y libappindicator1 fonts-liberation
-      - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      - run: sudo dpkg -i google-chrome*.deb
-      - run: google-chrome --version
+      - name: Git checkout
+        uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg # To upgrade to dpkg >= 1.17.5ubuntu5.8, which fixes https://bugs.launchpad.net/ubuntu/+source/dpkg/+bug/1730627
+          sudo apt-get install -y libappindicator1 fonts-liberation
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome*.deb
+          google-chrome --version
+
+      - name: Install Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm run install-all
-        env:
-          CI: true
-      - run: npm run lint
-        env:
-          CI: true
-      - run: npm test
-        env:
-          CI: true
+
+      - name: Install dependencies
+        run: npm run install-all
+
+      - name: Lint
+        run: |
+          if [[ ${{ matrix.os }} != 'windows-latest' ]]; then
+            npm run lint
+          else
+            echo "Lint on Windows:"
+            npx eslint *.js utils/*.js tests/**/*.feature
+          fi
+
+      - name: Test
+        run: |
+          echo "Test"
+          npm test
