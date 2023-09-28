@@ -169,26 +169,27 @@ Feature: Running Cucumber with TestCafe - test "user ..." steps feature 2
     And user clicks "alert-page"."buttonLaunchAlert"
     Then "alert-page"."blockAlertStatus" text should be "alert-page"."textAlertCanceled"
 
-  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (URL provided in the step string)
-    Given user goes to URL "http://localhost:8001/test1.html"
-    When user opens "http://localhost:8001/test2.html" in new browser window
-    Then URL should contain "/test2.html"
+# Commented out due to the Native Automation mode not supporting the use of multiple browser windows (TestCafe v3.0.0 and higher)
+  # Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (URL provided in the step string)
+  #   Given user goes to URL "http://localhost:8001/test1.html"
+  #   When user opens "http://localhost:8001/test2.html" in new browser window
+  #   Then URL should contain "/test2.html"
 
-  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (Page Object style step)
-    Given user goes to URL "http://localhost:8001/test1.html"
-    When user opens "test2-page"."urlTest2" in new browser window
-    Then URL should contain "/test2.html"
+  # Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (Page Object style step)
+  #   Given user goes to URL "http://localhost:8001/test1.html"
+  #   When user opens "test2-page"."urlTest2" in new browser window
+  #   Then URL should contain "/test2.html"
 
-  Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (text style step)
-    Given user goes to URL "http://localhost:8001/test1.html"
-    When user opens urlTest2 from test2-page page in new browser window
-    Then URL should contain "/test2.html"
+  # Scenario: 'user opens in new browser window' should open the page in the new browser window/tab (text style step)
+  #   Given user goes to URL "http://localhost:8001/test1.html"
+  #   When user opens urlTest2 from test2-page page in new browser window
+  #   Then URL should contain "/test2.html"
 
-  Scenario: 'user closes current browser window' should close current browser window/tab
-    Given user goes to URL "http://localhost:8001/test1.html"
-    And user opens urlTest2 from test2-page page in new browser window
-    When user closes current browser window
-    Then URL should contain "/test1.html"
+  # Scenario: 'user closes current browser window' should close current browser window/tab
+  #   Given user goes to URL "http://localhost:8001/test1.html"
+  #   And user opens urlTest2 from test2-page page in new browser window
+  #   When user closes current browser window
+  #   Then URL should contain "/test1.html"
 
   Scenario: 'user presses' should press the specified keyboard keys
     Given user goes to URL "http://localhost:8001/test2.html"
