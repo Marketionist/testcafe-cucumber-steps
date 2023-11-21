@@ -41,16 +41,16 @@
   "author": "Dmytro Shpakovskyi",
   "license": "MIT",
   "dependencies": {
-    "js-automation-tools": "^1.2.1"
+    "js-automation-tools": "^1.2.2"
   },
   "peerDependencies": {
     "gherkin-testcafe": ">=2.5.1",
     "testcafe": ">=1.3.3"
   },
   "devDependencies": {
-    "eslint": "^8.52.0",
+    "eslint": "^8.54.0",
     "eslint-plugin-cucumber": "^2.0.0",
     "eslint-plugin-testcafe": "^0.2.1",
-    "node-testing-server": "^1.6.0"
+    "node-testing-server": "^1.6.1"
   }
 }
