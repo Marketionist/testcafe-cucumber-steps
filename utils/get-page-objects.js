@@ -5,6 +5,8 @@
 const path = require('path');
 const { readDirectories } = require('js-automation-tools');
 
+const spacesToIndent = 4;
+
 const isCalledExternally = __dirname.includes('node_modules');
 
 const pageObjectsFolderPathes = 'PO_FOLDER_PATH' in process.env ?
