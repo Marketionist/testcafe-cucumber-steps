@@ -15,10 +15,10 @@ const pageObjectsFolderPathes = 'PO_FOLDER_PATH' in process.env ?
 
 const fullPageObjectsFolderPathes = isCalledExternally ?
     pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
-        return path.join(__dirname, '..', '..', pageObjectsFolderPath)
+        return path.join(__dirname, '..', '..', '..', pageObjectsFolderPath)
     }) :
     pageObjectsFolderPathes.map((pageObjectsFolderPath) => {
-        return path.join(__dirname, pageObjectsFolderPath)
+        return path.join(__dirname, '..', pageObjectsFolderPath)
     });
 
 // Require all Page Object files in directory
