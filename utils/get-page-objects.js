@@ -48,7 +48,7 @@ async function requirePageObjects () {
         `\n${JSON.stringify(pageObjects, null, spacesToIndent)}\n\n`
     );
 
-    return allRequiredPageObjects;
+    return pageObjects;
 }
 
 module.exports = requirePageObjects;
