@@ -213,6 +213,12 @@ See more examples of how to use predefined steps in
 [`test1-user.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test1-user.feature) and
 [`test2-user.feature`](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/tests/test2-user.feature).
 
+If you want to get access to Page Objects in your custom Cucumber steps - you can just require them inside any step definitions
+file like this:
+```javascript
+let pageObjects = require('testcafe-cucumber-steps/utils/get-page-objects.js');
+```
+
 ## Importing and running in CLI
 To get access to all Cucumber steps defined in this package just specify the
 path to this package when launching tests:
