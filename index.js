@@ -6,8 +6,8 @@
 const { ClientFunction, Selector } = require('testcafe');
 const { createRequest } = require('js-automation-tools');
 const SelectorXPath = require('./utils/selector-xpath.js');
-const requirePageObjects = require('./utils/get-page-objects.js');
 const errors = require('./utils/errors.js');
+let pageObjects = require('./utils/get-page-objects.js');
 
 let Given;
 let When;
@@ -25,9 +25,6 @@ try {
 }
 
 const spacesToIndent = 4;
-
-// Require all Page Object files in directory
-let pageObjects = requirePageObjects();
 
 /**
  * Checks if locator is XPath

@@ -28,7 +28,7 @@ let pageObjects = {};
  * Requires Page Object files
  * @returns {Array} allRequiredPageObjects
  */
-async function requirePageObjects () {
+(async function requirePageObjects () {
     const allPageObjectFiles = await readDirectories(
         fullPageObjectsFolderPathes);
     const allRequiredPageObjects = allPageObjectFiles.filter(
@@ -49,6 +49,6 @@ async function requirePageObjects () {
     );
 
     return pageObjects;
-}
+})();
 
-module.exports = requirePageObjects;
+module.exports = pageObjects;
