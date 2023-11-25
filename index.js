@@ -7,7 +7,7 @@ const { ClientFunction, Selector } = require('testcafe');
 const { createRequest } = require('js-automation-tools');
 const SelectorXPath = require('./utils/selector-xpath.js');
 const errors = require('./utils/errors.js');
-let pageObjects = require('./utils/get-page-objects.js');
+const pageObjects = require('./utils/get-page-objects.js');
 
 let Given;
 let When;

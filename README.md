@@ -19,45 +19,9 @@ tests - see the presentation of why and how you can easily use
     </thead>
     <tbody>
         <tr>
-            <td>8.x</td>
-            <td rowspan=13>1.x</td>
-            <td rowspan=13>5.x, 6.x, 7.x</td>
-        </tr>
-        <tr>
-            <td>9.x</td>
-        </tr>
-        <tr>
-            <td>10.x</td>
-        </tr>
-        <tr>
-            <td>11.x</td>
-        </tr>
-        <tr>
-            <td>12.x</td>
-        </tr>
-        <tr>
-            <td>13.x</td>
-        </tr>
-        <tr>
-            <td>14.x</td>
-        </tr>
-        <tr>
-            <td>15.x</td>
-        </tr>
-        <tr>
-            <td>16.x</td>
-        </tr>
-        <tr>
-            <td>17.x</td>
-        </tr>
-        <tr>
-            <td>18.x</td>
-        </tr>
-        <tr>
-            <td>19.x</td>
-        </tr>
-        <tr>
-            <td>20.x</td>
+            <td>8.x - 20.x</td>
+            <td>1.x - 3.x</td>
+            <td>5.x - 10.x</td>
         </tr>
     </tbody>
 </table>
@@ -216,7 +180,7 @@ See more examples of how to use predefined steps in
 If you want to get access to Page Objects in your custom Cucumber steps - you can just require them inside any step definitions
 file like this:
 ```javascript
-let pageObjects = require('testcafe-cucumber-steps/utils/get-page-objects.js');
+const pageObjects = require('testcafe-cucumber-steps/utils/get-page-objects.js');
 ```
 
 ## Importing and running in CLI
