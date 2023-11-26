@@ -4,7 +4,7 @@ Cucumber steps (step definitions) written with TestCafe for end-to-end (e2e)
 tests - see the presentation of why and how you can easily use
 [TestCafe with Cucumber in 5 steps](https://prezi.com/e1wfgwlfvnhr/testcafe-with-cucumber-in-5-steps/)
 
-[![Actions Status](https://github.com/Marketionist/testcafe-cucumber-steps/workflows/Build%20and%20Test/badge.svg?branch=master)](https://github.com/Marketionist/testcafe-cucumber-steps/actions)
+[![Actions Status](https://github.com/Marketionist/testcafe-cucumber-steps/actions/workflows/run-tests.yml/badge.svg?branch=master)](https://github.com/Marketionist/testcafe-cucumber-steps/actions)
 [![npm version](https://img.shields.io/npm/v/testcafe-cucumber-steps.svg)](https://www.npmjs.com/package/testcafe-cucumber-steps)
 [![NPM License](https://img.shields.io/npm/l/testcafe-cucumber-steps.svg)](https://github.com/Marketionist/testcafe-cucumber-steps/blob/master/LICENSE)
 
